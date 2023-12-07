@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\CSDLNC_05",
-    "\\CSDLNC_05\\View",
-    "\\CSDLNC_05\\View\\Login"
+    "\\CSDLNC_05\\Controllers",
+    "\\CSDLNC_05\\Models",
+    "\\CSDLNC_05\\View"
   ],
-  "SelectedNode": "\\CSDLNC_05\\View\\Login\\Login.cs",
+  "SelectedNode": "\\CSDLNC_05\\Models\\DB_User.cs",
   "PreviewInSolutionExplorer": false
 }

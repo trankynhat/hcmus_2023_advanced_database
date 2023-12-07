@@ -4,9 +4,10 @@ namespace CSDLNC_05
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+        public static int currentUserId;
+        public static string currentUserRole;
+        public static List<Form> previousForm = new List<Form> { };
+
         [STAThread]
         static void Main()
         {
