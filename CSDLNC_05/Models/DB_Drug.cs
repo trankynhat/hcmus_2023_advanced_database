@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
@@ -37,6 +38,70 @@ namespace CSDLNC_05.Models
                 return drugs;
             }
             catch(Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return null;
+            }
+        }
+
+        public static int updateDrug(
+            String code, 
+            String name, 
+            String description, 
+            String price_unit, 
+            Double price_per_unit
+        )
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("update_drug");
+                SqlParameter numRowsUpdated = new SqlParameter("@rows_updated", SqlDbType.Int);
+
+                numRowsUpdated.Direction = ParameterDirection.Output;
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@code", code);
+                sqlCmd.Parameters.AddWithValue("@name", name);
+                sqlCmd.Parameters.AddWithValue("@description", description);
+                sqlCmd.Parameters.AddWithValue("@price_unit", price_unit);
+                sqlCmd.Parameters.AddWithValue("@price_per_unit", price_per_unit);
+                sqlCmd.Parameters.Add(numRowsUpdated);
+                sqlCmd.ExecuteNonQuery();
+
+                return Convert.ToInt32(sqlCmd.Parameters["@rows_updated"].Value);
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return 0;
+            }
+        }
+
+        public static Drug getDrugInfo(String code)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("get_drug_info");
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.Parameters.AddWithValue("@code", code);
+                SqlDataReader res = sqlCmd.ExecuteReader();
+
+
+                if (res.Read())
+                {
+                    Drug drug = new Drug(
+                        res.GetString(0),
+                        res.GetString(1),
+                        res.GetString(2),
+                        res.GetString(3),
+                        res.GetDouble(4)
+                    );
+                    return drug;
+                }
+                return null;
+            }
+            catch (Exception ex)
             {
                 Debug.Print($"Error: {ex.ToString()}");
                 return null;

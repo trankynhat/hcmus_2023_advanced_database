@@ -4,8 +4,11 @@
     "\\CSDLNC_05",
     "\\CSDLNC_05\\Controllers",
     "\\CSDLNC_05\\Models",
-    "\\CSDLNC_05\\View"
+    "\\CSDLNC_05\\View",
+    "\\Scripts",
+    "\\Scripts\\Procedures",
+    "\\Scripts\\Schema"
   ],
-  "SelectedNode": "\\CSDLNC_05\\View\\Login.Designer.cs",
+  "SelectedNode": "\\CSDLNC_05\\Controllers\\User.cs",
   "PreviewInSolutionExplorer": false
 }

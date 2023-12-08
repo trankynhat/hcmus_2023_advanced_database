@@ -2,7 +2,7 @@ CREATE TABLE drug (
     code VARCHAR(20),
     name NVARCHAR(150),
     description NVARCHAR(250),
-    price_unit VARCHAR(10),
+    price_unit NVARCHAR(10),
     price_per_unit FLOAT,
 
 	CONSTRAINT PK_drug PRIMARY KEY(code)
