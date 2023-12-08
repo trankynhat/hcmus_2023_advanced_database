@@ -9,6 +9,7 @@ namespace CSDLNC_05
 {
     class DbConn
     {
+        // Thuan: @"Data Source=REVISION-PC;Initial Catalog=CQ_CSDLNC_05;Integrated Security=True"
         private string strConn = @"Data Source=REVISION-PC;Initial Catalog=CQ_CSDLNC_05;Integrated Security=True";
         public SqlConnection conn { get; } = null;
 

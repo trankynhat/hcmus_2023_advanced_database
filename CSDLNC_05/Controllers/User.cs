@@ -43,7 +43,6 @@ namespace CSDLNC_05.Controllers
             {
                 return false;
             }
-            Console.WriteLine(user);
             if (password == user.password)
             {
                 Program.currentUserId = user.id;

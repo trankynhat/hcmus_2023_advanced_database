@@ -11,9 +11,9 @@ using CSDLNC_05.Controllers;
 
 namespace CSDLNC_05.View.Login
 {
-    public partial class Login : Form
+    public partial class UI_Login : Form
     {
-        public Login()
+        public UI_Login()
         {
             InitializeComponent();
         }
@@ -56,15 +56,11 @@ namespace CSDLNC_05.View.Login
 
             bool logined = User.login(username, password);
 
-            if (logined) 
+            if (logined)
             {
-                MessageBox.Show(
-                    "Thông tin đăng nhập không chính xác!",
-                    "Đăng nhập thành công!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-                return;
+                UI_Home home = new UI_Home();
+                home.Show();
+                this.Hide();
             }
             else
             {
