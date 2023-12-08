@@ -46,6 +46,7 @@ namespace CSDLNC_05.Controllers
             if (password == user.password)
             {
                 Program.currentUserId = user.id;
+                Program.currentUserName = user.full_name;
                 return true;
             }
             return false;

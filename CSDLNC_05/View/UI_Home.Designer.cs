@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             button1 = new Button();
+            button2 = new Button();
+            label_hello = new Label();
             SuspendLayout();
             // 
             // button1
@@ -42,20 +44,47 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ControlLightLight;
+            button2.Location = new Point(322, 72);
+            button2.Name = "button2";
+            button2.Size = new Size(219, 45);
+            button2.TabIndex = 1;
+            button2.Text = "Quản lý  thuốc";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // label_hello
+            // 
+            label_hello.AutoSize = true;
+            label_hello.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label_hello.Location = new Point(12, 9);
+            label_hello.Name = "label_hello";
+            label_hello.Size = new Size(65, 28);
+            label_hello.TabIndex = 2;
+            label_hello.Text = "label1";
+            label_hello.Click += label1_Click;
+            // 
             // UI_Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(836, 433);
+            Controls.Add(label_hello);
+            Controls.Add(button2);
             Controls.Add(button1);
             Name = "UI_Home";
             Text = "Trang chủ";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button button1;
+        private Button button2;
+        private Label label_hello;
     }
 }

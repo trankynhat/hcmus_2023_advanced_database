@@ -16,6 +16,8 @@ namespace CSDLNC_05.View
         public UI_Home()
         {
             InitializeComponent();
+
+            this.label_hello.Text = @$"Xin chào {Program.currentUserName}!";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -27,6 +29,19 @@ namespace CSDLNC_05.View
             UI_Login login = new UI_Login();
             login.Show();
             this.Hide();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            UI_Drug drug = new UI_Drug();
+            drug.Show();
+            this.Hide();
+            Program.previousForm.Add(this);
         }
     }
 }

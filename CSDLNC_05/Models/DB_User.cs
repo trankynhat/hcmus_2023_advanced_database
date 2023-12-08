@@ -15,9 +15,9 @@ namespace CSDLNC_05.Models
         {
             try
             {
-                SqlCommand sqlCmd = new SqlCommand();
-                sqlCmd.CommandType = System.Data.CommandType.Text;
-                sqlCmd.CommandText = $"SELECT TOP 1 * FROM [user] WHERE username=\'{username}\'";
+                SqlCommand sqlCmd = new SqlCommand("get_user_info");
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@username", username);
                 sqlCmd.Connection = new DbConn().conn;
                 SqlDataReader res = sqlCmd.ExecuteReader();
 

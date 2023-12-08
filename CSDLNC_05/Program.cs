@@ -6,6 +6,7 @@ namespace CSDLNC_05
     {
         public static int currentUserId;
         public static string currentUserRole;
+        public static string currentUserName;
         public static List<Form> previousForm = new List<Form> { };
 
         [STAThread]
