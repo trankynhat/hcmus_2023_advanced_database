@@ -35,7 +35,7 @@ namespace CSDLNC_05.Controllers
             this.working_branch_id = working_branch_id;
         }
 
-        public static bool Login(String username, String password)
+        public static bool login(String username, String password)
         {
             User user = DB_User.getUserInfo(username);
 

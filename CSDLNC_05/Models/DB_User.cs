@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace CSDLNC_05.Models
 {
@@ -16,7 +17,7 @@ namespace CSDLNC_05.Models
             {
                 SqlCommand sqlCmd = new SqlCommand();
                 sqlCmd.CommandType = System.Data.CommandType.Text;
-                sqlCmd.CommandText = $"SELECT TOP 1 * FROM user WHERE username=\'{username}\'";
+                sqlCmd.CommandText = $"SELECT TOP 1 * FROM [user] WHERE username=\'{username}\'";
                 sqlCmd.Connection = new DbConn().conn;
                 SqlDataReader res = sqlCmd.ExecuteReader();
 
@@ -40,7 +41,7 @@ namespace CSDLNC_05.Models
             }
             catch(Exception ex)
             {
-                Console.WriteLine(ex);
+                Debug.Print(ex.ToString());
                 return null;
             }
         }

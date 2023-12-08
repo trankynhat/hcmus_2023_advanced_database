@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CSDLNC_05.Controllers;
 
 namespace CSDLNC_05.View.Login
 {
@@ -46,7 +47,30 @@ namespace CSDLNC_05.View.Login
             {
                 MessageBox.Show(
                     "Thông tin đăng nhập không hợp lệ!",
-                    "Lỗi",
+                    "Đăng nhập thất bại!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            bool logined = User.login(username, password);
+
+            if (logined) 
+            {
+                MessageBox.Show(
+                    "Thông tin đăng nhập không chính xác!",
+                    "Đăng nhập thành công!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                return;
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Thông tin đăng nhập không chính xác!",
+                    "Đăng nhập thất bại!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );

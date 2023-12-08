@@ -9,7 +9,7 @@ namespace CSDLNC_05
 {
     class DbConn
     {
-        private string strConn = @"Data Source=LAPTOP-AOM8J85N\SQLEXPRESS;Initial Catalog=PTTK_HTTT;Integrated Security=True";
+        private string strConn = @"Data Source=REVISION-PC;Initial Catalog=CQ_CSDLNC_05;Integrated Security=True";
         public SqlConnection conn { get; } = null;
 
         public DbConn()
