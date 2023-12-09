@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             dgw_Drug = new DataGridView();
-            button1 = new Button();
-            btn_update = new Button();
             col_drugCode = new DataGridViewTextBoxColumn();
             col_drugNam = new DataGridViewTextBoxColumn();
             col_desc = new DataGridViewTextBoxColumn();
             col_priceUnit = new DataGridViewTextBoxColumn();
             col_pricePerUnit = new DataGridViewTextBoxColumn();
+            button1 = new Button();
+            btn_update = new Button();
+            btn_create = new Button();
+            btn_delete = new Button();
             ((System.ComponentModel.ISupportInitialize)dgw_Drug).BeginInit();
             SuspendLayout();
             // 
@@ -53,28 +55,6 @@
             dgw_Drug.Size = new Size(812, 372);
             dgw_Drug.TabIndex = 0;
             dgw_Drug.CellContentClick += dataGridView1_CellContentClick;
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(12, 12);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 1;
-            button1.Text = "Quay lại";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            // 
-            // btn_update
-            // 
-            btn_update.BackColor = SystemColors.ControlLightLight;
-            btn_update.Location = new Point(112, 12);
-            btn_update.Name = "btn_update";
-            btn_update.Size = new Size(94, 29);
-            btn_update.TabIndex = 2;
-            btn_update.Text = "Cập nhật";
-            btn_update.UseVisualStyleBackColor = false;
-            btn_update.Click += button2_Click;
             // 
             // col_drugCode
             // 
@@ -111,12 +91,58 @@
             col_pricePerUnit.Name = "col_pricePerUnit";
             col_pricePerUnit.ReadOnly = true;
             // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.ControlLightLight;
+            button1.Location = new Point(12, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 1;
+            button1.Text = "Quay lại";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // btn_update
+            // 
+            btn_update.BackColor = SystemColors.ControlLightLight;
+            btn_update.Location = new Point(212, 12);
+            btn_update.Name = "btn_update";
+            btn_update.Size = new Size(94, 29);
+            btn_update.TabIndex = 2;
+            btn_update.Text = "Cập nhật";
+            btn_update.UseVisualStyleBackColor = false;
+            btn_update.Click += button2_Click;
+            // 
+            // btn_create
+            // 
+            btn_create.BackColor = SystemColors.ControlLightLight;
+            btn_create.Location = new Point(112, 12);
+            btn_create.Name = "btn_create";
+            btn_create.Size = new Size(94, 29);
+            btn_create.TabIndex = 3;
+            btn_create.Text = "Thêm mới";
+            btn_create.UseVisualStyleBackColor = false;
+            btn_create.Click += btn_create_Click;
+            // 
+            // btn_delete
+            // 
+            btn_delete.BackColor = SystemColors.ControlLightLight;
+            btn_delete.Location = new Point(312, 12);
+            btn_delete.Name = "btn_delete";
+            btn_delete.Size = new Size(94, 29);
+            btn_delete.TabIndex = 4;
+            btn_delete.Text = "Xóa";
+            btn_delete.UseVisualStyleBackColor = false;
+            btn_delete.Click += btn_delete_Click;
+            // 
             // UI_Drug
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(836, 433);
+            Controls.Add(btn_delete);
+            Controls.Add(btn_create);
             Controls.Add(btn_update);
             Controls.Add(button1);
             Controls.Add(dgw_Drug);
@@ -137,5 +163,7 @@
         private DataGridViewTextBoxColumn col_pricePerUnit;
         private Button btn_update;
         private DataGridViewTextBoxColumn col_drugCode;
+        private Button btn_create;
+        private Button btn_delete;
     }
 }

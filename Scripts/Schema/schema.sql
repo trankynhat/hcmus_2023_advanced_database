@@ -4,6 +4,7 @@ CREATE TABLE drug (
     description NVARCHAR(250),
     price_unit NVARCHAR(10),
     price_per_unit FLOAT,
+    is_deleted BIT NOT NULL DEFAULT 0,
 
 	CONSTRAINT PK_drug PRIMARY KEY(code)
 )

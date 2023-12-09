@@ -40,9 +40,25 @@ namespace CSDLNC_05.Controllers
             return DB_Drug.updateDrug(code, name, description, price_unit, price_per_unit) == 1;
         }
 
+        public static bool insertDrug(
+            String code,
+            String name,
+            String description,
+            String price_unit,
+            Double price_per_unit
+        )
+        {
+            return DB_Drug.insertDrug(code, name, description, price_unit, price_per_unit) == 1;
+        }
+
         public static Drug getDrugInfo(String code)
         {
             return DB_Drug.getDrugInfo(code);
+        }
+
+        public static bool deleteDrug(String code)
+        {
+            return DB_Drug.deleteDrug(code) == 1;
         }
     }
 }

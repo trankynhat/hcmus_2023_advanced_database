@@ -73,5 +73,51 @@ namespace CSDLNC_05.View
             Popup_UpdateDrug popup = new Popup_UpdateDrug(drugCode);
             popup.ShowDialog();
         }
+
+        private void btn_create_Click(object sender, EventArgs e)
+        {
+            Popup_CreateDrug popup = new Popup_CreateDrug();
+            popup.ShowDialog();
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            var selectedRow = this.dgw_Drug.SelectedRows;
+
+            if (selectedRow.Count == 0)
+            {
+                MessageBox.Show(
+                    "Vui lòng chọn thuốc cần xóa!",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            int idx = this.dgw_Drug.SelectedRows[0].Index;
+            String drugCode = this.dgw_Drug.Rows[idx].Cells[0].Value.ToString();
+            
+            if (Drug.deleteDrug(drugCode))
+            {
+                MessageBox.Show(
+                    "Xóa thuốc thành công!",
+                    "Thành công!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                return;
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Xóa thuốc không thành công!",
+                    "Thất bại!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
+        }
     }
 }

@@ -77,6 +77,35 @@ namespace CSDLNC_05.Models
             }
         }
 
+        public static int insertDrug(
+            String code,
+            String name,
+            String description,
+            String price_unit,
+            Double price_per_unit
+        )
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("insert_new_drug");
+
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@code", code);
+                sqlCmd.Parameters.AddWithValue("@name", name);
+                sqlCmd.Parameters.AddWithValue("@description", description);
+                sqlCmd.Parameters.AddWithValue("@price_unit", price_unit);
+                sqlCmd.Parameters.AddWithValue("@price_per_unit", price_per_unit);
+
+                return sqlCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return 0;
+            }
+        }
+
         public static Drug getDrugInfo(String code)
         {
             try
@@ -105,6 +134,25 @@ namespace CSDLNC_05.Models
             {
                 Debug.Print($"Error: {ex.ToString()}");
                 return null;
+            }
+        }
+
+        public static int deleteDrug(String code) 
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("delete_drug");
+
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@code", code);
+
+                return sqlCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return 0;
             }
         }
     }
