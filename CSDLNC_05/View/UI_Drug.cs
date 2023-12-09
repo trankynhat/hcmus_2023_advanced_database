@@ -19,6 +19,13 @@ namespace CSDLNC_05.View
         {
             InitializeComponent();
 
+            if(Program.currentUserRole != "ADMIN")
+            {
+                this.btn_create.Enabled = false;
+                this.btn_delete.Enabled = false;    
+                this.btn_update.Enabled = false;
+            }
+
             List<Drug> drugs = Drug.listDrugs();
 
             foreach (Drug drug in drugs)

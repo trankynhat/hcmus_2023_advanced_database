@@ -45,5 +45,30 @@ namespace CSDLNC_05.Models
                 return null;
             }
         }
+
+        public static String getUserRole(int user_id)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand($"SELECT dbo.get_user_role({user_id}) AS ROLE");
+               sqlCmd.CommandType = System.Data.CommandType.Text;
+                sqlCmd.Connection = new DbConn().conn;
+                SqlDataReader res = sqlCmd.ExecuteReader();
+
+                if (res.Read())
+                {
+                    return res["ROLE"].ToString();
+                }
+                else
+                {
+                    return "UNKNOWN";
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.Print(ex.ToString());
+                return "UNKNOWN";
+            }
+        }
     }
 }

@@ -35,21 +35,43 @@ namespace CSDLNC_05.Controllers
             this.working_branch_id = working_branch_id;
         }
 
-        public static bool login(String username, String password)
+        public static int login(String username, String password)
         {
             User user = DB_User.getUserInfo(username);
 
             if (user == null)
             {
-                return false;
+                return 0;
             }
+
             if (password == user.password)
             {
                 Program.currentUserId = user.id;
                 Program.currentUserName = user.full_name;
+
+                if (!User.getUserRole(user.id))
+                {
+                    return 2;
+                }
+
+                return 1;
+            }
+            return 0;
+        }
+
+        public static bool getUserRole(int user_id)
+        {
+            String role = DB_User.getUserRole(user_id);
+            
+            if(role == "UNKNOWN")
+            {
+                return false;
+            }
+            else
+            {
+                Program.currentUserRole = role;
                 return true;
             }
-            return false;
         }
     }
 }

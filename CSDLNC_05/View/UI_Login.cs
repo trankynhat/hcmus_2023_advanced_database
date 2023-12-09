@@ -54,13 +54,23 @@ namespace CSDLNC_05.View.Login
                 return;
             }
 
-            bool logined = User.login(username, password);
+            int login_status = User.login(username, password);
 
-            if (logined)
+            if (login_status == 1)
             {
                 UI_Home home = new UI_Home();
                 home.Show();
                 this.Hide();
+            }
+            else if (login_status == 2)
+            {
+                MessageBox.Show(
+                    "Tài khoản vô danh không được phép truy cập!",
+                    "Đăng nhập thất bại!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
             }
             else
             {
