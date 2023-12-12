@@ -2,9 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\CSDLNC_05",
+    "\\CSDLNC_05\\Controllers",
+    "\\CSDLNC_05\\Models",
     "\\CSDLNC_05\\View",
-    "\\CSDLNC_05\\View\\Login"
+    "\\Scripts",
+    "\\Scripts\\Procedures",
+    "\\Scripts\\Schema"
   ],
-  "SelectedNode": "\\CSDLNC_05\\View\\Login\\Login.cs",
+  "SelectedNode": "\\CSDLNC_05\\View\\UI_Drug.cs",
   "PreviewInSolutionExplorer": false
 }
