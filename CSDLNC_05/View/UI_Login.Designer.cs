@@ -1,6 +1,6 @@
 ﻿namespace CSDLNC_05.View.Login
 {
-    partial class Login
+    partial class UI_Login
     {
         /// <summary>
         /// Required designer variable.
@@ -49,9 +49,9 @@
             label_username.AutoSize = true;
             label_username.Location = new Point(372, 105);
             label_username.Name = "label_username";
-            label_username.Size = new Size(75, 20);
+            label_username.Size = new Size(71, 20);
             label_username.TabIndex = 1;
-            label_username.Text = "Username";
+            label_username.Text = "Tài khoản";
             label_username.Click += label1_Click;
             // 
             // label_password
@@ -61,7 +61,7 @@
             label_password.Name = "label_password";
             label_password.Size = new Size(70, 20);
             label_password.TabIndex = 3;
-            label_password.Text = "Password";
+            label_password.Text = "Mật khẩu";
             // 
             // txtbox_password
             // 
@@ -78,11 +78,11 @@
             btn_login.Name = "btn_login";
             btn_login.Size = new Size(94, 29);
             btn_login.TabIndex = 4;
-            btn_login.Text = "Login";
+            btn_login.Text = "Đăng nhập";
             btn_login.UseVisualStyleBackColor = false;
             btn_login.Click += btn_login_Click;
             // 
-            // Login
+            // UI_Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -93,7 +93,8 @@
             Controls.Add(txtbox_password);
             Controls.Add(label_username);
             Controls.Add(txtbox_username);
-            Name = "Login";
+            Name = "UI_Login";
+            Text = "Đăng nhập";
             Load += Login_Load;
             ResumeLayout(false);
             PerformLayout();

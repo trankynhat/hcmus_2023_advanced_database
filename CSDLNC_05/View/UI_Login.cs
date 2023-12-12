@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CSDLNC_05.Controllers;
 
 namespace CSDLNC_05.View.Login
 {
-    public partial class Login : Form
+    public partial class UI_Login : Form
     {
-        public Login()
+        public UI_Login()
         {
             InitializeComponent();
         }
@@ -46,7 +47,36 @@ namespace CSDLNC_05.View.Login
             {
                 MessageBox.Show(
                     "Thông tin đăng nhập không hợp lệ!",
-                    "Lỗi",
+                    "Đăng nhập thất bại!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            int login_status = User.login(username, password);
+
+            if (login_status == 1)
+            {
+                UI_Home home = new UI_Home();
+                home.Show();
+                this.Hide();
+            }
+            else if (login_status == 2)
+            {
+                MessageBox.Show(
+                    "Tài khoản vô danh không được phép truy cập!",
+                    "Đăng nhập thất bại!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Thông tin đăng nhập không chính xác!",
+                    "Đăng nhập thất bại!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );
