@@ -31,6 +31,7 @@
             button1 = new Button();
             button2 = new Button();
             label_hello = new Label();
+            btn_report = new Button();
             SuspendLayout();
             // 
             // button1
@@ -47,7 +48,7 @@
             // button2
             // 
             button2.BackColor = SystemColors.ControlLightLight;
-            button2.Location = new Point(322, 72);
+            button2.Location = new Point(319, 65);
             button2.Name = "button2";
             button2.Size = new Size(219, 45);
             button2.TabIndex = 1;
@@ -59,12 +60,23 @@
             // 
             label_hello.AutoSize = true;
             label_hello.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label_hello.Location = new Point(12, 9);
+            label_hello.Location = new Point(11, 9);
             label_hello.Name = "label_hello";
             label_hello.Size = new Size(65, 28);
             label_hello.TabIndex = 2;
             label_hello.Text = "label1";
             label_hello.Click += label1_Click;
+            // 
+            // btn_report
+            // 
+            btn_report.BackColor = SystemColors.ControlLightLight;
+            btn_report.Location = new Point(319, 127);
+            btn_report.Name = "btn_report";
+            btn_report.Size = new Size(219, 45);
+            btn_report.TabIndex = 3;
+            btn_report.Text = "Báo cáo";
+            btn_report.UseVisualStyleBackColor = false;
+            btn_report.Click += btn_report_Click;
             // 
             // UI_Home
             // 
@@ -72,6 +84,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(836, 433);
+            Controls.Add(btn_report);
             Controls.Add(label_hello);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -86,5 +99,6 @@
         private Button button1;
         private Button button2;
         private Label label_hello;
+        private Button btn_report;
     }
 }

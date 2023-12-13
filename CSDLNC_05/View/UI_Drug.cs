@@ -19,10 +19,10 @@ namespace CSDLNC_05.View
         {
             InitializeComponent();
 
-            if(Program.currentUserRole != "ADMIN")
+            if (Program.currentUserRole != "ADMIN")
             {
                 this.btn_create.Enabled = false;
-                this.btn_delete.Enabled = false;    
+                this.btn_delete.Enabled = false;
                 this.btn_update.Enabled = false;
             }
 
@@ -104,7 +104,7 @@ namespace CSDLNC_05.View
 
             int idx = this.dgw_Drug.SelectedRows[0].Index;
             String drugCode = this.dgw_Drug.Rows[idx].Cells[0].Value.ToString();
-            
+
             if (Drug.deleteDrug(drugCode))
             {
                 MessageBox.Show(

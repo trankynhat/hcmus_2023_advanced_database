@@ -48,11 +48,11 @@
             dgw_Drug.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgw_Drug.Columns.AddRange(new DataGridViewColumn[] { col_drugCode, col_drugNam, col_desc, col_priceUnit, col_pricePerUnit });
             dgw_Drug.GridColor = SystemColors.ActiveCaptionText;
-            dgw_Drug.Location = new Point(12, 49);
+            dgw_Drug.Location = new Point(11, 47);
             dgw_Drug.Name = "dgw_Drug";
             dgw_Drug.RowHeadersWidth = 51;
             dgw_Drug.RowTemplate.Height = 29;
-            dgw_Drug.Size = new Size(812, 372);
+            dgw_Drug.Size = new Size(813, 374);
             dgw_Drug.TabIndex = 0;
             dgw_Drug.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -94,7 +94,7 @@
             // button1
             // 
             button1.BackColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(12, 12);
+            button1.Location = new Point(11, 12);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
             button1.TabIndex = 1;
@@ -105,7 +105,7 @@
             // btn_update
             // 
             btn_update.BackColor = SystemColors.ControlLightLight;
-            btn_update.Location = new Point(212, 12);
+            btn_update.Location = new Point(213, 12);
             btn_update.Name = "btn_update";
             btn_update.Size = new Size(94, 29);
             btn_update.TabIndex = 2;
