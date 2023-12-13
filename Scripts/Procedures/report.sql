@@ -15,5 +15,7 @@ CREATE PROCEDURE get_treatment_report(
     @end_date DATE
 )
 AS
-    SELECT 
+    SELECT id, description, treatment_fee, treatment_date, payment_method_code, payment_id, dentist_id
+    FROM treatment
+    WHERE dentist_id = @user_id AND treatment_date >= @start_date AND @start_date <= @end_date
 GO

@@ -53,7 +53,7 @@ namespace CSDLNC_05.View
             DateTime startDate = this.dtp_startDate.Value;
             DateTime endDate = this.dtp_endDate.Value;
 
-            if(startDate < endDate)
+            if (startDate > endDate)
             {
                 MessageBox.Show(
                     "Ngày bắt đầu phải lớn hơn ngày kết thúc!",
@@ -67,10 +67,47 @@ namespace CSDLNC_05.View
             DentistInfo dentist = (DentistInfo)this.cb_dentitInfos.SelectedItem;
             int dentistId = dentist.id;
 
+            List<Treatment>? treatments = Treatment.getTreatmentsByDentistId(
+                dentistId,
+                this.dtp_startDate.Value,
+                this.dtp_endDate.Value
+            );
 
+            if (treatments == null)
+            {
+                MessageBox.Show(
+                    "Không có dữ liệu!",
+                    "Không có dữ liệu!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                return;
+            }
+
+            foreach(Treatment treatment in treatments)
+            {
+                this.dgv_treatments.Rows.Add(
+                    treatment.id,
+                    treatment.description,
+                    treatment.treatment_fee,
+                    treatment.treatment_date,
+                    treatment.payment_method_code,
+                    (
+                        treatment.payment_id != null 
+                        ? treatment.payment_id 
+                        : "Chưa thanh toán"
+                    ),
+                    treatment.dentist_id
+                );
+            }
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cb_dentitInfos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

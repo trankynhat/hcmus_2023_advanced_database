@@ -71,7 +71,7 @@ CREATE TABLE treatment(
     payment_id INT NULL,
     dentist_id INT NOT NULL,
 
-    CONSTRAINT CHK_treatment__treatment_fee CHECK (treatment_fee >=0),
+    CONSTRAINT CHK_treatment__treatment_fee CHECK (treatment_fee >= 0),
     CONSTRAINT PK_treatment PRIMARY KEY (id)
 )
 GO
