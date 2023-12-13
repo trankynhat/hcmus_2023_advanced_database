@@ -1,4 +1,4 @@
-CREATE TRIGGER tr_check_payment_id
+CREATE TRIGGER trg_treatment__check_payment_id
 ON treatment
 AFTER INSERT, UPDATE
 AS
