@@ -19,3 +19,19 @@ AS
     FROM treatment
     WHERE dentist_id = @user_id AND treatment_date >= @start_date AND @start_date <= @end_date
 GO
+
+-- get_appointment_report
+
+CREATE PROCEDURE get_appointment_report(
+    @user_id INT,
+    @start_date DATE,
+    @end_date DATE
+)
+AS
+    SELECT appointment_date, ordinal, patient_name, note, record_id, clinic_id, dentist_id, medical_assistant_id
+    FROM appointment_schedule
+    WHERE (
+        dentist_id = @user_id 
+        OR medical_assistant_id = @user_id
+    ) AND appointment_date >= @start_date AND @start_date <= @end_date
+GO

@@ -261,7 +261,8 @@ CREATE TABLE clinic(
     branch_id INT NOT NULL,
 	clinic_number INT NOT NULL,
 
-    CONSTRAINT PK_clinic PRIMARY KEY (clinic_id)
+    CONSTRAINT PK_clinic PRIMARY KEY (clinic_id),
+    CONSTRAINT UNQ_clinic__branch_id__clinic_number UNIQUE(branch_id, clinic_number)
 )
 GO
 

@@ -32,9 +32,6 @@
             cb_dentitInfos = new ComboBox();
             btn_view = new Button();
             dgv_treatments = new DataGridView();
-            dtp_startDate = new DateTimePicker();
-            dtp_endDate = new DateTimePicker();
-            label1 = new Label();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
@@ -42,6 +39,9 @@
             Column5 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
+            dtp_startDate = new DateTimePicker();
+            dtp_endDate = new DateTimePicker();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgv_treatments).BeginInit();
             SuspendLayout();
             // 
@@ -88,36 +88,7 @@
             dgv_treatments.RowTemplate.Height = 29;
             dgv_treatments.Size = new Size(812, 374);
             dgv_treatments.TabIndex = 3;
-            // 
-            // dtp_startDate
-            // 
-            dtp_startDate.CustomFormat = "dd-MM-yyyy";
-            dtp_startDate.Format = DateTimePickerFormat.Custom;
-            dtp_startDate.Location = new Point(426, 13);
-            dtp_startDate.Name = "dtp_startDate";
-            dtp_startDate.Size = new Size(129, 27);
-            dtp_startDate.TabIndex = 4;
-            dtp_startDate.Value = new DateTime(2023, 1, 1, 0, 0, 0, 0);
-            dtp_startDate.ValueChanged += dateTimePicker1_ValueChanged;
-            // 
-            // dtp_endDate
-            // 
-            dtp_endDate.CustomFormat = "dd-MM-yyyy";
-            dtp_endDate.Format = DateTimePickerFormat.Custom;
-            dtp_endDate.Location = new Point(595, 13);
-            dtp_endDate.Name = "dtp_endDate";
-            dtp_endDate.Size = new Size(129, 27);
-            dtp_endDate.TabIndex = 5;
-            dtp_endDate.Value = new DateTime(2023, 1, 1, 0, 0, 0, 0);
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(563, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(23, 20);
-            label1.TabIndex = 6;
-            label1.Text = "to";
+            dgv_treatments.CellContentClick += dgv_treatments_CellContentClick;
             // 
             // Column1
             // 
@@ -167,6 +138,38 @@
             Column7.MinimumWidth = 6;
             Column7.Name = "Column7";
             Column7.ReadOnly = true;
+            // 
+            // dtp_startDate
+            // 
+            dtp_startDate.CustomFormat = "dd-MM-yyyy";
+            dtp_startDate.Format = DateTimePickerFormat.Custom;
+            dtp_startDate.Location = new Point(426, 13);
+            dtp_startDate.Name = "dtp_startDate";
+            dtp_startDate.Size = new Size(129, 27);
+            dtp_startDate.TabIndex = 4;
+            dtp_startDate.Value = new DateTime(2023, 1, 1, 0, 0, 0, 0);
+            dtp_startDate.ValueChanged += dateTimePicker1_ValueChanged;
+            // 
+            // dtp_endDate
+            // 
+            dtp_endDate.CustomFormat = "dd-MM-yyyy";
+            dtp_endDate.Format = DateTimePickerFormat.Custom;
+            dtp_endDate.Location = new Point(595, 13);
+            dtp_endDate.Name = "dtp_endDate";
+            dtp_endDate.Size = new Size(129, 27);
+            dtp_endDate.TabIndex = 5;
+            dtp_endDate.Value = new DateTime(2023, 1, 1, 0, 0, 0, 0);
+            dtp_endDate.ValueChanged += dtp_endDate_ValueChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(563, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(23, 20);
+            label1.TabIndex = 6;
+            label1.Text = "to";
+            label1.Click += label1_Click;
             // 
             // UI_TreatmentReport
             // 

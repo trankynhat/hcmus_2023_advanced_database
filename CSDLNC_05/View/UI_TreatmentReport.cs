@@ -84,7 +84,7 @@ namespace CSDLNC_05.View
                 return;
             }
 
-            foreach(Treatment treatment in treatments)
+            foreach (Treatment treatment in treatments)
             {
                 this.dgv_treatments.Rows.Add(
                     treatment.id,
@@ -93,8 +93,8 @@ namespace CSDLNC_05.View
                     treatment.treatment_date,
                     treatment.payment_method_code,
                     (
-                        treatment.payment_id != null 
-                        ? treatment.payment_id 
+                        treatment.payment_id != null
+                        ? treatment.payment_id
                         : "Chưa thanh toán"
                     ),
                     treatment.dentist_id
@@ -110,6 +110,19 @@ namespace CSDLNC_05.View
         private void cb_dentitInfos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgv_treatments_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dtp_endDate_ValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
         }
     }
 }
