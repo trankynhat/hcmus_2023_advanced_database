@@ -111,5 +111,31 @@ namespace CSDLNC_05.Models
                 return 0;
             }
         }
+        public static int createRecord(PatientRecord record)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("them_benh_nhan");
+
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@citizen_id", record.citizenId);
+                sqlCmd.Parameters.AddWithValue("@full_name", record.fullName);
+                sqlCmd.Parameters.AddWithValue("@phone_number", record.phoneNumber);
+                sqlCmd.Parameters.AddWithValue("@gender", record.gender);
+                sqlCmd.Parameters.AddWithValue("@date_of_birth", record.dateOfBirth);
+                sqlCmd.Parameters.AddWithValue("@permanent_address", record.permanentAddress);
+                sqlCmd.Parameters.AddWithValue("@general_info_about_oral_health", record.generalInfoAboutOralHealth);
+                sqlCmd.Parameters.AddWithValue("@note", record.note);
+                sqlCmd.Parameters.AddWithValue("@email", record.email);
+
+                return sqlCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return 0;
+            }
+        }
     }
 }

@@ -57,6 +57,7 @@ CREATE TABLE patient_record(
     permanent_address NVARCHAR(500) NULL,
     general_info_about_oral_health NVARCHAR(1000) NULL,
     note NVARCHAR(500) NULL,
+    is_deleted BIT DEFAULT 0,
 
     CONSTRAINT PK_patient_record PRIMARY KEY (citizen_id)
 )

@@ -4,11 +4,13 @@ AS
 BEGIN
     SELECT citizen_id, full_name, phone_number, gender, email, date_of_birth, permanent_address, general_info_about_oral_health, note
     FROM patient_record
-    WHERE @search_text IS NULL 
-    OR citizen_id LIKE '%' + @search_text + '%'
-    OR full_name LIKE '%' + @search_text + '%'
-    OR phone_number LIKE '%' + @search_text + '%'
-    OR email LIKE '%' + @search_text + '%'
+    WHERE (
+        @search_text IS NULL 
+        OR citizen_id LIKE '%' + @search_text + '%'
+        OR full_name LIKE '%' + @search_text + '%'
+        OR phone_number LIKE '%' + @search_text + '%'
+        OR email LIKE '%' + @search_text + '%'
+    ) AND is_deleted = 0
 END
 GO
 

@@ -87,5 +87,11 @@ namespace CSDLNC_05.View
             Popup_ViewAndUpdateRecord popup = new Popup_ViewAndUpdateRecord(recordId);
             popup.ShowDialog();
         }
+
+        private void btn_newRecord_Click(object sender, EventArgs e)
+        {
+            Popup_NewRecord popup = new Popup_NewRecord();
+            popup.ShowDialog();
+        }
     }
 }

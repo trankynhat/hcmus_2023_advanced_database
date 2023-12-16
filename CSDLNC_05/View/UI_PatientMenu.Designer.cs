@@ -41,6 +41,7 @@
             tb_search = new TextBox();
             btn_search = new Button();
             btn_viewDetail = new Button();
+            btn_newRecord = new Button();
             ((System.ComponentModel.ISupportInitialize)dbg_records).BeginInit();
             SuspendLayout();
             // 
@@ -155,12 +156,24 @@
             btn_viewDetail.UseVisualStyleBackColor = false;
             btn_viewDetail.Click += btn_viewDetail_Click;
             // 
+            // btn_newRecord
+            // 
+            btn_newRecord.BackColor = SystemColors.ControlLightLight;
+            btn_newRecord.Location = new Point(233, 12);
+            btn_newRecord.Name = "btn_newRecord";
+            btn_newRecord.Size = new Size(97, 29);
+            btn_newRecord.TabIndex = 7;
+            btn_newRecord.Text = "Tạo hồ sơ";
+            btn_newRecord.UseVisualStyleBackColor = false;
+            btn_newRecord.Click += btn_newRecord_Click;
+            // 
             // UI_PatientMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(836, 433);
+            Controls.Add(btn_newRecord);
             Controls.Add(btn_viewDetail);
             Controls.Add(btn_search);
             Controls.Add(tb_search);
@@ -188,5 +201,6 @@
         private TextBox tb_search;
         private Button btn_search;
         private Button btn_viewDetail;
+        private Button btn_newRecord;
     }
 }

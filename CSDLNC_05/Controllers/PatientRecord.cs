@@ -46,5 +46,9 @@ namespace CSDLNC_05.Controllers
         {
             return DB_PatientRecord.updateRecord(record) == 1;
         }
+        public static bool createRecord(PatientRecord record)
+        {
+            return DB_PatientRecord.createRecord(record) == 1;
+        }
     } 
 }
