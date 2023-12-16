@@ -51,7 +51,7 @@ CREATE TABLE patient_record(
     citizen_id VARCHAR(50),
     full_name NVARCHAR(200) NOT NULL,
     phone_number CHAR(12) NOT NULL,
-    gender INT NOT NULL,
+    gender BIT NOT NULL,
     email VARCHAR(50) NULL,
     date_of_birth DATE NULL,
     permanent_address NVARCHAR(500) NULL,

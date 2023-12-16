@@ -32,6 +32,7 @@
             button2 = new Button();
             label_hello = new Label();
             btn_report = new Button();
+            btn_patientManagement = new Button();
             SuspendLayout();
             // 
             // button1
@@ -70,7 +71,7 @@
             // btn_report
             // 
             btn_report.BackColor = SystemColors.ControlLightLight;
-            btn_report.Location = new Point(319, 127);
+            btn_report.Location = new Point(319, 116);
             btn_report.Name = "btn_report";
             btn_report.Size = new Size(219, 45);
             btn_report.TabIndex = 3;
@@ -78,12 +79,24 @@
             btn_report.UseVisualStyleBackColor = false;
             btn_report.Click += btn_report_Click;
             // 
+            // btn_patientManagement
+            // 
+            btn_patientManagement.BackColor = SystemColors.ControlLightLight;
+            btn_patientManagement.Location = new Point(319, 167);
+            btn_patientManagement.Name = "btn_patientManagement";
+            btn_patientManagement.Size = new Size(219, 45);
+            btn_patientManagement.TabIndex = 4;
+            btn_patientManagement.Text = "Quản lý bệnh nhân";
+            btn_patientManagement.UseVisualStyleBackColor = false;
+            btn_patientManagement.Click += btn_patientManagement_Click;
+            // 
             // UI_Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(836, 433);
+            Controls.Add(btn_patientManagement);
             Controls.Add(btn_report);
             Controls.Add(label_hello);
             Controls.Add(button2);
@@ -100,5 +113,6 @@
         private Button button2;
         private Label label_hello;
         private Button btn_report;
+        private Button btn_patientManagement;
     }
 }

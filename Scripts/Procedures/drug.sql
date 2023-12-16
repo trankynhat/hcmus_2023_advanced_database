@@ -9,12 +9,14 @@ CREATE PROCEDURE insert_new_drug(
 AS
     INSERT INTO drug(code, name, description, price_unit, price_per_unit)
     VALUES (@code, @name, @description, @price_unit, @price_per_unit)
+END
 GO
 
 -- delete_drug
 CREATE PROCEDURE delete_drug(@code VARCHAR(20))
 AS
     UPDATE drug SET is_deleted = 1 WHERE code = @code
+END
 GO
 
 -- list_of_drugs
@@ -23,6 +25,7 @@ AS
     SELECT code, name, description, price_unit, price_per_unit
     FROM drug
     WHERE is_deleted = 0
+END
 GO
 
 -- get_drug_info
@@ -31,6 +34,7 @@ AS
     SELECT code, name, description, price_unit, price_per_unit
     FROM drug
     WHERE code = @code
+END
 GO
 
 -- update_drug

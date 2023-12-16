@@ -51,5 +51,13 @@ namespace CSDLNC_05.View
             this.Hide();
             Program.previousForm.Add(this);
         }
+
+        private void btn_patientManagement_Click(object sender, EventArgs e)
+        {
+            UI_PatientMenu ui = new UI_PatientMenu();
+            ui.Show();
+            this.Hide();
+            Program.previousForm.Add(this);
+        }
     }
 }
