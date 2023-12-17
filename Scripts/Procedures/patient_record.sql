@@ -215,7 +215,7 @@ CREATE PROC xem_ds_ke_hoach_dieu_tri_cua_benh_nhan
     @record_id VARCHAR(50)
 AS
 BEGIN
-    SELECT *
+    SELECT id, description, note, treatment_plan_status_id, treatment_type_id, record_id
     FROM treatment_plan
     WHERE record_id = @record_id
 END
@@ -283,3 +283,36 @@ BEGIN
 
 END
 GO
+
+-- get_treatment_type
+CREATE PROC get_treatment_type(@id INT)
+AS
+BEGIN
+    SELECT id, name, [desc], treatment_category_id
+    FROM treatment_type
+    WHERE id = @id
+END
+GO
+
+-- get_treatment_status
+CREATE PROC get_treatment_status(@id INT)
+AS
+BEGIN
+    SELECT id, name, [desc], symbolic_color
+    FROM treatment_plan_status
+    WHERE id = @id
+END
+GO
+
+-- get_treatment_phases_by_treatment_plan_id
+CREATE PROC get_treatment_phases_by_treatment_plan_id(@plan_id INT)
+AS 
+BEGIN
+    SELECT T.id, T.description, T.treatment_fee, T.treatment_date, T.payment_method_code, T.payment_id, T.dentist_id
+    FROM treatment T
+    RIGHT JOIN treatment_phase TP
+    ON T.id = TP.treatment_id
+    WHERE TP.treatment_plan_id = @plan_id
+END
+GO
+

@@ -93,5 +93,29 @@ namespace CSDLNC_05.View
             Popup_NewRecord popup = new Popup_NewRecord();
             popup.ShowDialog();
         }
+
+        private void btn_treatment_Click(object sender, EventArgs e)
+        {
+            var selectedRow = this.dbg_records.SelectedRows;
+
+            if (selectedRow.Count == 0)
+            {
+                MessageBox.Show(
+                    "Vui lòng chọn hồ sơ cần xem!",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            int idx = this.dbg_records.SelectedRows[0].Index;
+            String recordId = this.dbg_records.Rows[idx].Cells[0].Value.ToString();
+
+            UI_TreatmentPlan ui = new UI_TreatmentPlan(recordId);
+            ui.Show();
+            this.Hide();
+            Program.previousForm.Add(this);
+        }
     }
 }

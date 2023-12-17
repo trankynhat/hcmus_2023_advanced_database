@@ -42,6 +42,9 @@
             btn_search = new Button();
             btn_viewDetail = new Button();
             btn_newRecord = new Button();
+            btn_treatment = new Button();
+            button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dbg_records).BeginInit();
             SuspendLayout();
             // 
@@ -50,7 +53,7 @@
             button1.BackColor = SystemColors.ControlLightLight;
             button1.Location = new Point(12, 12);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(107, 29);
             button1.TabIndex = 2;
             button1.Text = "Quay lại";
             button1.UseVisualStyleBackColor = false;
@@ -62,13 +65,13 @@
             dbg_records.BackgroundColor = SystemColors.ControlLightLight;
             dbg_records.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dbg_records.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 });
-            dbg_records.Location = new Point(12, 92);
+            dbg_records.Location = new Point(12, 82);
             dbg_records.Name = "dbg_records";
             dbg_records.ReadOnly = true;
             dbg_records.RowHeadersWidth = 51;
             dbg_records.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dbg_records.RowTemplate.Height = 29;
-            dbg_records.Size = new Size(812, 329);
+            dbg_records.Size = new Size(812, 339);
             dbg_records.TabIndex = 3;
             // 
             // Column1
@@ -129,17 +132,17 @@
             // 
             // tb_search
             // 
-            tb_search.Location = new Point(493, 12);
+            tb_search.Location = new Point(125, 12);
             tb_search.Name = "tb_search";
-            tb_search.Size = new Size(231, 27);
+            tb_search.Size = new Size(552, 27);
             tb_search.TabIndex = 4;
             // 
             // btn_search
             // 
             btn_search.BackColor = SystemColors.ControlLightLight;
-            btn_search.Location = new Point(730, 10);
+            btn_search.Location = new Point(683, 10);
             btn_search.Name = "btn_search";
-            btn_search.Size = new Size(94, 29);
+            btn_search.Size = new Size(141, 29);
             btn_search.TabIndex = 5;
             btn_search.Text = "Tìm kiếm";
             btn_search.UseVisualStyleBackColor = false;
@@ -148,7 +151,7 @@
             // btn_viewDetail
             // 
             btn_viewDetail.BackColor = SystemColors.ControlLightLight;
-            btn_viewDetail.Location = new Point(112, 12);
+            btn_viewDetail.Location = new Point(125, 47);
             btn_viewDetail.Name = "btn_viewDetail";
             btn_viewDetail.Size = new Size(115, 29);
             btn_viewDetail.TabIndex = 6;
@@ -159,13 +162,44 @@
             // btn_newRecord
             // 
             btn_newRecord.BackColor = SystemColors.ControlLightLight;
-            btn_newRecord.Location = new Point(233, 12);
+            btn_newRecord.Location = new Point(12, 47);
             btn_newRecord.Name = "btn_newRecord";
-            btn_newRecord.Size = new Size(97, 29);
+            btn_newRecord.Size = new Size(107, 29);
             btn_newRecord.TabIndex = 7;
             btn_newRecord.Text = "Tạo hồ sơ";
             btn_newRecord.UseVisualStyleBackColor = false;
             btn_newRecord.Click += btn_newRecord_Click;
+            // 
+            // btn_treatment
+            // 
+            btn_treatment.BackColor = SystemColors.ControlLightLight;
+            btn_treatment.Location = new Point(246, 47);
+            btn_treatment.Name = "btn_treatment";
+            btn_treatment.Size = new Size(169, 29);
+            btn_treatment.TabIndex = 8;
+            btn_treatment.Text = "Kế hoạch điều trị";
+            btn_treatment.UseVisualStyleBackColor = false;
+            btn_treatment.Click += btn_treatment_Click;
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ControlLightLight;
+            button2.Location = new Point(421, 47);
+            button2.Name = "button2";
+            button2.Size = new Size(129, 29);
+            button2.TabIndex = 9;
+            button2.Text = "Điều trị đơn";
+            button2.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.ControlLightLight;
+            button3.Location = new Point(556, 47);
+            button3.Name = "button3";
+            button3.Size = new Size(268, 29);
+            button3.TabIndex = 10;
+            button3.Text = "Danh sách thuốc chống chỉ định";
+            button3.UseVisualStyleBackColor = false;
             // 
             // UI_PatientMenu
             // 
@@ -173,6 +207,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(836, 433);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(btn_treatment);
             Controls.Add(btn_newRecord);
             Controls.Add(btn_viewDetail);
             Controls.Add(btn_search);
@@ -202,5 +239,8 @@
         private Button btn_search;
         private Button btn_viewDetail;
         private Button btn_newRecord;
+        private Button btn_treatment;
+        private Button button2;
+        private Button button3;
     }
 }
