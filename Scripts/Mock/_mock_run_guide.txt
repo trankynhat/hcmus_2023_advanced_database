@@ -5,3 +5,8 @@ dentist.sql
 staff.sql
 treatment_category.sql
 treatment_type.sql
+treatment_plan_status.sql
+tooth.sql
+tooth_surface.sql
+payment_method.sql
+drug.sql
