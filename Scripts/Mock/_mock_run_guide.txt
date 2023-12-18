@@ -1,0 +1,7 @@
+branch.sql
+clinic.sql
+user.sql
+dentist.sql
+staff.sql
+treatment_category.sql
+treatment_type.sql

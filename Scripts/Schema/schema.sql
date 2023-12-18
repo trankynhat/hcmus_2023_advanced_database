@@ -238,7 +238,7 @@ CREATE TABLE [user](
     password VARCHAR(300) NOT NULL,
     full_name NVARCHAR(150) NOT NULL,
     date_of_birth DATE NOT NULL,
-    phone_number CHAR(11) NOT NULL,
+    phone_number VARCHAR(40) NOT NULL,
     email VARCHAR(50) NOT NULL,
     permanent_address NVARCHAR(200) NULL,
     gender BIT NOT NULL,
