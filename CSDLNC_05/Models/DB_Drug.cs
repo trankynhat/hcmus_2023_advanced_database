@@ -13,13 +13,14 @@ namespace CSDLNC_05.Models
 {
     internal class DB_Drug
     {
-        public static List<Drug> listDrugs()
+        public static List<Drug> listDrugs(int pageNum)
         {
             try
             {
                 SqlCommand sqlCmd = new SqlCommand("list_of_drugs");
                 sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                 sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.Parameters.AddWithValue("@page_num", pageNum);
                 SqlDataReader res = sqlCmd.ExecuteReader();
 
                 List<Drug> drugs = new List<Drug>();

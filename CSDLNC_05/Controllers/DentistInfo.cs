@@ -16,9 +16,9 @@ namespace CSDLNC_05.Controllers
             this.id = id;
             this.full_name = full_name;
         }
-        public static List<DentistInfo> listDentistInfos()
+        public static List<DentistInfo> listDentistInfos(int branchId)
         {
-            return DB_User.listDentistInfos();
+            return DB_User.listDentistInfos(branchId);
         }
     }
 }

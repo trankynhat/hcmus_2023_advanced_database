@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -42,6 +43,19 @@ namespace CSDLNC_05.Models
                 Debug.Print($"Error: {ex.ToString()}");
                 return null;
             }
+        }
+
+        public static int createTreatmentPlan(TreatmentPlan treatmentPlan)
+        {
+            SqlCommand cmd = new SqlCommand("create_new_treatment_plan");
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Connection = new DbConn().conn;
+            cmd.Parameters.AddWithValue("@description", treatmentPlan.description);
+            cmd.Parameters.AddWithValue("@note", treatmentPlan.note);
+            cmd.Parameters.AddWithValue("@treatment_type_id", treatmentPlan.treatmentTypeId);
+            cmd.Parameters.AddWithValue("@record_id", treatmentPlan.recordId);
+
+            return cmd.ExecuteNonQuery();
         }
     }
 }

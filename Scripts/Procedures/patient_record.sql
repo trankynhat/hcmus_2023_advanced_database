@@ -65,7 +65,7 @@ BEGIN
         RETURN
     END
 
-    INSERT INTO patient_record
+    INSERT INTO patient_record(citizen_id, full_name, phone_number, gender, email, date_of_birth, permanent_address, general_info_about_oral_health, note)
     VALUES
         (@citizen_id, @full_name, @phone_number, @gender, @email, @date_of_birth, @permanent_address, @general_info_about_oral_health, @note)
 END
@@ -115,7 +115,7 @@ AS
 BEGIN
     IF NOT EXISTS (SELECT *
     FROM drug
-    WHERE drug_code = @drug_code)
+    WHERE code = @drug_code)
     BEGIN
         PRINT 'KHONG TIM THAY THONG TIN THUOC'
         RETURN
@@ -130,7 +130,7 @@ BEGIN
     END
 
     INSERT INTO drug_contraindication_info
-        (citizen_id, drug_code, note)
+        (record_id, drug_code, note)
     VALUES
         (@citizen_id, @drug_code, @note)
 END
@@ -144,13 +144,13 @@ AS
 BEGIN
     IF NOT EXISTS (SELECT *
     FROM drug_contraindication_info
-    WHERE citizen_id = @citizen_id AND drug_code = @drug_code)
+    WHERE record_id = @citizen_id AND drug_code = @drug_code)
     BEGIN
         PRINT 'KHONG TIM THAY THONG TIN CHONG CHI DINH THUOC CUA BENH NHAN'
         RETURN
     END
 
-    DELETE FROM drug_contraindication_info WHERE citizen_id = @citizen_id AND drug_code = @drug_code
+    DELETE FROM drug_contraindication_info WHERE record_id = @citizen_id AND drug_code = @drug_code
 END
 GO
 
@@ -163,7 +163,7 @@ AS
 BEGIN
     IF NOT EXISTS (SELECT *
     FROM drug
-    WHERE drug_code = @drug_code)
+    WHERE code = @drug_code)
     BEGIN
         PRINT 'KHONG TIM THAY THONG TIN THUOC'
         RETURN
@@ -179,13 +179,13 @@ BEGIN
 
     IF NOT EXISTS (SELECT *
     FROM drug_contraindication_info
-    WHERE citizen_id = @citizen_id AND drug_code = @drug_code)
+    WHERE record_id = @citizen_id AND drug_code = @drug_code)
     BEGIN
         PRINT 'KHONG TIM THAY THONG TIN CHONG CHI DINH THUOC CUA BENH NHAN'
         RETURN
     END
 
-    UPDATE drug_contraindication_info SET note = @note WHERE citizen_id = @citizen_id AND drug_code = @drug_code
+    UPDATE drug_contraindication_info SET note = @note WHERE record_id = @citizen_id AND drug_code = @drug_code
 END
 GO
 
@@ -282,38 +282,6 @@ BEGIN
 -- VALUES(1,  @description,  @treatment_type_id, )
 
 
-END
-GO
-
--- get_treatment_type
-CREATE PROC get_treatment_type(@id INT)
-AS
-BEGIN
-    SELECT id, name, [desc], treatment_category_id
-    FROM treatment_type
-    WHERE id = @id
-END
-GO
-
--- get_treatment_status
-CREATE PROC get_treatment_status(@id INT)
-AS
-BEGIN
-    SELECT id, name, [desc], symbolic_color
-    FROM treatment_plan_status
-    WHERE id = @id
-END
-GO
-
--- get_treatment_phases_by_treatment_plan_id
-CREATE PROC get_treatment_phases_by_treatment_plan_id(@plan_id INT)
-AS
-BEGIN
-    SELECT T.id, T.description, T.treatment_fee, T.treatment_date, T.payment_method_code, T.payment_id, T.dentist_id
-    FROM treatment T
-        RIGHT JOIN treatment_phase TP
-        ON T.id = TP.treatment_id
-    WHERE TP.treatment_plan_id = @plan_id
 END
 GO
 

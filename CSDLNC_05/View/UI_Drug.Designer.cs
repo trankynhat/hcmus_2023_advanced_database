@@ -38,6 +38,9 @@
             btn_update = new Button();
             btn_create = new Button();
             btn_delete = new Button();
+            lb_pageNum = new Label();
+            button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgw_Drug).BeginInit();
             SuspendLayout();
             // 
@@ -135,12 +138,46 @@
             btn_delete.UseVisualStyleBackColor = false;
             btn_delete.Click += btn_delete_Click;
             // 
+            // lb_pageNum
+            // 
+            lb_pageNum.Location = new Point(763, 13);
+            lb_pageNum.Name = "lb_pageNum";
+            lb_pageNum.Size = new Size(25, 25);
+            lb_pageNum.TabIndex = 5;
+            lb_pageNum.Text = "1";
+            lb_pageNum.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ControlLightLight;
+            button2.Location = new Point(728, 12);
+            button2.Name = "button2";
+            button2.Size = new Size(29, 29);
+            button2.TabIndex = 6;
+            button2.Text = "<";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click_1;
+            // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.ControlLightLight;
+            button3.Location = new Point(795, 12);
+            button3.Name = "button3";
+            button3.Size = new Size(29, 29);
+            button3.TabIndex = 7;
+            button3.Text = ">";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
             // UI_Drug
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(836, 433);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(lb_pageNum);
             Controls.Add(btn_delete);
             Controls.Add(btn_create);
             Controls.Add(btn_update);
@@ -165,5 +202,8 @@
         private DataGridViewTextBoxColumn col_drugCode;
         private Button btn_create;
         private Button btn_delete;
+        private Label lb_pageNum;
+        private Button button2;
+        private Button button3;
     }
 }

@@ -25,5 +25,9 @@ namespace CSDLNC_05.Controllers
         {
             return DB_TreatmentType.getTreatmentType(id);
         }
+        public static List<TreatmentType> getTreatmentTypeByCategoryId(int categoryId)
+        {
+            return DB_TreatmentType.getTreatmentTypeByCategoryId(categoryId);
+        }
     }
 }

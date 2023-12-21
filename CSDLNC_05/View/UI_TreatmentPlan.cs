@@ -8,14 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CSDLNC_05.Controllers;
+using CSDLNC_05.View.Dialogs;
 
 namespace CSDLNC_05.View
 {
     public partial class UI_TreatmentPlan : Form
     {
+        private String recordId;
         public UI_TreatmentPlan(String recordId)
         {
             InitializeComponent();
+            this.recordId = recordId;
             List<TreatmentPlan> treatmentPlans = TreatmentPlan.listTreatmentPlan(recordId);
 
             foreach (TreatmentPlan treatmentPlan in treatmentPlans)
@@ -67,6 +70,12 @@ namespace CSDLNC_05.View
             ui.Show();
             this.Hide();
             Program.previousForm.Add(this);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Popup_NewTreatmentPlan popup = new Popup_NewTreatmentPlan(this.recordId);
+            popup.ShowDialog();
         }
     }
 }

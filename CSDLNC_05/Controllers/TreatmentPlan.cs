@@ -12,8 +12,8 @@ namespace CSDLNC_05.Controllers
         public int id { get; }
         public String description {  get; }
         public String note { get; }
-        private int treatmentPlanStatusId;
-        private int treatmentTypeId;
+        public int treatmentPlanStatusId {  get; }
+        public int treatmentTypeId {  get; }
         public String recordId { get; }
 
         public TreatmentPlan(int id, string description, string note, int treatmentPlanStatusId, int treatmentTypeId, string recordId)
@@ -32,11 +32,15 @@ namespace CSDLNC_05.Controllers
         }
         public String getTreatmentTypeName()
         {
-            return TreatmentType.getTreatmentType(treatmentPlanStatusId).name;
+            return TreatmentType.getTreatmentType(this.treatmentTypeId).name;
         }
         public TreatmentStatus getTreatmentStatus()
         {
-            return TreatmentStatus.getTreatmentStatus(treatmentPlanStatusId);
+            return TreatmentStatus.getTreatmentStatus(this.treatmentPlanStatusId);
+        }
+        public static bool createTreatmentPlan(TreatmentPlan treatmentPlan)
+        {
+            return DB_TreatmentPlan.createTreatmentPlan(treatmentPlan) == 1;
         }
     }
 }

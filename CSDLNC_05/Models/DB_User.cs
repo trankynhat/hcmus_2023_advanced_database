@@ -71,13 +71,14 @@ namespace CSDLNC_05.Models
                 return "UNKNOWN";
             }
         }
-        public static List<DentistInfo> listDentistInfos()
+        public static List<DentistInfo> listDentistInfos(int branchId)
         {
             try
             {
                 SqlCommand sqlCmd = new SqlCommand("list_dentist_infos");
                 sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                 sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.Parameters.AddWithValue("@branch_id", branchId);
                 SqlDataReader res = sqlCmd.ExecuteReader();
 
                 List<DentistInfo> dentistInfos = new List<DentistInfo>();

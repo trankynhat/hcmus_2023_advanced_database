@@ -117,5 +117,10 @@ namespace CSDLNC_05.View
             this.Hide();
             Program.previousForm.Add(this);
         }
+
+        private void UI_PatientMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

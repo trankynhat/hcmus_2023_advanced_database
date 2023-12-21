@@ -17,7 +17,7 @@ namespace CSDLNC_05.View
         public UI_TreatmentReport()
         {
             InitializeComponent();
-            List<DentistInfo> dentistInfos = DentistInfo.listDentistInfos();
+            List<DentistInfo> dentistInfos = DentistInfo.listDentistInfos(Program.workingBranchId);
 
             this.cb_dentitInfos.DataSource = dentistInfos;
             this.cb_dentitInfos.DisplayMember = "full_name";

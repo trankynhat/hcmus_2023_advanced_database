@@ -39,5 +39,36 @@ namespace CSDLNC_05.Models
                 return null;
             }
         }
+
+        public static List<TreatmentType> getTreatmentTypeByCategoryId(int categoryId)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("get_treatment_type_by_category_id");
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.Parameters.AddWithValue("@category_id", categoryId);
+                SqlDataReader res = sqlCmd.ExecuteReader();
+
+                List<TreatmentType> types = new List<TreatmentType>();
+
+                while (res.Read())
+                {
+                    TreatmentType treatmentType = new TreatmentType(
+                        res.GetInt32(0),
+                        res.GetString(1),
+                        res.GetString(2),
+                        res.GetInt32(3)
+                    );
+                    types.Add(treatmentType);
+                }
+                return types;
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return null;
+            }
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace CSDLNC_05.View
                 this.btn_update.Enabled = false;
             }
 
-            List<Drug> drugs = Drug.listDrugs();
+            List<Drug> drugs = Drug.listDrugs(Convert.ToInt32(this.lb_pageNum.Text));
 
             foreach (Drug drug in drugs)
             {
@@ -124,6 +124,51 @@ namespace CSDLNC_05.View
                     MessageBoxIcon.Error
                 );
                 return;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int nextPage = Convert.ToInt32(this.lb_pageNum.Text) + 1;
+            this.lb_pageNum.Text = nextPage.ToString();
+
+            List<Drug> drugs = Drug.listDrugs(nextPage);
+            this.dgw_Drug.Rows.Clear();
+
+            foreach (Drug drug in drugs)
+            {
+                this.dgw_Drug.Rows.Add(
+                    drug.code,
+                    drug.name,
+                    drug.description,
+                    drug.price_unit,
+                    drug.price_per_unit
+                );
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            int prePage = Convert.ToInt32(this.lb_pageNum.Text) - 1;
+            if(prePage <= 0)
+            {
+                return;
+            }
+
+            this.lb_pageNum.Text = prePage.ToString();
+
+            List<Drug> drugs = Drug.listDrugs(prePage);
+            this.dgw_Drug.Rows.Clear();
+
+            foreach (Drug drug in drugs)
+            {
+                this.dgw_Drug.Rows.Add(
+                    drug.code,
+                    drug.name,
+                    drug.description,
+                    drug.price_unit,
+                    drug.price_per_unit
+                );
             }
         }
     }

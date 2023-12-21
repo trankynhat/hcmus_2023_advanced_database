@@ -25,9 +25,9 @@ namespace CSDLNC_05.Controllers
             this.price_per_unit = price_per_unit;
         }
 
-        public static List<Drug> listDrugs()
+        public static List<Drug> listDrugs(int pageNum)
         {
-            return DB_Drug.listDrugs();
+            return DB_Drug.listDrugs(pageNum);
         }
         public static bool updateDrug(
             String code,

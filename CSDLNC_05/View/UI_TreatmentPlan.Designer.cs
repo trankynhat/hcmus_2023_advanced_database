@@ -36,6 +36,7 @@
             Column5 = new DataGridViewTextBoxColumn();
             btn_back = new Button();
             button1 = new Button();
+            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgv_treatmentPlans).BeginInit();
             SuspendLayout();
             // 
@@ -109,12 +110,24 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ControlLightLight;
+            button2.Location = new Point(240, 12);
+            button2.Name = "button2";
+            button2.Size = new Size(122, 29);
+            button2.TabIndex = 3;
+            button2.Text = "Tạo kế hoạch";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
             // UI_TreatmentPlan
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(836, 433);
+            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(btn_back);
             Controls.Add(dgv_treatmentPlans);
@@ -135,5 +148,6 @@
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private Button button1;
+        private Button button2;
     }
 }
