@@ -19,14 +19,14 @@ namespace CSDLNC_05.View
         {
             InitializeComponent();
 
-            if(Program.currentUserRole != "ADMIN")
+            if (Program.currentUserRole != "ADMIN")
             {
                 this.btn_create.Enabled = false;
-                this.btn_delete.Enabled = false;    
+                this.btn_delete.Enabled = false;
                 this.btn_update.Enabled = false;
             }
 
-            List<Drug> drugs = Drug.listDrugs();
+            List<Drug> drugs = Drug.listDrugs(Convert.ToInt32(this.lb_pageNum.Text));
 
             foreach (Drug drug in drugs)
             {
@@ -104,7 +104,7 @@ namespace CSDLNC_05.View
 
             int idx = this.dgw_Drug.SelectedRows[0].Index;
             String drugCode = this.dgw_Drug.Rows[idx].Cells[0].Value.ToString();
-            
+
             if (Drug.deleteDrug(drugCode))
             {
                 MessageBox.Show(
@@ -124,6 +124,51 @@ namespace CSDLNC_05.View
                     MessageBoxIcon.Error
                 );
                 return;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int nextPage = Convert.ToInt32(this.lb_pageNum.Text) + 1;
+            this.lb_pageNum.Text = nextPage.ToString();
+
+            List<Drug> drugs = Drug.listDrugs(nextPage);
+            this.dgw_Drug.Rows.Clear();
+
+            foreach (Drug drug in drugs)
+            {
+                this.dgw_Drug.Rows.Add(
+                    drug.code,
+                    drug.name,
+                    drug.description,
+                    drug.price_unit,
+                    drug.price_per_unit
+                );
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            int prePage = Convert.ToInt32(this.lb_pageNum.Text) - 1;
+            if(prePage <= 0)
+            {
+                return;
+            }
+
+            this.lb_pageNum.Text = prePage.ToString();
+
+            List<Drug> drugs = Drug.listDrugs(prePage);
+            this.dgw_Drug.Rows.Clear();
+
+            foreach (Drug drug in drugs)
+            {
+                this.dgw_Drug.Rows.Add(
+                    drug.code,
+                    drug.name,
+                    drug.description,
+                    drug.price_unit,
+                    drug.price_per_unit
+                );
             }
         }
     }

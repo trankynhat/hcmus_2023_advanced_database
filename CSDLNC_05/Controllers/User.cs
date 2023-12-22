@@ -48,6 +48,7 @@ namespace CSDLNC_05.Controllers
             {
                 Program.currentUserId = user.id;
                 Program.currentUserName = user.full_name;
+                Program.workingBranchId = user.working_branch_id;
 
                 if (!User.getUserRole(user.id))
                 {

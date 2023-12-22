@@ -20,9 +20,8 @@ CREATE TABLE drug_contraindication_info (
 GO
 
 CREATE TABLE payment(
-    id INT,
+    id INT IDENTITY(0, 1),
     total_treatment_fee FLOAT,
-    total_amount_paid FLOAT,
     date_of_payment DATE,
     change FLOAT,
     note NVARCHAR(250),
@@ -52,17 +51,14 @@ CREATE TABLE patient_record(
     citizen_id VARCHAR(50),
     full_name NVARCHAR(200) NOT NULL,
     phone_number CHAR(12) NOT NULL,
-    gender INT NOT NULL,
+    gender BIT NOT NULL,
     email VARCHAR(50) NULL,
     date_of_birth DATE NULL,
     permanent_address NVARCHAR(500) NULL,
-    -- total_treatment_fee BIGINT NOT NULL DEFAULT 0,
-    -- total_amount_of_treatment_paid BIGINT NOT NULL DEFAULT 0,
     general_info_about_oral_health NVARCHAR(1000) NULL,
     note NVARCHAR(500) NULL,
+    is_deleted BIT DEFAULT 0,
 
-    -- CONSTRAINT CHK_total_treatment_fee CHECK (total_treatment_fee >=0),
-    -- CONSTRAINT CHK_total_amount_of_treatment_paid CHECK (total_amount_of_treatment_paid >=0),
     CONSTRAINT PK_patient_record PRIMARY KEY (citizen_id)
 )
 GO
@@ -72,12 +68,11 @@ CREATE TABLE treatment(
     description NVARCHAR(500) NULL,
     treatment_fee BIGINT NOT NULL DEFAULT 0,
     treatment_date DATE NOT NULL,
-    is_paid BIT NOT NULL DEFAULT 0,
     payment_method_code VARCHAR(50) NOT NULL,
-    payment_id INT NOT NULL,
+    payment_id INT NULL,
     dentist_id INT NOT NULL,
 
-    CONSTRAINT CHK_treatment__treatment_fee CHECK (treatment_fee >=0),
+    CONSTRAINT CHK_treatment__treatment_fee CHECK (treatment_fee >= 0),
     CONSTRAINT PK_treatment PRIMARY KEY (id)
 )
 GO
@@ -146,18 +141,18 @@ CREATE TABLE tool_information(
     treatment_activity NVARCHAR(500) NOT NULL,
     treatment_id INT NOT NULL,
     tooth_number INT NOT NULL,
-    tooth_surface_id INT NOT NULL,
+    tooth_surface_code CHAR(1) NOT NULL,
 
     CONSTRAINT PK_tool_information PRIMARY KEY (id)
 )
 GO
 
 CREATE TABLE tooth_surface(
-    id INT IDENTITY(0, 1),
+    code CHAR(1),
     name NVARCHAR(50) NOT NULL,
     [desc] NVARCHAR(100) NOT NULL,
 
-    CONSTRAINT PK_tooth_surface PRIMARY KEY (id)
+    CONSTRAINT PK_tooth_surface PRIMARY KEY (code)
 )
 GO
 
@@ -243,7 +238,7 @@ CREATE TABLE [user](
     password VARCHAR(300) NOT NULL,
     full_name NVARCHAR(150) NOT NULL,
     date_of_birth DATE NOT NULL,
-    phone_number CHAR(11) NOT NULL,
+    phone_number VARCHAR(40) NOT NULL,
     email VARCHAR(50) NOT NULL,
     permanent_address NVARCHAR(200) NULL,
     gender BIT NOT NULL,
@@ -255,7 +250,7 @@ GO
 
 CREATE TABLE branch(
 	id INT IDENTITY(0, 1),
-    admin_id INT NOT NULL,
+    admin_id INT NULL,
 	address NVARCHAR(150) NOT NULL,
 
     CONSTRAINT PK_branch PRIMARY KEY (id)
@@ -267,7 +262,8 @@ CREATE TABLE clinic(
     branch_id INT NOT NULL,
 	clinic_number INT NOT NULL,
 
-    CONSTRAINT PK_clinic PRIMARY KEY (clinic_id)
+    CONSTRAINT PK_clinic PRIMARY KEY (clinic_id),
+    CONSTRAINT UNQ_clinic__branch_id__clinic_number UNIQUE(branch_id, clinic_number)
 )
 GO
 
@@ -283,7 +279,8 @@ CREATE TABLE dentist(
     user_id INT NOT NULL,
     medical_practice_certificate_code VARCHAR(50) NOT NULL,
 
-    CONSTRAINT PK_dentist PRIMARY KEY (user_id)
+    CONSTRAINT PK_dentist PRIMARY KEY (user_id),
+    CONSTRAINT UNQ_dentist__medical_practice_certificate_code UNIQUE(medical_practice_certificate_code)
 )
 GO
 
@@ -326,7 +323,7 @@ FOREIGN KEY (payment_method_code) REFERENCES payment_method(code)
 GO
 
 ALTER TABLE treatment
-ADD CONSTRAINT FK_treatment__payment_id__payment__code
+ADD CONSTRAINT FK_treatment__payment_id__payment__id
 FOREIGN KEY (payment_id) REFERENCES payment(id)
 GO
 
@@ -396,8 +393,8 @@ FOREIGN KEY (tooth_number) REFERENCES tooth(tooth_number)
 GO
 
 ALTER TABLE tool_information
-ADD CONSTRAINT FK_tool_information__tooth_surface_id__tooth_surface__id
-FOREIGN KEY (tooth_surface_id) REFERENCES tooth_surface(id)
+ADD CONSTRAINT FK_tool_information__tooth_surface_code__tooth_surface__code
+FOREIGN KEY (tooth_surface_code) REFERENCES tooth_surface(code)
 GO
 
 ALTER TABLE shift
