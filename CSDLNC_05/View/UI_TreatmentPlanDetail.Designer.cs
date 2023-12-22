@@ -37,6 +37,9 @@
             Column5 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgv_treatmentPhases).BeginInit();
             SuspendLayout();
             // 
@@ -113,12 +116,48 @@
             Column7.Name = "Column7";
             Column7.ReadOnly = true;
             // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.ControlLightLight;
+            button1.Location = new Point(112, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(132, 29);
+            button1.TabIndex = 4;
+            button1.Text = "Thêm giai đoạn";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ControlLightLight;
+            button2.Location = new Point(250, 12);
+            button2.Name = "button2";
+            button2.Size = new Size(131, 29);
+            button2.TabIndex = 5;
+            button2.Text = "Xóa giai đoạn";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.ControlLightLight;
+            button3.Location = new Point(387, 12);
+            button3.Name = "button3";
+            button3.Size = new Size(117, 29);
+            button3.TabIndex = 6;
+            button3.Text = "Thanh toán";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
             // UI_TreatmentPlanDetail
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(836, 433);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
             Controls.Add(dgv_treatmentPhases);
             Controls.Add(btn_back);
             Name = "UI_TreatmentPlanDetail";
@@ -139,5 +178,8 @@
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column7;
+        private Button button1;
+        private Button button2;
+        private Button button3;
     }
 }

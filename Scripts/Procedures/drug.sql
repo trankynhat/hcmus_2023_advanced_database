@@ -32,7 +32,27 @@ BEGIN
         SELECT code, name, description, price_unit, price_per_unit
         FROM drug
         WHERE is_deleted = 0
-        ORDER BY code
+        ORDER BY name
+        OFFSET ' + CAST((@page_num - 1) * 1000 AS NVARCHAR(MAX)) + ' ROWS 
+        FETCH NEXT 1000 ROWS ONLY'
+
+    EXEC sp_executesql @sql
+END
+GO
+
+-- search_drugs
+CREATE PROCEDURE search_drugs
+    @page_num INT,
+    @keyword VARCHAR(200)
+AS
+BEGIN
+    DECLARE @sql NVARCHAR(MAX)
+
+    SET @sql = '
+        SELECT code, name, description, price_unit, price_per_unit
+        FROM drug
+        WHERE is_deleted = 0 AND name LIKE ''%' + @keyword + '%''
+        ORDER BY name
         OFFSET ' + CAST((@page_num - 1) * 1000 AS NVARCHAR(MAX)) + ' ROWS 
         FETCH NEXT 1000 ROWS ONLY'
 

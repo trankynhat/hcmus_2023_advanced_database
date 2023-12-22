@@ -55,7 +55,7 @@ namespace CSDLNC_05.View
             if (selectedRow.Count == 0)
             {
                 MessageBox.Show(
-                    "Vui lòng chọn hồ sơ cần xem!",
+                    "Vui lòng chọn kế hoạch cần xem!",
                     "Thông báo!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning

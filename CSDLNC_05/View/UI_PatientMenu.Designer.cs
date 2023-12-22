@@ -173,7 +173,7 @@
             // btn_treatment
             // 
             btn_treatment.BackColor = SystemColors.ControlLightLight;
-            btn_treatment.Location = new Point(296, 45);
+            btn_treatment.Location = new Point(296, 47);
             btn_treatment.Name = "btn_treatment";
             btn_treatment.Size = new Size(187, 29);
             btn_treatment.TabIndex = 8;
@@ -190,6 +190,7 @@
             button2.TabIndex = 9;
             button2.Text = "Điều trị đơn";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button3
             // 

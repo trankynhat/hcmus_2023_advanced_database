@@ -41,6 +41,8 @@
             lb_pageNum = new Label();
             button2 = new Button();
             button3 = new Button();
+            tb_input = new TextBox();
+            btn_search = new Button();
             ((System.ComponentModel.ISupportInitialize)dgw_Drug).BeginInit();
             SuspendLayout();
             // 
@@ -169,12 +171,32 @@
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
+            // tb_input
+            // 
+            tb_input.Location = new Point(412, 13);
+            tb_input.Name = "tb_input";
+            tb_input.Size = new Size(246, 27);
+            tb_input.TabIndex = 8;
+            // 
+            // btn_search
+            // 
+            btn_search.BackColor = SystemColors.ControlLightLight;
+            btn_search.Location = new Point(664, 11);
+            btn_search.Name = "btn_search";
+            btn_search.Size = new Size(58, 29);
+            btn_search.TabIndex = 9;
+            btn_search.Text = "Tìm";
+            btn_search.UseVisualStyleBackColor = false;
+            btn_search.Click += btn_search_Click;
+            // 
             // UI_Drug
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(836, 433);
+            Controls.Add(btn_search);
+            Controls.Add(tb_input);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(lb_pageNum);
@@ -188,6 +210,7 @@
             Load += UI_Drug_Load;
             ((System.ComponentModel.ISupportInitialize)dgw_Drug).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -205,5 +228,7 @@
         private Label lb_pageNum;
         private Button button2;
         private Button button3;
+        private TextBox tb_input;
+        private Button btn_search;
     }
 }

@@ -3,7 +3,7 @@ CREATE TABLE drug (
     name NVARCHAR(150),
     description NVARCHAR(250),
     price_unit NVARCHAR(10),
-    price_per_unit FLOAT,
+    price_per_unit BIGINT,
     is_deleted BIT NOT NULL DEFAULT 0,
 
 	CONSTRAINT PK_drug PRIMARY KEY(code)
@@ -21,9 +21,9 @@ GO
 
 CREATE TABLE payment(
     id INT IDENTITY(0, 1),
-    total_treatment_fee FLOAT,
+    total_treatment_fee BIGINT,
     date_of_payment DATE,
-    change FLOAT,
+    change BIGINT,
     note NVARCHAR(250),
     payment_method_code VARCHAR(50),
 
@@ -70,7 +70,7 @@ CREATE TABLE treatment(
     treatment_date DATE NOT NULL,
     payment_method_code VARCHAR(50) NOT NULL,
     payment_id INT NULL,
-    dentist_id INT NOT NULL,
+    dentist_id INT NOT NULL
 
     CONSTRAINT CHK_treatment__treatment_fee CHECK (treatment_fee >= 0),
     CONSTRAINT PK_treatment PRIMARY KEY (id)
@@ -100,6 +100,7 @@ GO
 CREATE TABLE treatment_phase(
     treatment_id INT NOT NULL,
     treatment_plan_id INT NOT NULL,
+    is_deleted BIT DEFAULT 0
 
     CONSTRAINT PK_treatment_phase PRIMARY KEY (treatment_id)
 )

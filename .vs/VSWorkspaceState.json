@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\CSDLNC_05",
-    "\\Scripts\\Procedures",
-    "\\Scripts\\Schema"
+    "\\CSDLNC_05\\Controllers",
+    "\\CSDLNC_05\\View"
   ],
-  "SelectedNode": "\\CSDLNC_05\\CSDLNC_05.csproj",
+  "SelectedNode": "\\CSDLNC_05\\View\\UI_TreatmentPlan.cs",
   "PreviewInSolutionExplorer": false
 }

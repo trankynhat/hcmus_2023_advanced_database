@@ -122,5 +122,15 @@ namespace CSDLNC_05.View
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                "Chức năng đang trong quá trình phát triển!",
+                "Gì đây???",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
     }
 }
