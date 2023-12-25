@@ -1,4 +1,8 @@
 -- BRANCH
+GO
+USE CQ_CSDLNC_05
+GO
+
 ALTER TABLE branch
 NOCHECK CONSTRAINT FK_branch__admin_id__user__id;
 

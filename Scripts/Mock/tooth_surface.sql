@@ -1,3 +1,8 @@
+-- TOOTH_SURFACE
+GO
+USE CQ_CSDLNC_05
+GO
+
 INSERT tooth_surface (code, name, [desc]) VALUES (N'D', N'Mặt xa', N'Mặt xa')
 GO
 INSERT tooth_surface (code, name, [desc]) VALUES (N'F', N'Mặt ngoài', N'Mặt ngoài')

@@ -1,4 +1,8 @@
 -- CLINIC
+GO
+USE CQ_CSDLNC_05
+GO
+
 SET IDENTITY_INSERT clinic ON;
 
 insert into clinic(clinic_id, branch_id, clinic_number) values(1, 1, 1)

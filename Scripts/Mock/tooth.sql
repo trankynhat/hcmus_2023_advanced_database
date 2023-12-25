@@ -1,3 +1,8 @@
+-- TOOTH
+GO
+USE CQ_CSDLNC_05
+GO
+
 insert into tooth(tooth_number, name, [desc])
 values(11, N'Răng 11', N'Răng 11')
 

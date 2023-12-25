@@ -1,3 +1,8 @@
+CREATE DATABASE CQ_CSDLNC_05
+GO
+
+USE CQ_CSDLNC_05
+GO
 CREATE TABLE drug (
     code VARCHAR(20),
     name NVARCHAR(150),
@@ -70,10 +75,10 @@ CREATE TABLE treatment(
     treatment_date DATE NOT NULL,
     payment_method_code VARCHAR(50) NOT NULL,
     payment_id INT NULL,
-    dentist_id INT NOT NULL
+    dentist_id INT NOT NULL,
 
     CONSTRAINT CHK_treatment__treatment_fee CHECK (treatment_fee >= 0),
-    CONSTRAINT PK_treatment PRIMARY KEY (id)
+    CONSTRAINT PK_treatment PRIMARY KEY (id) 
 )
 GO
 

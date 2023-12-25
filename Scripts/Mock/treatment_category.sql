@@ -1,3 +1,8 @@
+-- TREATMENT_CATEGORY
+GO
+USE CQ_CSDLNC_05
+GO
+
 SET IDENTITY_INSERT treatment_category ON;
 
 INSERT INTO treatment_category(id, name, [desc])
