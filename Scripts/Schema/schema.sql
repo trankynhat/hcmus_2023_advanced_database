@@ -41,10 +41,15 @@ CREATE TABLE payment_method (
 GO
 
 CREATE TABLE prescription(
+    id INT IDENTITY(0, 1)
 	treatment_id INT NOT NULL,
-	drug_code VARCHAR(20),
+	drug_code VARCHAR(20) NOT NULL,
+    quantity INT,
+    note NVARCHAR(250),
+    is_deleted BIT DEFAULT 0 NOT NULL
 
-	CONSTRAINT PK_prescription PRIMARY KEY(treatment_id, drug_code)
+    CONSTRAINT CHK_prescription__quantity CHECK(quantity > 0),
+	CONSTRAINT PK_prescription PRIMARY KEY(id)
 )
 
 CREATE TABLE patient_record(

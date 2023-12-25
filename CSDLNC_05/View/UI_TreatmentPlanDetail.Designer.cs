@@ -40,6 +40,7 @@
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
+            button4 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgv_treatmentPhases).BeginInit();
             SuspendLayout();
             // 
@@ -149,12 +150,24 @@
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
             // 
+            // button4
+            // 
+            button4.BackColor = SystemColors.ControlLightLight;
+            button4.Location = new Point(510, 12);
+            button4.Name = "button4";
+            button4.Size = new Size(138, 29);
+            button4.TabIndex = 7;
+            button4.Text = "Xem đơn thuốc";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
             // UI_TreatmentPlanDetail
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(836, 433);
+            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
@@ -181,5 +194,6 @@
         private Button button1;
         private Button button2;
         private Button button3;
+        private Button button4;
     }
 }

@@ -337,26 +337,31 @@ GO
 -- người dùng cho phép: quản trị viên, nhân viên, nha sĩ
 
 -- Thêm đơn thuốc của bệnh nhân
-CREATE PROC them_don_thuoc_cua_benh_nhan
-    (@treatment_id VARCHAR(36),
-    @drug_code VARCHAR(20))
+CREATE PROC them_don_thuoc_cua_benh_nhan(
+    @treatment_id VARCHAR(36),
+    @drug_code VARCHAR(20)
+)
 AS
 BEGIN
-    IF NOT EXISTS (SELECT id
-    FROM treatment
-    WHERE id = @treatment_id)
+    IF NOT EXISTS (
+        SELECT id
+        FROM treatment
+        WHERE id = @treatment_id
+    )
         BEGIN
-        PRINT 'KHONG TIM THAY THONG TIN DIEU TRI CUA BENH NHAN'
-        RETURN
-    END
+            RAISERROR('KHONG TIM THAY THONG TIN DIEU TRI CUA BENH NHAN', 16, 1)
+            RETURN
+        END
 
-    IF NOT EXISTS (SELECT code
-    FROM drug
-    WHERE code = @drug_code)
+    IF NOT EXISTS (
+        SELECT code
+        FROM drug
+        WHERE code = @drug_code
+    )
         BEGIN
-        PRINT 'KHONG TIM THAY THONG TIN THUOC'
-        RETURN
-    END
+            RAISERROR('KHONG TIM THAY THONG TIN THUOC', 16, 1)
+            RETURN
+        END
 
     INSERT INTO prescription
     VALUES(@treatment_id, @drug_code)

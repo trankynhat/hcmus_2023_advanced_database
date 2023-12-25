@@ -126,10 +126,34 @@ namespace CSDLNC_05.View
             int phaseId = Convert.ToInt32(this.dgv_treatmentPhases.Rows[idx].Cells[0].Value);
 
             Popup_Pay popup = new Popup_Pay(
-                phaseId, 
+                phaseId,
                 Convert.ToInt64(this.dgv_treatmentPhases.Rows[idx].Cells[2].Value)
             );
             popup.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var selectedRow = this.dgv_treatmentPhases.SelectedRows;
+
+            if (selectedRow.Count == 0)
+            {
+                MessageBox.Show(
+                    "Vui lòng chọn giai đoạn muốn xóa!",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            int idx = this.dgv_treatmentPhases.SelectedRows[0].Index;
+            int phaseId = Convert.ToInt32(this.dgv_treatmentPhases.Rows[idx].Cells[0].Value);
+
+            UI_Prescription ui = new UI_Prescription(phaseId);
+            ui.Show();
+            Program.previousForm.Add(this);
+            this.Hide();
         }
     }
 }

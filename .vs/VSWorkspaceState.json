@@ -3,8 +3,9 @@
     "",
     "\\CSDLNC_05",
     "\\CSDLNC_05\\Controllers",
-    "\\CSDLNC_05\\View"
+    "\\CSDLNC_05\\View",
+    "\\CSDLNC_05\\View\\Dialogs"
   ],
-  "SelectedNode": "\\CSDLNC_05\\View\\UI_TreatmentPlan.cs",
+  "SelectedNode": "\\CSDLNC_05\\View\\Dialogs\\Popup_AddPrescription.cs",
   "PreviewInSolutionExplorer": false
 }
