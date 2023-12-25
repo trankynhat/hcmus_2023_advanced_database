@@ -354,21 +354,95 @@ CREATE PROC  thong_tin_chi_tiet_thanh_toan_cua_benh_nhan
     (@payment_id VARCHAR(36))
 AS
 BEGIN
-    SELECT p.date_of_payment, p.total_treatment_fee, p.change, pm.name, p.note
-    FROM payment as p
-        LEFT JOIN payment_method as pm ON pm.code = p.payment_method_code
-    WHERE id = @payment_id
+    IF NOT EXISTS (SELECT user_id
+    FROM dentist
+    WHERE user_id = @dentist_id)
+        BEGIN
+        PRINT 'KHONG TIM THAY NHA SI'
+        RETURN
+    END
 
 END
 GO
 
--- danh sách các điều trị cần thanh toán,
--- mỗi điều trị gồm các thông tin: 
--- mã điều trị, 
--- mô tả, 
--- phí và 
--- ngày điều trị, 
--- hình thức thanh toán (tiền mặt, online). 
--- Nếu bệnh nhân thanh toán tiền mặt, 
--- nhân viên lễ tân/quản trị viên sẽ nhập vào mục thanh toán trong hồ
--- sơ bệnh nhân.
+-- Thêm/Cập nhật/Xóa đơn thuốc của bệnh nhân: Đối tượng
+-- người dùng cho phép: quản trị viên, nhân viên, nha sĩ
+
+-- Thêm đơn thuốc của bệnh nhân
+CREATE PROC them_don_thuoc_cua_benh_nhan
+    (@treatment_id VARCHAR(36),
+    @drug_code VARCHAR(20))
+AS
+BEGIN
+    IF NOT EXISTS (SELECT id
+    FROM treatment
+    WHERE id = @treatment_id)
+        BEGIN
+        PRINT 'KHONG TIM THAY THONG TIN DIEU TRI CUA BENH NHAN'
+        RETURN
+    END
+
+    IF NOT EXISTS (SELECT code
+    FROM drug
+    WHERE code = @drug_code)
+        BEGIN
+        PRINT 'KHONG TIM THAY THONG TIN THUOC'
+        RETURN
+    END
+
+    INSERT INTO prescription
+    VALUES(@treatment_id, @drug_code)
+END
+GO
+
+-- Cập nhật đơn thuốc của bệnh nhân
+CREATE PROC cap_nhat_don_thuoc_cua_benh_nhan
+    (@treatment_id VARCHAR(36),
+    @drug_code VARCHAR(20),
+    @new_drug_code VARCHAR(20))
+AS
+BEGIN
+    IF NOT EXISTS (
+            SELECT treatment_id, drug_code
+    FROM prescription
+    WHERE treatment_id = @treatment_id AND drug_code = @drug_code)
+        BEGIN
+        PRINT 'KHONG TIM THAY THONG TIN DON THUOC CUA BENH NHAN'
+        RETURN
+    END
+
+    IF NOT EXISTS (SELECT code
+    FROM drug
+    WHERE code = @new_drug_code)
+        BEGIN
+        PRINT 'KHONG TIM THAY THONG TIN THUOC'
+        RETURN
+    END
+
+    UPDATE prescription
+        SET drug_code = @new_drug_code
+        WHERE treatment_id = @treatment_id AND @drug_code = @new_drug_code
+
+END
+GO
+
+-- Xoá đơn thuốc của bệnh nhân
+CREATE PROC xoa_don_thuoc_cua_benh_nhan
+    (@treatment_id VARCHAR(36),
+    @drug_code VARCHAR(20))
+AS
+BEGIN
+    IF NOT EXISTS (
+            SELECT treatment_id, drug_code
+    FROM prescription
+    WHERE treatment_id = @treatment_id AND drug_code = @drug_code)
+        BEGIN
+        PRINT 'KHONG TIM THAY THONG TIN DON THUOC CUA BENH NHAN'
+        RETURN
+    END
+
+    DELETE FROM prescription
+        WHERE treatment_id = @treatment_id AND @drug_code = @new_drug_code
+
+END
+GO
