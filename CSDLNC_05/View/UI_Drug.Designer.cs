@@ -38,6 +38,11 @@
             btn_update = new Button();
             btn_create = new Button();
             btn_delete = new Button();
+            lb_pageNum = new Label();
+            button2 = new Button();
+            button3 = new Button();
+            tb_input = new TextBox();
+            btn_search = new Button();
             ((System.ComponentModel.ISupportInitialize)dgw_Drug).BeginInit();
             SuspendLayout();
             // 
@@ -48,11 +53,11 @@
             dgw_Drug.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgw_Drug.Columns.AddRange(new DataGridViewColumn[] { col_drugCode, col_drugNam, col_desc, col_priceUnit, col_pricePerUnit });
             dgw_Drug.GridColor = SystemColors.ActiveCaptionText;
-            dgw_Drug.Location = new Point(12, 49);
+            dgw_Drug.Location = new Point(11, 47);
             dgw_Drug.Name = "dgw_Drug";
             dgw_Drug.RowHeadersWidth = 51;
             dgw_Drug.RowTemplate.Height = 29;
-            dgw_Drug.Size = new Size(812, 372);
+            dgw_Drug.Size = new Size(813, 374);
             dgw_Drug.TabIndex = 0;
             dgw_Drug.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -94,7 +99,7 @@
             // button1
             // 
             button1.BackColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(12, 12);
+            button1.Location = new Point(11, 12);
             button1.Name = "button1";
             button1.Size = new Size(94, 29);
             button1.TabIndex = 1;
@@ -105,7 +110,7 @@
             // btn_update
             // 
             btn_update.BackColor = SystemColors.ControlLightLight;
-            btn_update.Location = new Point(212, 12);
+            btn_update.Location = new Point(213, 12);
             btn_update.Name = "btn_update";
             btn_update.Size = new Size(94, 29);
             btn_update.TabIndex = 2;
@@ -135,12 +140,66 @@
             btn_delete.UseVisualStyleBackColor = false;
             btn_delete.Click += btn_delete_Click;
             // 
+            // lb_pageNum
+            // 
+            lb_pageNum.Location = new Point(763, 13);
+            lb_pageNum.Name = "lb_pageNum";
+            lb_pageNum.Size = new Size(25, 25);
+            lb_pageNum.TabIndex = 5;
+            lb_pageNum.Text = "1";
+            lb_pageNum.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ControlLightLight;
+            button2.Location = new Point(728, 12);
+            button2.Name = "button2";
+            button2.Size = new Size(29, 29);
+            button2.TabIndex = 6;
+            button2.Text = "<";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click_1;
+            // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.ControlLightLight;
+            button3.Location = new Point(795, 12);
+            button3.Name = "button3";
+            button3.Size = new Size(29, 29);
+            button3.TabIndex = 7;
+            button3.Text = ">";
+            button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
+            // 
+            // tb_input
+            // 
+            tb_input.Location = new Point(412, 13);
+            tb_input.Name = "tb_input";
+            tb_input.Size = new Size(246, 27);
+            tb_input.TabIndex = 8;
+            // 
+            // btn_search
+            // 
+            btn_search.BackColor = SystemColors.ControlLightLight;
+            btn_search.Location = new Point(664, 11);
+            btn_search.Name = "btn_search";
+            btn_search.Size = new Size(58, 29);
+            btn_search.TabIndex = 9;
+            btn_search.Text = "Tìm";
+            btn_search.UseVisualStyleBackColor = false;
+            btn_search.Click += btn_search_Click;
+            // 
             // UI_Drug
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(836, 433);
+            Controls.Add(btn_search);
+            Controls.Add(tb_input);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(lb_pageNum);
             Controls.Add(btn_delete);
             Controls.Add(btn_create);
             Controls.Add(btn_update);
@@ -151,6 +210,7 @@
             Load += UI_Drug_Load;
             ((System.ComponentModel.ISupportInitialize)dgw_Drug).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -165,5 +225,10 @@
         private DataGridViewTextBoxColumn col_drugCode;
         private Button btn_create;
         private Button btn_delete;
+        private Label lb_pageNum;
+        private Button button2;
+        private Button button3;
+        private TextBox tb_input;
+        private Button btn_search;
     }
 }

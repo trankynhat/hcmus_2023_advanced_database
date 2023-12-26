@@ -13,13 +13,14 @@ namespace CSDLNC_05.Models
 {
     internal class DB_Drug
     {
-        public static List<Drug> listDrugs()
+        public static List<Drug> listDrugs(int pageNum)
         {
             try
             {
                 SqlCommand sqlCmd = new SqlCommand("list_of_drugs");
                 sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                 sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.Parameters.AddWithValue("@page_num", pageNum);
                 SqlDataReader res = sqlCmd.ExecuteReader();
 
                 List<Drug> drugs = new List<Drug>();
@@ -31,13 +32,45 @@ namespace CSDLNC_05.Models
                         res.GetString(1),
                         res.GetString(2),
                         res.GetString(3),
-                        res.GetDouble(4)
+                        res.GetInt64(4)
                     );
                     drugs.Add(drug);
                 }
                 return drugs;
             }
             catch(Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return null;
+            }
+        }
+        public static List<Drug> searchDrugs(int pageNum, String kw)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("search_drugs");
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.Parameters.AddWithValue("@page_num", pageNum);
+                sqlCmd.Parameters.AddWithValue("@keyword", kw);
+                SqlDataReader res = sqlCmd.ExecuteReader();
+
+                List<Drug> drugs = new List<Drug>();
+
+                while (res.Read())
+                {
+                    Drug drug = new Drug(
+                        res.GetString(0),
+                        res.GetString(1),
+                        res.GetString(2),
+                        res.GetString(3),
+                        res.GetInt64(4)
+                    );
+                    drugs.Add(drug);
+                }
+                return drugs;
+            }
+            catch (Exception ex)
             {
                 Debug.Print($"Error: {ex.ToString()}");
                 return null;
@@ -124,7 +157,7 @@ namespace CSDLNC_05.Models
                         res.GetString(1),
                         res.GetString(2),
                         res.GetString(3),
-                        res.GetDouble(4)
+                        res.GetInt64(4)
                     );
                     return drug;
                 }

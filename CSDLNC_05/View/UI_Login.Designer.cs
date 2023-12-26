@@ -42,6 +42,7 @@
             txtbox_username.Name = "txtbox_username";
             txtbox_username.Size = new Size(242, 27);
             txtbox_username.TabIndex = 0;
+            txtbox_username.Text = "donald_gomez";
             txtbox_username.TextChanged += textBox1_TextChanged;
             // 
             // label_username
@@ -70,6 +71,7 @@
             txtbox_password.Name = "txtbox_password";
             txtbox_password.Size = new Size(242, 27);
             txtbox_password.TabIndex = 2;
+            txtbox_password.Text = "password";
             // 
             // btn_login
             // 

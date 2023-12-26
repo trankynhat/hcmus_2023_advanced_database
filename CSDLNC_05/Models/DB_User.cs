@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace CSDLNC_05.Models
 {
@@ -68,6 +69,34 @@ namespace CSDLNC_05.Models
             {
                 Debug.Print(ex.ToString());
                 return "UNKNOWN";
+            }
+        }
+        public static List<DentistInfo> listDentistInfos(int branchId)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("list_dentist_infos");
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.Parameters.AddWithValue("@branch_id", branchId);
+                SqlDataReader res = sqlCmd.ExecuteReader();
+
+                List<DentistInfo> dentistInfos = new List<DentistInfo>();
+
+                while (res.Read())
+                {
+                    DentistInfo dentist = new DentistInfo(
+                        res.GetInt32(0),
+                        res.GetString(1)
+                    );
+                    dentistInfos.Add(dentist);
+                }
+                return dentistInfos;
+            }
+            catch (Exception ex)
+            {
+                Debug.Print(ex.ToString());
+                return null;
             }
         }
     }
