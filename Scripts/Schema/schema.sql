@@ -300,6 +300,7 @@ CREATE TABLE appointment_schedule(
 	clinic_id INT NOT NULL,
 	dentist_id INT NOT NULL,
 	medical_assistant_id INT NOT NULL,
+	treatment_id INT,
 
     CONSTRAINT PK_appointment_shedule PRIMARY KEY (appointment_date, ordinal)
 )
@@ -314,7 +315,7 @@ CREATE TABLE medical_assistant (
 
 ALTER TABLE medical_assistant
 ADD CONSTRAINT FK_medical_assistant__dentist_id__dentist__user_id
-FOREIGN KEY (treatment_id) REFERENCES dentist(user_id)
+FOREIGN KEY (dentist_id) REFERENCES dentist(user_id)
 GO
 
 ALTER TABLE medical_assistant
@@ -479,6 +480,10 @@ ALTER TABLE appointment_schedule
 ADD CONSTRAINT FK_appointment_schedule__dentist_id__dentist__user_id
 FOREIGN KEY (dentist_id) REFERENCES dentist(user_id)
 GO
+
+ALTER TABLE appointment_schedule
+ADD CONSTRAINT FK_appointment_schedule__treatment_id__treatment__id
+FOREIGN KEY (treatment_id) REFERENCES treatment(id)
 
 ALTER TABLE appointment_schedule
 ADD CONSTRAINT FK_appointment_schedule__medical_assistant_id__dentist__user_id
@@ -1044,5 +1049,4 @@ FOREIGN KEY (dentist_id) REFERENCES dentist(user_id)
 
 ALTER TABLE work_timetable
 ADD CONSTRAINT FK_work_timetable__branch_id__branch__id
->>>>>>> 8029bd8d3a32a5a3333a2765659b30427b1500de
 FOREIGN KEY (branch_id) REFERENCES branch(id)
