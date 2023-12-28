@@ -47,9 +47,11 @@
             dgv_treatmentPlans.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_treatmentPlans.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
             dgv_treatmentPlans.Location = new Point(12, 50);
+            dgv_treatmentPlans.MultiSelect = false;
             dgv_treatmentPlans.Name = "dgv_treatmentPlans";
             dgv_treatmentPlans.RowHeadersWidth = 51;
             dgv_treatmentPlans.RowTemplate.Height = 29;
+            dgv_treatmentPlans.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_treatmentPlans.Size = new Size(812, 371);
             dgv_treatmentPlans.TabIndex = 0;
             // 

@@ -139,7 +139,7 @@ namespace CSDLNC_05.View
             if (selectedRow.Count == 0)
             {
                 MessageBox.Show(
-                    "Vui lòng chọn giai đoạn muốn xóa!",
+                    "Vui lòng chọn giai đoạn muốn xem!",
                     "Thông báo!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning

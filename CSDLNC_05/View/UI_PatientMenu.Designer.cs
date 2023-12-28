@@ -66,11 +66,13 @@
             dbg_records.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dbg_records.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 });
             dbg_records.Location = new Point(12, 82);
+            dbg_records.MultiSelect = false;
             dbg_records.Name = "dbg_records";
             dbg_records.ReadOnly = true;
             dbg_records.RowHeadersWidth = 51;
             dbg_records.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dbg_records.RowTemplate.Height = 29;
+            dbg_records.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dbg_records.Size = new Size(812, 339);
             dbg_records.TabIndex = 3;
             // 
@@ -201,6 +203,7 @@
             button3.TabIndex = 10;
             button3.Text = "Thuốc chống chỉ định";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // UI_PatientMenu
             // 

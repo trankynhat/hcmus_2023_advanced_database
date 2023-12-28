@@ -132,5 +132,29 @@ namespace CSDLNC_05.View
                 MessageBoxIcon.Information
             );
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var selectedRow = this.dbg_records.SelectedRows;
+
+            if (selectedRow.Count == 0)
+            {
+                MessageBox.Show(
+                    "Vui lòng chọn giai đoạn cần thanh toán!",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            int idx = this.dbg_records.SelectedRows[0].Index;
+            String recordId = this.dbg_records.Rows[idx].Cells[0].Value.ToString();
+
+            UI_Contraindication ui = new UI_Contraindication(recordId);
+            Program.previousForm.Add(this);
+            this.Hide();
+            ui.Show();
+        }
     }
 }

@@ -14,6 +14,7 @@ CREATE TABLE drug_contraindication_info (
     record_id VARCHAR(50) NOT NULL,
     drug_code VARCHAR(20) NOT NULL,
     note NVARCHAR(250),
+    is_deleted BIT NOT NULL DEFAULT 0
 
 	CONSTRAINT PK_drug_contraindication_info PRIMARY KEY(record_id, drug_code)
 )
