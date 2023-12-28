@@ -126,7 +126,7 @@ namespace CSDLNC_05.View
             int phaseId = Convert.ToInt32(this.dgv_treatmentPhases.Rows[idx].Cells[0].Value);
 
             Popup_Pay popup = new Popup_Pay(
-                phaseId,
+                phaseId, 
                 Convert.ToInt64(this.dgv_treatmentPhases.Rows[idx].Cells[2].Value)
             );
             popup.ShowDialog();
