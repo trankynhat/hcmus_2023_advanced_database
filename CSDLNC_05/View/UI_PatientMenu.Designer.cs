@@ -45,6 +45,7 @@
             btn_treatment = new Button();
             button2 = new Button();
             button3 = new Button();
+            button4 = new Button();
             ((System.ComponentModel.ISupportInitialize)dbg_records).BeginInit();
             SuspendLayout();
             // 
@@ -153,9 +154,9 @@
             // btn_viewDetail
             // 
             btn_viewDetail.BackColor = SystemColors.ControlLightLight;
-            btn_viewDetail.Location = new Point(152, 47);
+            btn_viewDetail.Location = new Point(125, 47);
             btn_viewDetail.Name = "btn_viewDetail";
-            btn_viewDetail.Size = new Size(138, 29);
+            btn_viewDetail.Size = new Size(108, 29);
             btn_viewDetail.TabIndex = 6;
             btn_viewDetail.Text = "Xem chi tiết";
             btn_viewDetail.UseVisualStyleBackColor = false;
@@ -166,7 +167,7 @@
             btn_newRecord.BackColor = SystemColors.ControlLightLight;
             btn_newRecord.Location = new Point(12, 47);
             btn_newRecord.Name = "btn_newRecord";
-            btn_newRecord.Size = new Size(134, 29);
+            btn_newRecord.Size = new Size(107, 29);
             btn_newRecord.TabIndex = 7;
             btn_newRecord.Text = "Tạo hồ sơ";
             btn_newRecord.UseVisualStyleBackColor = false;
@@ -175,9 +176,9 @@
             // btn_treatment
             // 
             btn_treatment.BackColor = SystemColors.ControlLightLight;
-            btn_treatment.Location = new Point(296, 47);
+            btn_treatment.Location = new Point(239, 47);
             btn_treatment.Name = "btn_treatment";
-            btn_treatment.Size = new Size(187, 29);
+            btn_treatment.Size = new Size(143, 29);
             btn_treatment.TabIndex = 8;
             btn_treatment.Text = "Kế hoạch điều trị";
             btn_treatment.UseVisualStyleBackColor = false;
@@ -186,9 +187,9 @@
             // button2
             // 
             button2.BackColor = SystemColors.ControlLightLight;
-            button2.Location = new Point(489, 47);
+            button2.Location = new Point(388, 47);
             button2.Name = "button2";
-            button2.Size = new Size(148, 29);
+            button2.Size = new Size(111, 29);
             button2.TabIndex = 9;
             button2.Text = "Điều trị đơn";
             button2.UseVisualStyleBackColor = false;
@@ -197,13 +198,24 @@
             // button3
             // 
             button3.BackColor = SystemColors.ControlLightLight;
-            button3.Location = new Point(643, 47);
+            button3.Location = new Point(661, 47);
             button3.Name = "button3";
-            button3.Size = new Size(181, 29);
+            button3.Size = new Size(163, 29);
             button3.TabIndex = 10;
             button3.Text = "Thuốc chống chỉ định";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
+            // 
+            // button4
+            // 
+            button4.BackColor = SystemColors.ControlLightLight;
+            button4.Location = new Point(505, 47);
+            button4.Name = "button4";
+            button4.Size = new Size(150, 29);
+            button4.TabIndex = 11;
+            button4.Text = "Lịch sử thanh toán";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // UI_PatientMenu
             // 
@@ -211,6 +223,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(836, 433);
+            Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(btn_treatment);
@@ -247,5 +260,6 @@
         private Button btn_treatment;
         private Button button2;
         private Button button3;
+        private Button button4;
     }
 }

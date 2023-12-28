@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 CREATE DATABASE CQ_CSDLNC_05
 GO
 
@@ -79,7 +78,8 @@ CREATE TABLE treatment(
     dentist_id INT NOT NULL,
 
     CONSTRAINT CHK_treatment__treatment_fee CHECK (treatment_fee >= 0),
-    CONSTRAINT PK_treatment PRIMARY KEY (id) 
+    CONSTRAINT PK_treatment PRIMARY KEY (id),
+    CONSTRAINT UNQ_treatment__payment_id UNIQUE(payment_id)
 )
 GO
 
@@ -1045,5 +1045,4 @@ FOREIGN KEY (dentist_id) REFERENCES dentist(user_id)
 
 ALTER TABLE work_timetable
 ADD CONSTRAINT FK_work_timetable__branch_id__branch__id
->>>>>>> 8029bd8d3a32a5a3333a2765659b30427b1500de
 FOREIGN KEY (branch_id) REFERENCES branch(id)
