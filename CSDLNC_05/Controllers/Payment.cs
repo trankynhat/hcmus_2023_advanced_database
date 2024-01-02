@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSDLNC_05.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -24,6 +25,10 @@ namespace CSDLNC_05.Controllers
             this.change = change;
             this.note = note;
             this.paymentMethodCode = paymentMethodCode;
+        }
+        public static List<Payment> listPaymentsByRecordId(String recordId)
+        {
+            return DB_Payment.listPaymentsByRecordId(recordId);
         }
     }
 }

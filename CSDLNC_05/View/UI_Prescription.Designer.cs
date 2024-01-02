@@ -30,14 +30,14 @@
         {
             btn_back = new Button();
             dgv_prescription = new DataGridView();
-            btn_add = new Button();
-            btn_delete = new Button();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
+            btn_add = new Button();
+            btn_delete = new Button();
             ((System.ComponentModel.ISupportInitialize)dgv_prescription).BeginInit();
             SuspendLayout();
             // 
@@ -59,33 +59,13 @@
             dgv_prescription.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_prescription.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
             dgv_prescription.Location = new Point(12, 47);
+            dgv_prescription.MultiSelect = false;
             dgv_prescription.Name = "dgv_prescription";
             dgv_prescription.RowHeadersWidth = 51;
             dgv_prescription.RowTemplate.Height = 29;
+            dgv_prescription.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_prescription.Size = new Size(812, 374);
             dgv_prescription.TabIndex = 4;
-            // 
-            // btn_add
-            // 
-            btn_add.BackColor = SystemColors.ControlLightLight;
-            btn_add.Location = new Point(112, 12);
-            btn_add.Name = "btn_add";
-            btn_add.Size = new Size(107, 29);
-            btn_add.TabIndex = 5;
-            btn_add.Text = "Thêm thuốc";
-            btn_add.UseVisualStyleBackColor = false;
-            btn_add.Click += btn_add_Click;
-            // 
-            // btn_delete
-            // 
-            btn_delete.BackColor = SystemColors.ControlLightLight;
-            btn_delete.Location = new Point(225, 12);
-            btn_delete.Name = "btn_delete";
-            btn_delete.Size = new Size(94, 29);
-            btn_delete.TabIndex = 6;
-            btn_delete.Text = "Xóa thuốc";
-            btn_delete.UseVisualStyleBackColor = false;
-            btn_delete.Click += btn_delete_Click;
             // 
             // Column1
             // 
@@ -126,6 +106,28 @@
             Column6.HeaderText = "Ghi chú";
             Column6.MinimumWidth = 6;
             Column6.Name = "Column6";
+            // 
+            // btn_add
+            // 
+            btn_add.BackColor = SystemColors.ControlLightLight;
+            btn_add.Location = new Point(112, 12);
+            btn_add.Name = "btn_add";
+            btn_add.Size = new Size(107, 29);
+            btn_add.TabIndex = 5;
+            btn_add.Text = "Thêm thuốc";
+            btn_add.UseVisualStyleBackColor = false;
+            btn_add.Click += btn_add_Click;
+            // 
+            // btn_delete
+            // 
+            btn_delete.BackColor = SystemColors.ControlLightLight;
+            btn_delete.Location = new Point(225, 12);
+            btn_delete.Name = "btn_delete";
+            btn_delete.Size = new Size(94, 29);
+            btn_delete.TabIndex = 6;
+            btn_delete.Text = "Xóa thuốc";
+            btn_delete.UseVisualStyleBackColor = false;
+            btn_delete.Click += btn_delete_Click;
             // 
             // UI_Prescription
             // 
