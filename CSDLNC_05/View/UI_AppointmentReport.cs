@@ -97,5 +97,10 @@ namespace CSDLNC_05.View
                 );
             }
         }
+
+        private void dtp_startDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
