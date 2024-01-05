@@ -61,9 +61,11 @@
             dgv_treatmentPhases.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_treatmentPhases.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7 });
             dgv_treatmentPhases.Location = new Point(12, 47);
+            dgv_treatmentPhases.MultiSelect = false;
             dgv_treatmentPhases.Name = "dgv_treatmentPhases";
             dgv_treatmentPhases.RowHeadersWidth = 51;
             dgv_treatmentPhases.RowTemplate.Height = 29;
+            dgv_treatmentPhases.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_treatmentPhases.Size = new Size(812, 374);
             dgv_treatmentPhases.TabIndex = 3;
             // 
