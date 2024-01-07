@@ -52,12 +52,14 @@
             dgv_treatments.BackgroundColor = SystemColors.ControlLightLight;
             dgv_treatments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_treatments.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8 });
-            dgv_treatments.Location = new Point(12, 47);
+            dgv_treatments.Location = new Point(10, 35);
+            dgv_treatments.Margin = new Padding(3, 2, 3, 2);
             dgv_treatments.Name = "dgv_treatments";
             dgv_treatments.RowHeadersWidth = 51;
             dgv_treatments.RowTemplate.Height = 29;
-            dgv_treatments.Size = new Size(812, 374);
+            dgv_treatments.Size = new Size(710, 280);
             dgv_treatments.TabIndex = 10;
+            dgv_treatments.CellContentClick += dgv_treatments_CellContentClick;
             // 
             // Column1
             // 
@@ -117,9 +119,10 @@
             // btn_view
             // 
             btn_view.BackColor = SystemColors.ControlLightLight;
-            btn_view.Location = new Point(730, 12);
+            btn_view.Location = new Point(639, 9);
+            btn_view.Margin = new Padding(3, 2, 3, 2);
             btn_view.Name = "btn_view";
-            btn_view.Size = new Size(94, 29);
+            btn_view.Size = new Size(82, 22);
             btn_view.TabIndex = 9;
             btn_view.Text = "Xem";
             btn_view.UseVisualStyleBackColor = false;
@@ -128,17 +131,19 @@
             // cb_dentitInfos
             // 
             cb_dentitInfos.FormattingEnabled = true;
-            cb_dentitInfos.Location = new Point(143, 12);
+            cb_dentitInfos.Location = new Point(125, 9);
+            cb_dentitInfos.Margin = new Padding(3, 2, 3, 2);
             cb_dentitInfos.Name = "cb_dentitInfos";
-            cb_dentitInfos.Size = new Size(277, 28);
+            cb_dentitInfos.Size = new Size(243, 23);
             cb_dentitInfos.TabIndex = 8;
             // 
             // btn_back
             // 
             btn_back.BackColor = SystemColors.ControlLightLight;
-            btn_back.Location = new Point(12, 12);
+            btn_back.Location = new Point(10, 9);
+            btn_back.Margin = new Padding(3, 2, 3, 2);
             btn_back.Name = "btn_back";
-            btn_back.Size = new Size(94, 29);
+            btn_back.Size = new Size(82, 22);
             btn_back.TabIndex = 7;
             btn_back.Text = "Quay lại";
             btn_back.UseVisualStyleBackColor = false;
@@ -147,9 +152,9 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(563, 16);
+            label1.Location = new Point(493, 12);
             label1.Name = "label1";
-            label1.Size = new Size(23, 20);
+            label1.Size = new Size(18, 15);
             label1.TabIndex = 13;
             label1.Text = "to";
             // 
@@ -157,9 +162,10 @@
             // 
             dtp_endDate.CustomFormat = "dd-MM-yyyy";
             dtp_endDate.Format = DateTimePickerFormat.Custom;
-            dtp_endDate.Location = new Point(595, 13);
+            dtp_endDate.Location = new Point(521, 10);
+            dtp_endDate.Margin = new Padding(3, 2, 3, 2);
             dtp_endDate.Name = "dtp_endDate";
-            dtp_endDate.Size = new Size(129, 27);
+            dtp_endDate.Size = new Size(113, 23);
             dtp_endDate.TabIndex = 12;
             dtp_endDate.Value = new DateTime(2023, 1, 1, 0, 0, 0, 0);
             // 
@@ -167,19 +173,20 @@
             // 
             dtp_startDate.CustomFormat = "dd-MM-yyyy";
             dtp_startDate.Format = DateTimePickerFormat.Custom;
-            dtp_startDate.Location = new Point(426, 13);
+            dtp_startDate.Location = new Point(373, 10);
+            dtp_startDate.Margin = new Padding(3, 2, 3, 2);
             dtp_startDate.Name = "dtp_startDate";
-            dtp_startDate.Size = new Size(129, 27);
+            dtp_startDate.Size = new Size(113, 23);
             dtp_startDate.TabIndex = 11;
             dtp_startDate.Value = new DateTime(2023, 1, 1, 0, 0, 0, 0);
             dtp_startDate.ValueChanged += dtp_startDate_ValueChanged;
             // 
             // UI_AppointmentReport
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(836, 433);
+            ClientSize = new Size(732, 325);
             Controls.Add(dgv_treatments);
             Controls.Add(btn_view);
             Controls.Add(cb_dentitInfos);
@@ -187,6 +194,7 @@
             Controls.Add(label1);
             Controls.Add(dtp_endDate);
             Controls.Add(dtp_startDate);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "UI_AppointmentReport";
             Text = "Báo cáo Lịch hẹn/Tư vấn";
             Load += UI_AppointmentReport_Load;

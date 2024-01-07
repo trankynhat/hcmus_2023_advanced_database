@@ -290,21 +290,21 @@ CREATE TABLE dentist(
 )
 GO
 
+
 CREATE TABLE appointment_schedule(
     appointment_date DATE NOT NULL,
     ordinal INT NOT NULL,
     patient_name NVARCHAR(150) NOT NULL,
-    note NVARCHAR(200) NOT NULL,
+    note NVARCHAR(200) NULL,
 	record_id VARCHAR(50) NOT NULL,
 	clinic_id INT NOT NULL,
 	dentist_id INT NOT NULL,
-	medical_assistant_id INT NOT NULL,
+	medical_assistant_id INT NULL,
 	treatment_id INT,
 
     CONSTRAINT PK_appointment_shedule PRIMARY KEY (appointment_date, ordinal)
 )
 GO
-
 CREATE TABLE medical_assistant (
     treatment_id INT NOT NULL,
     dentist_id INT NOT NULL,
@@ -826,8 +826,8 @@ CREATE TABLE appointment_schedule(
 	record_id VARCHAR(50) NOT NULL,
 	clinic_id INT NOT NULL,
 	dentist_id INT NOT NULL,
-	medical_assistant_id INT NOT NULL,
-
+	medical_assistant_id INT NULL,
+	treatment_id INT NULL,
     CONSTRAINT PK_appointment_shedule PRIMARY KEY (appointment_date, ordinal)
 )
 GO

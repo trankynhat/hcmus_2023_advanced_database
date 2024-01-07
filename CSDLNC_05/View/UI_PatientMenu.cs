@@ -180,5 +180,10 @@ namespace CSDLNC_05.View
             this.Hide();
             ui.Show();
         }
+
+        private void dbg_records_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
