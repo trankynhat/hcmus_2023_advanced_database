@@ -14,9 +14,9 @@ namespace CSDLNC_05.Controllers
         public String name { get; }
         public String description { get; }
         public String price_unit { get; }
-        public Double price_per_unit { get; }
+        public long price_per_unit { get; }
 
-        public Drug(String code, String name, String description, String price_unit, Double price_per_unit)
+        public Drug(String code, String name, String description, String price_unit, long price_per_unit)
         {
             this.code = code;
             this.name = name;
@@ -25,9 +25,13 @@ namespace CSDLNC_05.Controllers
             this.price_per_unit = price_per_unit;
         }
 
-        public static List<Drug> listDrugs()
+        public static List<Drug> listDrugs(int pageNum)
         {
-            return DB_Drug.listDrugs();
+            return DB_Drug.listDrugs(pageNum);
+        }
+        public static List<Drug> searchDrugs(int pageNum, String kw)
+        {
+            return DB_Drug.searchDrugs(pageNum, kw);
         }
         public static bool updateDrug(
             String code,
