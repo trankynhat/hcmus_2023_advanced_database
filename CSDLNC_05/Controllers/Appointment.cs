@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CSDLNC_05.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace CSDLNC_05.Controllers
 {
@@ -43,5 +44,9 @@ namespace CSDLNC_05.Controllers
             return DB_Appointment.getAppointmentsByDate(date, branchID);
         }
 
+        public static List<Appointment>? filterAppointment(DateTime date, int branch_ID, string dentist, string patient, string clinic)
+        {
+            return DB_Appointment.filterAppointment(date, branch_ID, dentist, patient, clinic);
+        }
     }
 }

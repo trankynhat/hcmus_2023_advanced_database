@@ -137,31 +137,35 @@
             // 
             // cb_dentistInfo
             // 
+            cb_dentistInfo.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_dentistInfo.FormattingEnabled = true;
+            cb_dentistInfo.Items.AddRange(new object[] { "Chọn nha sĩ" });
             cb_dentistInfo.Location = new Point(12, 49);
             cb_dentistInfo.Margin = new Padding(3, 2, 3, 2);
             cb_dentistInfo.Name = "cb_dentistInfo";
-            cb_dentistInfo.Size = new Size(243, 23);
+            cb_dentistInfo.Size = new Size(203, 23);
             cb_dentistInfo.TabIndex = 15;
             cb_dentistInfo.SelectedIndexChanged += cb_dentistInfo_SelectedIndexChanged;
             // 
             // cb_patientInfo
             // 
+            cb_patientInfo.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_patientInfo.FormattingEnabled = true;
-            cb_patientInfo.Location = new Point(278, 49);
+            cb_patientInfo.Location = new Point(235, 49);
             cb_patientInfo.Margin = new Padding(3, 2, 3, 2);
             cb_patientInfo.Name = "cb_patientInfo";
-            cb_patientInfo.Size = new Size(243, 23);
+            cb_patientInfo.Size = new Size(225, 23);
             cb_patientInfo.TabIndex = 16;
             cb_patientInfo.SelectedIndexChanged += cb_patientInfo_SelectedIndexChanged;
             // 
             // cb_clinicInfo
             // 
+            cb_clinicInfo.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_clinicInfo.FormattingEnabled = true;
-            cb_clinicInfo.Location = new Point(540, 49);
+            cb_clinicInfo.Location = new Point(496, 49);
             cb_clinicInfo.Margin = new Padding(3, 2, 3, 2);
             cb_clinicInfo.Name = "cb_clinicInfo";
-            cb_clinicInfo.Size = new Size(112, 23);
+            cb_clinicInfo.Size = new Size(144, 23);
             cb_clinicInfo.TabIndex = 17;
             cb_clinicInfo.SelectedIndexChanged += cb_clinicInfo_SelectedIndexChanged;
             // 
@@ -183,7 +187,7 @@
             dgv_appointments.BackgroundColor = SystemColors.ControlLightLight;
             dgv_appointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_appointments.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9 });
-            dgv_appointments.Location = new Point(12, 89);
+            dgv_appointments.Location = new Point(12, 108);
             dgv_appointments.Margin = new Padding(3, 2, 3, 2);
             dgv_appointments.Name = "dgv_appointments";
             dgv_appointments.RowHeadersWidth = 51;
