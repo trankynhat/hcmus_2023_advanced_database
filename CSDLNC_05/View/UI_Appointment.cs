@@ -28,6 +28,7 @@ namespace CSDLNC_05.View
             //List<ClinicInfo> clinicInfo = ClinicInfo.listDentistInfos(Program.workingBranchId);
             //this.cb_clinicInfo.DataSource = clinicInfo;
             //this.cb_clinicInfo.DisplayMember = "full_name";
+
         }
 
         private void btn_back_Click(object sender, EventArgs e)
@@ -41,8 +42,8 @@ namespace CSDLNC_05.View
 
         private void btn_create_Click(object sender, EventArgs e)
         {
-            //Popup_CreateAppointment popup = new Popup_CreateAppointment();
-            //popup.ShowDialog();
+            Popup_CreateAppointment popup = new Popup_CreateAppointment();
+            popup.ShowDialog();
         }
 
         private void btn_update_Click(object sender, EventArgs e)
@@ -109,45 +110,33 @@ namespace CSDLNC_05.View
 
         private void btn_view_Click(object sender, EventArgs e)
         {
-            //DateTime viewDate = this.dtp_viewDate.Value;
-            //DateTime endDate = this.dtp_endDate.Value;
-
-            //DentistInfo dentist = (DentistInfo)this.cb_dentitInfos.SelectedItem;
-            //int dentistId = dentist.id;
-
-            //List<Treatment>? treatments = Treatment.getTreatmentsByDentistId(
-            //    dentistId,
-            //    this.dtp_startDate.Value,
-            //    this.dtp_endDate.Value
-            //);
-
-            //if (treatments == null)
-            //{
-            //    MessageBox.Show(
-            //        "Không có dữ liệu!",
-            //        "Không có dữ liệu!",
-            //        MessageBoxButtons.OK,
-            //        MessageBoxIcon.Information
-            //    );
-            //    return;
-            //}
-
-            //foreach (Treatment treatment in treatments)
-            //{
-            //    this.dgv_treatments.Rows.Add(
-            //        treatment.id,
-            //        treatment.description,
-            //        treatment.treatment_fee,
-            //        treatment.treatment_date,
-            //        treatment.payment_method_code,
-            //        (
-            //            treatment.payment_id != null
-            //            ? treatment.payment_id
-            //            : "Chưa thanh toán"
-            //        ),
-            //        treatment.dentist_id
-            //    );
-            //}
+           
+            List<Appointment> appointments = Appointment.getAppointmentByDate(
+                this.dtp_viewDate.Value, Program.workingBranchId);
+            if (appointments == null || appointments.Count == 0)
+            {
+                MessageBox.Show(
+                    "Không có dữ liệu!",
+                    "Không có dữ liệu!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                return;
+            }
+            foreach (Appointment appointment in appointments)
+            {
+                this.dgv_appointments.Rows.Add(
+                    appointment.appointmentDate,
+                    appointment.ordinal,
+                    appointment.patientName,
+                    appointment.note == null ? "Không có" : appointment.note,
+                    appointment.recordId,
+                    appointment.clinicId,
+                    appointment.dentistId,
+                    appointment.medicalAssistantId == null ? "Không có" : appointment.medicalAssistantId,
+                    appointment.treatmentID == null ? "Cuộc hẹn mới" : "Tái khám"
+                );
+            }
         }
 
         private void dtp_viewDate_ValueChanged(object sender, EventArgs e)

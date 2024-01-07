@@ -249,7 +249,7 @@
             // 
             // Column9
             // 
-            Column9.HeaderText = "Mã điều trị";
+            Column9.HeaderText = "Tình trạng";
             Column9.Name = "Column9";
             Column9.ReadOnly = true;
             // 

@@ -12,13 +12,15 @@ namespace CSDLNC_05.Controllers
         public DateTime appointmentDate { get; }
         public int ordinal { get; }
         public String patientName { get; }
-        public String note { get; }
+        public String? note { get; }
         public String recordId { get; }
         public int clinicId { get; }
         public int dentistId { get; }
-        public int medicalAssistantId { get; }
+        public int? medicalAssistantId { get; }
+        public int? treatmentID { get; }
 
-        public Appointment(DateTime appointmentDate, int ordinal, string patientName, string note, String recordId, int clinicId, int dentistId, int medicalAssistantId)
+
+        public Appointment(DateTime appointmentDate, int ordinal, string patientName, string? note, String recordId, int clinicId, int dentistId, int? medicalAssistantId, int? treatmentID)
         {
             this.appointmentDate = appointmentDate;
             this.ordinal = ordinal;
@@ -28,11 +30,18 @@ namespace CSDLNC_05.Controllers
             this.clinicId = clinicId;
             this.dentistId = dentistId;
             this.medicalAssistantId = medicalAssistantId;
+            this.treatmentID = treatmentID;
+
         }
 
         public static List<Appointment>? getAppointmentsByDentistId(int dentistId, DateTime startDate, DateTime endDate)
         {
             return DB_Appointment.getAppointmentsByDentistId(dentistId, startDate, endDate);
         }
+        public static List<Appointment>? getAppointmentByDate(DateTime date, int branchID)
+        {
+            return DB_Appointment.getAppointmentsByDate(date, branchID);
+        }
+
     }
 }

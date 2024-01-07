@@ -1,22 +1,17 @@
-﻿-- show_appointment_in_date
-CREATE PROC show_appointment_in_date (@branch_id INT, @date DATE)
+﻿USE CQ_CSDLNC_05
+GO
+-- show_appointment_in_date
+CREATE OR ALTER PROC show_appointment_in_date (@branch_id INT, @date DATE)
 AS
 BEGIN
 	-- Mỗi cuộc hẹn gồm thông tin về thời gian và tên bệnh nhân, nha sĩ, trợ khám, phòng khám, tình trạng
 	-- Nhân viên được quyền thêm, điều chỉnh, xoá cuộc hẹn, nha sĩ chỉ được phép xem thông tin cuộc hẹn
-
-	SELECT apm_s.appointment_date, apm_s.ordinal, apm_s.patient_name, u_dentist.full_name as dentist_name,
-			 u_assist.full_name as assist_name, c.clinic_number, apm_s.treatment_id
-	FROM appointment_schedule apm_s
-		join dentist d on apm_s.dentist_id = d.user_id 
-		join dentist d_assist on apm_s.dentist_id = d_assist.user_id 
-		join [user] u_dentist on d.user_id = u_dentist.id
-		join [user] u_assist on d_assist.user_id = u_assist.id
-		join clinic c on apm_s.clinic_id = c.clinic_id
+	SELECT apm_s.appointment_date, apm_s.ordinal, apm_s.patient_name, apm_s.note, 
+		apm_s.record_id, c.clinic_number, apm_s.dentist_id, apm_s.medical_assistant_id, apm_s.treatment_id
+	FROM appointment_schedule apm_s inner join clinic c on apm_s.clinic_id = c.clinic_id
 	WHERE apm_s.appointment_date = @date and c.branch_id = @branch_id
 END
-
-
+exec show_appointment_in_date @branch_id=1,@date='2024-01-07 00:00:00'
 -- add_new_appointment
 GO
 CREATE PROC add_new_appontment (@user_id INT, 
