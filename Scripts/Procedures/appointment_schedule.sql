@@ -83,48 +83,6 @@ EXEC delete_appointment @appointment_date = '2024-01-07', @ordinal = 2
 GO
 
 
--- filter_appointment_by_patient
-CREATE OR ALTER PROC filter_appointment_by_patient (@branch_id INT, @date DATE, @patient_name NVARCHAR(150))
-AS
-BEGIN
-	SELECT apm_s.appointment_date, apm_s.ordinal, apm_s.patient_name, apm_s.note, 
-		apm_s.record_id, c.clinic_id, apm_s.dentist_id, apm_s.medical_assistant_id, apm_s.treatment_id
-	FROM appointment_schedule apm_s INNER JOIN clinic c ON apm_s.clinic_id = c.clinic_id
-	WHERE apm_s.appointment_date = @date AND c.branch_id = @branch_id AND apm_s.patient_name = @patient_name
-END
-GO
-EXEC filter_appointment_by_patient @branch_id = 1, @date = '2024-01-07', @patient_name = 'Latasha Meyer'
-GO
-
-
--- filter_appointment_by_clinic
-CREATE OR ALTER PROC filter_appointment_by_clinic (@branch_id INT, @date DATE, @clinic_id INT)
-AS
-BEGIN
-	SELECT apm_s.appointment_date, apm_s.ordinal, apm_s.patient_name, apm_s.note, 
-		apm_s.record_id, c.clinic_id, apm_s.dentist_id, apm_s.medical_assistant_id, apm_s.treatment_id
-	FROM appointment_schedule apm_s INNER JOIN clinic c ON apm_s.clinic_id = c.clinic_id
-	WHERE apm_s.appointment_date = @date AND c.branch_id = @branch_id AND apm_s.clinic_id = @clinic_id
-END
-GO
-EXEC filter_appointment_by_clinic @branch_id = 1, @date = '2024-01-07', @clinic_id = '1'
-GO
-
-
--- filter_appointment_by_dentist
-CREATE OR ALTER PROC filter_appointment_by_dentist (@branch_id INT, @date DATE, @dentist_id INT)
-AS
-BEGIN
-	SELECT apm_s.appointment_date, apm_s.ordinal, apm_s.patient_name, apm_s.note, 
-		apm_s.record_id, c.clinic_id, apm_s.dentist_id, apm_s.medical_assistant_id, apm_s.treatment_id
-	FROM appointment_schedule apm_s INNER JOIN clinic c ON apm_s.clinic_id = c.clinic_id
-	WHERE apm_s.appointment_date = @date AND c.branch_id = @branch_id AND apm_s.dentist_id = @dentist_id
-END
-GO
-EXEC filter_appointment_by_dentist @branch_id = 1, @date = '2024-01-07', @dentist_id = 2
-GO
-
-
 -- filter_appointment
 CREATE OR ALTER PROC filter_appointment (@branch_id INT, @date DATE, @patient_name NVARCHAR(150), 
 										@clinic_id INT, @dentist_name NVARCHAR(150))
@@ -149,11 +107,12 @@ BEGIN
 	SELECT A.appointment_date, A.ordinal, A.patient_name, A.note, A.record_id, C.clinic_number, 
 		A.dentist_id, A.medical_assistant_id, A.treatment_id
 	FROM appointment_schedule A INNER JOIN clinic C ON A.clinic_id = C.clinic_id
-	WHERE (@filter_patient <> 1 OR A.record_id = @patient_id)
+	WHERE C.branch_id = @branch_id AND A.appointment_date = @date
+			AND (@filter_patient <> 1 OR A.record_id = @patient_id)
 			AND (@filter_dentist <> 1 OR A.dentist_id = @dentist_id)
-			AND (@filter_clinic <> 1 OR C.clinic_id = @clinic_id)
+			AND (@filter_clinic <> 1 OR C.clinic_id = @clinic_id) 
 
 END
 GO
-EXEC filter_appointment @branch_id = 1, @date = '2024-01-07', @patient_name = 'Latasha Meyer', @clinic_id = -1, @dentist_name = ''
+EXEC filter_appointment @branch_id=1,@date='2024-01-07 00:00:00',@patient_name=N'',@clinic_id=N'-1',@dentist_name=N''
 GO
