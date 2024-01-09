@@ -183,14 +183,24 @@
             // 
             // dgv_appointments
             // 
+            dgv_appointments.AllowUserToAddRows = false;
+            dgv_appointments.AllowUserToDeleteRows = false;
+            dgv_appointments.AllowUserToResizeColumns = false;
+            dgv_appointments.AllowUserToResizeRows = false;
             dgv_appointments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_appointments.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             dgv_appointments.BackgroundColor = SystemColors.ControlLightLight;
+            dgv_appointments.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
             dgv_appointments.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_appointments.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6, Column7, Column8, Column9 });
             dgv_appointments.Location = new Point(12, 108);
             dgv_appointments.Margin = new Padding(3, 2, 3, 2);
+            dgv_appointments.MultiSelect = false;
             dgv_appointments.Name = "dgv_appointments";
+            dgv_appointments.ReadOnly = true;
+            dgv_appointments.RowHeadersVisible = false;
             dgv_appointments.RowHeadersWidth = 51;
+            dgv_appointments.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgv_appointments.RowTemplate.Height = 29;
             dgv_appointments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_appointments.Size = new Size(762, 280);
@@ -202,11 +212,12 @@
             Column1.HeaderText = "Ngày hẹn";
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
+            Column1.ReadOnly = true;
             // 
             // Column2
             // 
             Column2.HeaderText = "Thứ tự";
-            Column2.MinimumWidth = 6;
+            Column2.MinimumWidth = 3;
             Column2.Name = "Column2";
             Column2.ReadOnly = true;
             // 
@@ -255,6 +266,7 @@
             // Column9
             // 
             Column9.HeaderText = "Tình trạng";
+            Column9.MinimumWidth = 8;
             Column9.Name = "Column9";
             Column9.ReadOnly = true;
             // 

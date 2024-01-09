@@ -53,5 +53,10 @@ namespace CSDLNC_05.Controllers
         {
             return DB_Appointment.deleteAppointment(appointmentDate, ordinal) == 1;
         }
+
+        public static int getNextOrdinal(DateTime appointmentDate)
+        {
+            return DB_Appointment.getNextOrdinal(appointmentDate);
+        }
     }
 }

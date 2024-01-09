@@ -75,11 +75,12 @@ GO
 CREATE OR ALTER PROC delete_appointment (@appointment_date DATE, @ordinal INT)
 AS
 BEGIN
+	
 	DELETE FROM appointment_schedule 
 	WHERE appointment_date = @appointment_date AND ordinal = @ordinal
 END
 GO
-EXEC delete_appointment @appointment_date = '2024-01-07', @ordinal = 2 
+EXEC delete_appointment @appointment_date = '2024-01-07', @ordinal = 4
 GO
 
 
@@ -113,3 +114,15 @@ END
 GO
 EXEC filter_appointment @branch_id=1,@date='2024-01-07 00:00:00',@patient_id=-1,@clinic_id=-1,@dentist_id=-1
 GO
+
+
+-- get_next_ordinal
+CREATE OR ALTER PROC get_next_ordinal (@appointment_date DATE)
+AS
+BEGIN
+	SELECT (A.ordinal + 1) FROM appointment_schedule A WHERE A.appointment_date = @appointment_date
+END	
+GO 
+EXEC get_next_ordinal @appointment_date = '2024-02-07 00:00:00'
+GO
+exec get_next_ordinal @appointment_date='2024-01-07 00:00:00'

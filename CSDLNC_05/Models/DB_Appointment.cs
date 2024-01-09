@@ -139,7 +139,7 @@ namespace CSDLNC_05.Models
                 sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@appointment_date", appointmentDate);
                 sqlCmd.Parameters.AddWithValue("@ordinal", ordinal);
-
+                SqlDataReader res = sqlCmd.ExecuteReader();
 
                 return sqlCmd.ExecuteNonQuery();
             }
@@ -147,6 +147,29 @@ namespace CSDLNC_05.Models
             {
                 Debug.Print($"Error: {ex.ToString()}");
                 return 0;
+            }
+        }
+
+        public static int getNextOrdinal(DateTime appointmentDate)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("get_next_ordinal");
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@appointment_date", appointmentDate);
+                SqlDataReader res = sqlCmd.ExecuteReader();
+                int result = 1;
+                while (res.Read())
+                {
+                    result = res.GetInt32(0);
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return 1;
             }
         }
     }

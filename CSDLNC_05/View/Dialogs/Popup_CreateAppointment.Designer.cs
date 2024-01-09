@@ -33,23 +33,23 @@
             lb_ordinal = new Label();
             txtbox_ordinal = new TextBox();
             lb_patient = new Label();
-            txtbox_patientName = new TextBox();
             btn_addPatientRecord = new Button();
             lb_recordID = new Label();
-            txtbox_recordID = new TextBox();
             lb_clinicNumber = new Label();
-            textBox1 = new TextBox();
             lb_note = new Label();
             lb_dentist = new Label();
             lb_medicalAssist = new Label();
             lb_status = new Label();
             txtbox_note = new TextBox();
-            txtbox_dentist = new TextBox();
-            txtbox_medicalAssist = new TextBox();
-            txtbox_status = new TextBox();
             lb_treatmentID = new Label();
-            txtbox_treatmentID = new TextBox();
             btn_addAppointment = new Button();
+            cb_patient = new ComboBox();
+            cb_clinicNumber = new ComboBox();
+            cb_dentist = new ComboBox();
+            cb_medicalAssist = new ComboBox();
+            cb_status = new ComboBox();
+            cb_treatment = new ComboBox();
+            cb_recordID = new ComboBox();
             SuspendLayout();
             // 
             // lb_date
@@ -65,10 +65,12 @@
             // 
             dtp_appointmentDate.Location = new Point(12, 26);
             dtp_appointmentDate.Margin = new Padding(3, 2, 3, 2);
-            dtp_appointmentDate.MinDate = new DateTime(2024, 1, 7, 0, 0, 0, 0);
+            dtp_appointmentDate.MinDate = new DateTime(2024, 1, 1, 0, 0, 0, 0);
             dtp_appointmentDate.Name = "dtp_appointmentDate";
             dtp_appointmentDate.Size = new Size(244, 23);
             dtp_appointmentDate.TabIndex = 50;
+            dtp_appointmentDate.Value = new DateTime(2024, 1, 9, 21, 33, 12, 0);
+            dtp_appointmentDate.ValueChanged += dtp_appointmentDate_ValueChanged;
             // 
             // lb_ordinal
             // 
@@ -82,12 +84,15 @@
             // 
             // txtbox_ordinal
             // 
+            txtbox_ordinal.ImeMode = ImeMode.NoControl;
             txtbox_ordinal.Location = new Point(308, 26);
             txtbox_ordinal.Margin = new Padding(3, 2, 3, 2);
             txtbox_ordinal.Name = "txtbox_ordinal";
+            txtbox_ordinal.ReadOnly = true;
             txtbox_ordinal.Size = new Size(149, 23);
             txtbox_ordinal.TabIndex = 52;
             txtbox_ordinal.TextAlign = HorizontalAlignment.Center;
+            txtbox_ordinal.TextChanged += txtbox_ordinal_TextChanged;
             // 
             // lb_patient
             // 
@@ -97,15 +102,6 @@
             lb_patient.Size = new Size(118, 15);
             lb_patient.TabIndex = 53;
             lb_patient.Text = "Họ và tên bệnh nhân";
-            // 
-            // txtbox_patientName
-            // 
-            txtbox_patientName.Location = new Point(12, 89);
-            txtbox_patientName.Margin = new Padding(3, 2, 3, 2);
-            txtbox_patientName.Name = "txtbox_patientName";
-            txtbox_patientName.Size = new Size(244, 23);
-            txtbox_patientName.TabIndex = 54;
-            txtbox_patientName.TextAlign = HorizontalAlignment.Center;
             // 
             // btn_addPatientRecord
             // 
@@ -126,15 +122,6 @@
             lb_recordID.TabIndex = 56;
             lb_recordID.Text = "Mã bệnh nhân";
             // 
-            // txtbox_recordID
-            // 
-            txtbox_recordID.Location = new Point(12, 144);
-            txtbox_recordID.Margin = new Padding(3, 2, 3, 2);
-            txtbox_recordID.Name = "txtbox_recordID";
-            txtbox_recordID.Size = new Size(244, 23);
-            txtbox_recordID.TabIndex = 57;
-            txtbox_recordID.TextAlign = HorizontalAlignment.Center;
-            // 
             // lb_clinicNumber
             // 
             lb_clinicNumber.AutoSize = true;
@@ -143,15 +130,6 @@
             lb_clinicNumber.Size = new Size(58, 15);
             lb_clinicNumber.TabIndex = 58;
             lb_clinicNumber.Text = "Số phòng";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(308, 144);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(149, 23);
-            textBox1.TabIndex = 59;
-            textBox1.TextAlign = HorizontalAlignment.Center;
             // 
             // lb_note
             // 
@@ -198,33 +176,6 @@
             txtbox_note.TabIndex = 64;
             txtbox_note.TextAlign = HorizontalAlignment.Center;
             // 
-            // txtbox_dentist
-            // 
-            txtbox_dentist.Location = new Point(12, 270);
-            txtbox_dentist.Margin = new Padding(3, 2, 3, 2);
-            txtbox_dentist.Name = "txtbox_dentist";
-            txtbox_dentist.Size = new Size(205, 23);
-            txtbox_dentist.TabIndex = 65;
-            txtbox_dentist.TextAlign = HorizontalAlignment.Center;
-            // 
-            // txtbox_medicalAssist
-            // 
-            txtbox_medicalAssist.Location = new Point(252, 270);
-            txtbox_medicalAssist.Margin = new Padding(3, 2, 3, 2);
-            txtbox_medicalAssist.Name = "txtbox_medicalAssist";
-            txtbox_medicalAssist.Size = new Size(205, 23);
-            txtbox_medicalAssist.TabIndex = 66;
-            txtbox_medicalAssist.TextAlign = HorizontalAlignment.Center;
-            // 
-            // txtbox_status
-            // 
-            txtbox_status.Location = new Point(12, 328);
-            txtbox_status.Margin = new Padding(3, 2, 3, 2);
-            txtbox_status.Name = "txtbox_status";
-            txtbox_status.Size = new Size(205, 23);
-            txtbox_status.TabIndex = 67;
-            txtbox_status.TextAlign = HorizontalAlignment.Center;
-            // 
             // lb_treatmentID
             // 
             lb_treatmentID.AutoSize = true;
@@ -233,15 +184,6 @@
             lb_treatmentID.Size = new Size(64, 15);
             lb_treatmentID.TabIndex = 68;
             lb_treatmentID.Text = "Mã điều trị";
-            // 
-            // txtbox_treatmentID
-            // 
-            txtbox_treatmentID.Location = new Point(252, 328);
-            txtbox_treatmentID.Margin = new Padding(3, 2, 3, 2);
-            txtbox_treatmentID.Name = "txtbox_treatmentID";
-            txtbox_treatmentID.Size = new Size(205, 23);
-            txtbox_treatmentID.TabIndex = 69;
-            txtbox_treatmentID.TextAlign = HorizontalAlignment.Center;
             // 
             // btn_addAppointment
             // 
@@ -252,28 +194,93 @@
             btn_addAppointment.Text = "Thêm cuộc hẹn";
             btn_addAppointment.UseVisualStyleBackColor = true;
             // 
+            // cb_patient
+            // 
+            cb_patient.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_patient.FormattingEnabled = true;
+            cb_patient.Location = new Point(12, 90);
+            cb_patient.Name = "cb_patient";
+            cb_patient.Size = new Size(244, 23);
+            cb_patient.TabIndex = 71;
+            // 
+            // cb_clinicNumber
+            // 
+            cb_clinicNumber.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_clinicNumber.FormattingEnabled = true;
+            cb_clinicNumber.Location = new Point(308, 145);
+            cb_clinicNumber.Name = "cb_clinicNumber";
+            cb_clinicNumber.Size = new Size(149, 23);
+            cb_clinicNumber.TabIndex = 73;
+            // 
+            // cb_dentist
+            // 
+            cb_dentist.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_dentist.FormattingEnabled = true;
+            cb_dentist.Location = new Point(12, 273);
+            cb_dentist.Name = "cb_dentist";
+            cb_dentist.Size = new Size(205, 23);
+            cb_dentist.TabIndex = 74;
+            cb_dentist.SelectedIndexChanged += cb_dentist_SelectedIndexChanged;
+            // 
+            // cb_medicalAssist
+            // 
+            cb_medicalAssist.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_medicalAssist.FormattingEnabled = true;
+            cb_medicalAssist.Location = new Point(252, 273);
+            cb_medicalAssist.Name = "cb_medicalAssist";
+            cb_medicalAssist.Size = new Size(205, 23);
+            cb_medicalAssist.TabIndex = 75;
+            // 
+            // cb_status
+            // 
+            cb_status.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_status.FormattingEnabled = true;
+            cb_status.Location = new Point(12, 328);
+            cb_status.Name = "cb_status";
+            cb_status.Size = new Size(205, 23);
+            cb_status.TabIndex = 76;
+            cb_status.SelectedIndexChanged += cb_status_SelectedIndexChanged;
+            // 
+            // cb_treatment
+            // 
+            cb_treatment.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_treatment.FormattingEnabled = true;
+            cb_treatment.Location = new Point(252, 328);
+            cb_treatment.Name = "cb_treatment";
+            cb_treatment.Size = new Size(205, 23);
+            cb_treatment.TabIndex = 77;
+            // 
+            // cb_recordID
+            // 
+            cb_recordID.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_recordID.FormattingEnabled = true;
+            cb_recordID.Location = new Point(12, 145);
+            cb_recordID.Name = "cb_recordID";
+            cb_recordID.Size = new Size(244, 23);
+            cb_recordID.TabIndex = 78;
+            // 
             // Popup_CreateAppointment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(484, 422);
+            Controls.Add(cb_recordID);
+            Controls.Add(cb_treatment);
+            Controls.Add(cb_status);
+            Controls.Add(cb_medicalAssist);
+            Controls.Add(cb_dentist);
+            Controls.Add(cb_clinicNumber);
+            Controls.Add(cb_patient);
             Controls.Add(btn_addAppointment);
-            Controls.Add(txtbox_treatmentID);
             Controls.Add(lb_treatmentID);
-            Controls.Add(txtbox_status);
-            Controls.Add(txtbox_medicalAssist);
-            Controls.Add(txtbox_dentist);
             Controls.Add(txtbox_note);
             Controls.Add(lb_status);
             Controls.Add(lb_medicalAssist);
             Controls.Add(lb_dentist);
             Controls.Add(lb_note);
-            Controls.Add(textBox1);
             Controls.Add(lb_clinicNumber);
-            Controls.Add(txtbox_recordID);
             Controls.Add(lb_recordID);
             Controls.Add(btn_addPatientRecord);
-            Controls.Add(txtbox_patientName);
             Controls.Add(lb_patient);
             Controls.Add(txtbox_ordinal);
             Controls.Add(lb_ordinal);
@@ -293,22 +300,24 @@
         private Label lb_ordinal;
         private TextBox txtbox_ordinal;
         private Label lb_patient;
-        private TextBox txtbox_patientName;
         private Button btn_addPatientRecord;
         private Label lb_recordID;
-        private TextBox txtbox_recordID;
         private Label lb_clinicNumber;
-        private TextBox textBox1;
         private Label lb_note;
         private Label lb_dentist;
         private Label lb_medicalAssist;
         private Label lb_status;
         private TextBox txtbox_note;
-        private TextBox txtbox_dentist;
-        private TextBox txtbox_medicalAssist;
-        private TextBox txtbox_status;
         private Label lb_treatmentID;
-        private TextBox txtbox_treatmentID;
         private Button btn_addAppointment;
+        private ComboBox cb_patient;
+        private ComboBox cb_clinicNumber;
+        private ComboBox cb_dentist;
+        private ComboBox cb_medicalAssist;
+        private ComboBox cb_status;
+        private ComboBox cb_treatment;
+        private TextBox textBox1;
+        private TextBox txtbox_recordID;
+        private ComboBox cb_recordID;
     }
 }
