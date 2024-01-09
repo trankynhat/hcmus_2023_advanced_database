@@ -74,32 +74,29 @@ GO
 -- delete_appointment
 CREATE OR ALTER PROC delete_appointment (@appointment_date DATE, @ordinal INT)
 AS
-BEGIN 
+BEGIN
 	DELETE FROM appointment_schedule 
 	WHERE appointment_date = @appointment_date AND ordinal = @ordinal
 END
 GO
-EXEC delete_appointment @appointment_date = '2024-01-07', @ordinal = 2
+EXEC delete_appointment @appointment_date = '2024-01-07', @ordinal = 2 
 GO
 
 
 -- filter_appointment
-CREATE OR ALTER PROC filter_appointment (@branch_id INT, @date DATE, @patient_name NVARCHAR(150), 
-										@clinic_id INT, @dentist_name NVARCHAR(150))
+CREATE OR ALTER PROC filter_appointment (@branch_id INT, @date DATE, @patient_id INT, 
+										@clinic_id INT, @dentist_id INT)
 AS
 BEGIN
 
-	DECLARE @patient_id INT, @dentist_id INT, @filter_patient BIT, @filter_dentist BIT, @filter_clinic BIT
+	DECLARE @filter_patient BIT, @filter_dentist BIT, @filter_clinic BIT, @dentist_name NVARCHAR(150)
 	SET @filter_patient = 1
 	SET @filter_dentist = 1
 	SET @filter_clinic = 1
+	--SET @dentist_name = (SELECT U.full_name FROM [user] U WHERE @dentist_id = U.id)
 
-	IF @patient_name LIKE '' SET @filter_patient = 0
-	ELSE SET @patient_id = (SELECT P.citizen_id FROM patient_record P WHERE P.full_name LIKE @patient_name)
-
-	IF @dentist_name LIKE '' SET @filter_dentist = 0
-	ELSE SET @dentist_id = (SELECT U.id  FROM [user] U WHERE U.full_name LIKE @dentist_name)
-
+	IF @patient_id = -1 SET @filter_patient = 0
+	IF @dentist_id = -1 SET @filter_dentist = 0
 	IF @clinic_id = -1 SET @filter_clinic = 0
 
 
@@ -114,5 +111,5 @@ BEGIN
 
 END
 GO
-EXEC filter_appointment @branch_id=1,@date='2024-01-07 00:00:00',@patient_name=N'',@clinic_id=N'-1',@dentist_name=N''
+EXEC filter_appointment @branch_id=1,@date='2024-01-07 00:00:00',@patient_id=-1,@clinic_id=-1,@dentist_id=-1
 GO

@@ -21,5 +21,11 @@ namespace CSDLNC_05.View.Dialogs
         {
 
         }
+
+        private void btn_addPatientRecord_Click(object sender, EventArgs e)
+        {
+            Popup_NewRecord popup = new Popup_NewRecord();
+            popup.ShowDialog();
+        }
     }
 }
