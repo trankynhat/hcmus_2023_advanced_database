@@ -89,7 +89,7 @@ namespace CSDLNC_05.Models
             }
         }
     
-        public static List<Appointment>? filterAppointment (DateTime date, int branch_ID, string dentist, string patient, string clinic)
+        public static List<Appointment>? filterAppointment (DateTime date, int branch_ID, int dentist, int patient, int clinic)
         {
             try
             {
@@ -98,9 +98,9 @@ namespace CSDLNC_05.Models
                 sqlCmd.Connection = new DbConn().conn;
                 sqlCmd.Parameters.AddWithValue("@branch_id", branch_ID);
                 sqlCmd.Parameters.AddWithValue("@date", date);
-                sqlCmd.Parameters.AddWithValue("@patient_name", patient);
+                sqlCmd.Parameters.AddWithValue("@patient_id", patient);
                 sqlCmd.Parameters.AddWithValue("@clinic_id", clinic);
-                sqlCmd.Parameters.AddWithValue("@dentist_name", dentist);
+                sqlCmd.Parameters.AddWithValue("@dentist_id", dentist);
                 SqlDataReader res = sqlCmd.ExecuteReader();
 
                 List<Appointment> appointments = new List<Appointment>();
@@ -127,6 +127,26 @@ namespace CSDLNC_05.Models
             {
                 Debug.Print(ex.ToString());
                 return null;
+            }
+        }
+
+        public static int deleteAppointment(DateTime appointmentDate, int ordinal)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("delete_appointment");
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@appointment_date", appointmentDate);
+                sqlCmd.Parameters.AddWithValue("@ordinal", ordinal);
+
+
+                return sqlCmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return 0;
             }
         }
     }

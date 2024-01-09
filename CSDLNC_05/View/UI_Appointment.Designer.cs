@@ -192,6 +192,7 @@
             dgv_appointments.Name = "dgv_appointments";
             dgv_appointments.RowHeadersWidth = 51;
             dgv_appointments.RowTemplate.Height = 29;
+            dgv_appointments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_appointments.Size = new Size(762, 280);
             dgv_appointments.TabIndex = 19;
             dgv_appointments.CellContentClick += dgv_appointments_CellContentClick;

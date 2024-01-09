@@ -13,51 +13,63 @@ namespace CSDLNC_05.View
             List<DentistInfo> dentistInfo = DentistInfo.listDentistInfos(Program.workingBranchId);
             DataTable dentist_dt = new DataTable();
             dentist_dt.Columns.Add("full_name", typeof(string));
+            dentist_dt.Columns.Add("id", typeof(int));
             DataRow firstRow = dentist_dt.NewRow();
             firstRow["full_name"] = "Chọn nha sĩ";
+            firstRow["id"] = -1;
             dentist_dt.Rows.Add(firstRow);
             foreach (DentistInfo dentist in dentistInfo)
             {
                 DataRow row = dentist_dt.NewRow();
                 row["full_name"] = dentist.full_name;
+                row["id"] = dentist.id;
                 dentist_dt.Rows.Add(row);
             }
             this.cb_dentistInfo.DataSource = dentist_dt;
             this.cb_dentistInfo.DisplayMember = "full_name";
+            this.cb_dentistInfo.ValueMember = "id";
 
 
 
             List<PatientRecord> patientInfo = PatientRecord.listPatientRecordBySearchText();
             DataTable patient_dt = new DataTable();
             patient_dt.Columns.Add("full_name", typeof(string));
+            patient_dt.Columns.Add("id", typeof(int));
             firstRow = patient_dt.NewRow();
             firstRow["full_name"] = "Chọn bệnh nhân";
+            firstRow["id"] = -1;
             patient_dt.Rows.Add(firstRow);
             foreach (PatientRecord patient in patientInfo)
             {
                 DataRow row = patient_dt.NewRow();
                 row["full_name"] = patient.fullName;
+                row["id"] = patient.citizenId;
                 patient_dt.Rows.Add(row);
             }
             this.cb_patientInfo.DataSource = patient_dt;
             this.cb_patientInfo.DisplayMember = "full_name";
+            this.cb_patientInfo.ValueMember = "id";
 
 
 
             List<Clinic> clinicOfBranch = Clinic.listClinicOfBranch(Program.workingBranchId);
             DataTable clinic_dt = new DataTable();
             clinic_dt.Columns.Add("clinic_number", typeof(string));
+            clinic_dt.Columns.Add("clinic_id", typeof(int));
             firstRow = clinic_dt.NewRow();
             firstRow["clinic_number"] = "Chọn phòng khám";
+            firstRow["clinic_id"] = -1;
             clinic_dt.Rows.Add(firstRow);
             foreach (Clinic clinic in clinicOfBranch)
             {
                 DataRow row = clinic_dt.NewRow();
-                row["clinic_number"] = clinic.clinic_id.ToString();
+                row["clinic_number"] = clinic.clinic_number;
+                row["clinic_id"] = clinic.clinic_id;
                 clinic_dt.Rows.Add(row);
             }
             this.cb_clinicInfo.DataSource = clinic_dt;
             this.cb_clinicInfo.DisplayMember = "clinic_number";
+            this.cb_clinicInfo.ValueMember = "clinic_id";
 
         }
 
@@ -100,47 +112,55 @@ namespace CSDLNC_05.View
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
-            //var selectedRow = this.dgw_Drug.SelectedRows;
+            var selectedRow = this.dgv_appointments.SelectedRows;
 
-            //if (selectedRow.Count == 0)
-            //{
-            //    MessageBox.Show(
-            //        "Vui lòng chọn thuốc cần xóa!",
-            //        "Thông báo!",
-            //        MessageBoxButtons.OK,
-            //        MessageBoxIcon.Warning
-            //    );
-            //    return;
-            //}
+            if (selectedRow.Count == 0)
+            {
+                MessageBox.Show(
+                    "Vui lòng chọn cuộc hẹn cần xóa!",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
 
-            //int idx = this.dgw_Drug.SelectedRows[0].Index;
-            //String drugCode = this.dgw_Drug.Rows[idx].Cells[0].Value.ToString();
+            int idx = this.dgv_appointments.SelectedRows[0].Index;
+            DateTime appointmentDate = Convert.ToDateTime(this.dgv_appointments.Rows[idx].Cells[0].Value);
+            int ordinal = Convert.ToInt32(this.dgv_appointments.Rows[idx].Cells[1].Value);
 
-            //if (Drug.deleteDrug(drugCode))
-            //{
-            //    MessageBox.Show(
-            //        "Xóa thuốc thành công!",
-            //        "Thành công!",
-            //        MessageBoxButtons.OK,
-            //        MessageBoxIcon.Information
-            //    );
-            //    return;
-            //}
-            //else
-            //{
-            //    MessageBox.Show(
-            //        "Xóa thuốc không thành công!",
-            //        "Thất bại!",
-            //        MessageBoxButtons.OK,
-            //        MessageBoxIcon.Error
-            //    );
-            //    return;
-            //}
+            if (Appointment.deleteAppointment(appointmentDate, ordinal))
+            {
+                MessageBox.Show(
+                    "Xóa cuộc hẹn thành công!",
+                    "Thành công!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                this.update_Appointment();
+                return;
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Xóa cuộc hẹn không thành công!",
+                    "Thất bại!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
+            
         }
+
 
         private void btn_view_Click(object sender, EventArgs e)
         {
+            this.update_Appointment();
+        }
 
+        private void update_Appointment()
+        {
             List<Appointment> appointments = Appointment.getAppointmentByDate(
                 this.dtp_viewDate.Value, Program.workingBranchId);
             if (appointments == null || appointments.Count == 0)
@@ -173,6 +193,7 @@ namespace CSDLNC_05.View
             }
         }
 
+
         private void dtp_viewDate_ValueChanged(object sender, EventArgs e)
         {
 
@@ -193,14 +214,14 @@ namespace CSDLNC_05.View
             List<Appointment> appointments = Appointment.filterAppointment(
                 this.dtp_viewDate.Value, 
                 Program.workingBranchId,
-                (this.cb_dentistInfo.Text == "Chọn nha sĩ" ? "" : this.cb_dentistInfo.Text),
-                (this.cb_patientInfo.Text == "Chọn bệnh nhân" ? "" : this.cb_patientInfo.Text),
-                (this.cb_clinicInfo.Text == "Chọn phòng khám" ? "-1" : this.cb_clinicInfo.Text));
+                (this.cb_dentistInfo.SelectedValue.ToString() == "-1" ? -1 : int.Parse(this.cb_dentistInfo.SelectedValue.ToString())),
+                (this.cb_patientInfo.SelectedValue.ToString() == "-1" ? -1 : int.Parse(this.cb_patientInfo.SelectedValue.ToString())),
+                (this.cb_clinicInfo.SelectedValue.ToString() == "-1" ? -1 : int.Parse(this.cb_clinicInfo.SelectedValue.ToString())));
             if (appointments == null || appointments.Count == 0)
             {
                 MessageBox.Show(
                     "Không có dữ liệu!",
-                    "Không có dữ liệu!",
+                    "Thông báo",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
