@@ -85,5 +85,31 @@ namespace CSDLNC_05.Models
                 return null;
             }
         }
+
+        public static string get_treatment_plan_type_name(int? treatmentPlanID)
+        {
+            try
+            {
+                if (treatmentPlanID is null) return null;
+                SqlCommand sqlCmd = new SqlCommand("get_treatment_plan_type_name");
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.Parameters.AddWithValue("@treatment_plan_id", treatmentPlanID);
+                SqlDataReader res = sqlCmd.ExecuteReader();
+
+                string treatment_type_name = "";
+
+                while (res.Read())
+                {
+                    treatment_type_name = res.GetString(0);
+                }
+                return treatment_type_name;
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return null;
+            }
+        }
     }
 }

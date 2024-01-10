@@ -11,6 +11,20 @@ BEGIN
 	WHERE apm_s.appointment_date = @date AND c.branch_id = @branch_id
 END
 GO
+
+
+-- get_info_appointment
+CREATE OR ALTER PROC get_info_appointment (@appointment_date DATE, @ordinal INT)
+AS
+BEGIN
+	SELECT A.patient_name, A.note, A.record_id, C.clinic_number, A.dentist_id, A.medical_assistant_id, A.treatment_id
+	FROM appointment_schedule A INNER JOIN clinic C ON A.clinic_id = C.clinic_id
+	WHERE A.appointment_date = @appointment_date AND A.ordinal = @ordinal
+END
+GO
+EXEC get_info_appointment @appointment_date = '2024-01-07', @ordinal = 3
+GO
+
  
 GO
 
@@ -127,3 +141,22 @@ GO
 EXEC get_next_ordinal @appointment_date = '2024-02-07 00:00:00'
 GO
 exec get_next_ordinal @appointment_date='2024-01-07 00:00:00'
+
+
+-- edit_appointment
+CREATE OR ALTER PROC edit_appointment (@appointment_date DATE, @ordinal INT, 
+										@note NVARCHAR(200),
+										@clinic_id INT,
+										@dentist_id INT,
+										@medical_assistant_id INT
+)
+AS 
+BEGIN
+	IF @medical_assistant_id = -1 SET @medical_assistant_id = NULL
+	UPDATE appointment_schedule 
+	SET note = @note, clinic_id = @clinic_id, dentist_id = @dentist_id, medical_assistant_id = @medical_assistant_id
+	WHERE appointment_date = @appointment_date AND ordinal = @ordinal
+END
+GO
+EXEC edit_appointment @appointment_date='2024-01-07 00:00:00',
+@ordinal=9,@note=N'acncs',@clinic_id=9,@dentist_id=10,@medical_assistant_id=-1
