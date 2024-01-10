@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace CSDLNC_05.View.Dialogs
             this.fill_cb_dentist();
             this.fill_cb_medicalAssist();
             this.fill_cb_status();
+
 
         }
 
@@ -163,9 +165,110 @@ namespace CSDLNC_05.View.Dialogs
 
         private void cb_status_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             if (this.cb_status.SelectedValue.ToString() == "Cuộc hẹn mới")
             {
                 this.cb_treatment.Enabled = false;
+            }
+            else if (this.cb_status.SelectedValue.ToString() == "Tái khám")
+            {
+                this.cb_treatment.Enabled = true;
+                this.fill_cb_treatmentPlan();
+                if (this.cb_treatment.SelectedValue is null)
+                {
+                    MessageBox.Show(
+                        "Không có kế hoạch điều trị nào cần tái khám!",
+                        "Thông báo!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                    this.cb_status.SelectedItem = this.cb_status.Items[0];
+                }
+            }
+            else return;
+        }
+
+        private void fill_cb_treatmentPlan()
+        {
+            DataTable treatmentPlan_dt = new DataTable();
+            treatmentPlan_dt.Columns.Add("id", typeof(int));
+            treatmentPlan_dt.Columns.Add("name", typeof(string));
+            List<KeyValuePair<int, string>> treatmentPlanAndType = TreatmentPlan.getListPlanningTreatmentPlan(this.cb_recordID.Text);
+
+            foreach (KeyValuePair<int, string> treatment in treatmentPlanAndType)
+            {
+                DataRow row = treatmentPlan_dt.NewRow();
+                row["id"] = treatment.Key;
+                row["name"] = treatment.Value;
+                treatmentPlan_dt.Rows.Add(row);
+
+            }
+
+            this.cb_treatment.DataSource = treatmentPlan_dt;
+            this.cb_treatment.DisplayMember = "name";
+            this.cb_treatment.ValueMember = "id";
+        }
+
+        private void cb_recordID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cb_status.SelectedValue is not null)
+            {
+                if (this.cb_status.SelectedValue.ToString() == "Tái khám")
+                {
+                    this.fill_cb_treatmentPlan();
+                    if (this.cb_treatment.SelectedValue is null)
+                    {
+                        MessageBox.Show(
+                            "Không có kế hoạch điều trị nào cần tái khám!",
+                            "Thông báo!",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                        );
+                        this.cb_status.SelectedItem = this.cb_status.Items[0];
+                    }
+                }
+            }
+
+        }
+
+        private void btn_addAppointment_Click(object sender, EventArgs e)
+        {
+            DateTime appointment_date = this.dtp_appointmentDate.Value;
+            int ordinal = Convert.ToInt32(this.txtbox_ordinal.Text);
+            string patient_name = this.cb_patient.Text;
+            string? note = this.txtbox_note.Text;
+            string record_id = this.cb_recordID.Text;
+            int clinic_id = Convert.ToInt32(this.cb_clinicNumber.SelectedValue.ToString());
+            int dentist_id = Convert.ToInt32(this.cb_dentist.SelectedValue.ToString());
+            int? medical_assistant = null;
+            medical_assistant = Convert.ToInt32(this.cb_medicalAssist.SelectedValue.ToString());
+
+            int? treatment_id = -1;
+            if (this.cb_treatment.SelectedValue is not null)
+            {
+                treatment_id = Convert.ToInt32(this.cb_treatment.SelectedValue.ToString());
+            }
+            Appointment appointment = new Appointment(appointment_date, ordinal, patient_name, note, record_id, clinic_id, dentist_id, medical_assistant, treatment_id);
+            bool result = Appointment.addAppointment(appointment);
+            if (result)
+            {
+                MessageBox.Show(
+                    "Thêm cuộc hẹn thành công!",
+                    "Thành công!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                return;
+            }
+            else
+            {
+                MessageBox.Show(
+                    "Thêm cuộc hẹn không thành công!",
+                    "Thất bại!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
             }
         }
     }

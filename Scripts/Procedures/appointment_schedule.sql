@@ -11,7 +11,7 @@ BEGIN
 	WHERE apm_s.appointment_date = @date AND c.branch_id = @branch_id
 END
 GO
-EXEC show_appointment_in_date @branch_id = 1, @date = '2024-01-07'
+ 
 GO
 
 
@@ -27,6 +27,8 @@ CREATE OR ALTER PROC add_new_appontment (@appointment_date DATE,
 								@treatment_id INT)
 AS	
 BEGIN
+	IF @treatment_id = -1 SET @treatment_id = NULL
+	IF @medical_assistant_id = -1 SET @medical_assistant_id = NULL
     IF NOT EXISTS(SELECT * FROM patient_record pr WHERE pr.citizen_id = @record_id)
         BEGIN
             RAISERROR('invalid record_id', 16, 1)
@@ -53,7 +55,7 @@ BEGIN
 
 	IF (@treatment_id IS NOT NULL) 
 		BEGIN
-			IF NOT EXISTS(SELECT * FROM treatment t WHERE t.id = @treatment_id)
+			IF NOT EXISTS(SELECT * FROM treatment_plan TP WHERE TP.id = @treatment_id)
 				BEGIN
 					RAISERROR('invalid treatment_id', 16, 1)
 				END
@@ -66,10 +68,9 @@ BEGIN
 END
 GO
 EXEC add_new_appontment @appointment_date = '2024-01-07', @ordinal = 2,
-@patient_name = 'Latasha Meyer', @note = null, @record_id = '000012323', @clinic_id = 1,
+@patient_name = 'Latasha Meyer', @note = null, @record_id = '12323', @clinic_id = 1,
 @dentist_id = 2, @medical_assistant_id = null, @treatment_id = null
 GO
-
 
 -- delete_appointment
 CREATE OR ALTER PROC delete_appointment (@appointment_date DATE, @ordinal INT)
@@ -80,7 +81,7 @@ BEGIN
 	WHERE appointment_date = @appointment_date AND ordinal = @ordinal
 END
 GO
-EXEC delete_appointment @appointment_date = '2024-01-07', @ordinal = 4
+EXEC delete_appointment @appointment_date = '2024-01-07', @ordinal = 5
 GO
 
 

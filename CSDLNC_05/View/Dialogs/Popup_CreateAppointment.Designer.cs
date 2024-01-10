@@ -193,6 +193,7 @@
             btn_addAppointment.TabIndex = 70;
             btn_addAppointment.Text = "Thêm cuộc hẹn";
             btn_addAppointment.UseVisualStyleBackColor = true;
+            btn_addAppointment.Click += btn_addAppointment_Click;
             // 
             // cb_patient
             // 
@@ -244,6 +245,7 @@
             // cb_treatment
             // 
             cb_treatment.DropDownStyle = ComboBoxStyle.DropDownList;
+            cb_treatment.Enabled = false;
             cb_treatment.FormattingEnabled = true;
             cb_treatment.Location = new Point(252, 328);
             cb_treatment.Name = "cb_treatment";
@@ -258,6 +260,7 @@
             cb_recordID.Name = "cb_recordID";
             cb_recordID.Size = new Size(244, 23);
             cb_recordID.TabIndex = 78;
+            cb_recordID.SelectedIndexChanged += cb_recordID_SelectedIndexChanged;
             // 
             // Popup_CreateAppointment
             // 

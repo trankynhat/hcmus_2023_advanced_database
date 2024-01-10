@@ -139,7 +139,7 @@ namespace CSDLNC_05.Models
                 sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@appointment_date", appointmentDate);
                 sqlCmd.Parameters.AddWithValue("@ordinal", ordinal);
-                SqlDataReader res = sqlCmd.ExecuteReader();
+
 
                 return sqlCmd.ExecuteNonQuery();
             }
@@ -170,6 +170,33 @@ namespace CSDLNC_05.Models
             {
                 Debug.Print($"Error: {ex.ToString()}");
                 return 1;
+            }
+        }
+
+        public static int addAppointment(Appointment appointment)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("add_new_appontment");
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@appointment_date", appointment.appointmentDate);
+                sqlCmd.Parameters.AddWithValue("@ordinal", appointment.ordinal);
+                sqlCmd.Parameters.AddWithValue("@patient_name", appointment.patientName);
+                sqlCmd.Parameters.AddWithValue("@note", appointment.note);
+                sqlCmd.Parameters.AddWithValue("@record_id", appointment.recordId);
+                sqlCmd.Parameters.AddWithValue("@clinic_id", appointment.clinicId);
+                sqlCmd.Parameters.AddWithValue("@dentist_id", appointment.dentistId);
+                sqlCmd.Parameters.AddWithValue("@medical_assistant_id", appointment.medicalAssistantId);
+                sqlCmd.Parameters.AddWithValue("@treatment_id", appointment.treatmentID);
+
+                int row_affected = sqlCmd.ExecuteNonQuery();
+                return row_affected;
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return 0;
             }
         }
     }

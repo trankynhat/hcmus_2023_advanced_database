@@ -481,8 +481,9 @@ FOREIGN KEY (dentist_id) REFERENCES dentist(user_id)
 GO
 
 ALTER TABLE appointment_schedule
-ADD CONSTRAINT FK_appointment_schedule__treatment_id__treatment__id
-FOREIGN KEY (treatment_id) REFERENCES treatment(id)
+ADD CONSTRAINT FK_appointment_schedule__treatment_id__treatment_plan__id
+FOREIGN KEY (treatment_id) REFERENCES treatment_plan(id)
+GO
 
 ALTER TABLE appointment_schedule
 ADD CONSTRAINT FK_appointment_schedule__medical_assistant_id__dentist__user_id

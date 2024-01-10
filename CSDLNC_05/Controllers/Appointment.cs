@@ -54,6 +54,11 @@ namespace CSDLNC_05.Controllers
             return DB_Appointment.deleteAppointment(appointmentDate, ordinal) == 1;
         }
 
+        public static bool addAppointment(Appointment appointment)
+        {
+            return DB_Appointment.addAppointment(appointment) == 1;
+        }
+
         public static int getNextOrdinal(DateTime appointmentDate)
         {
             return DB_Appointment.getNextOrdinal(appointmentDate);
