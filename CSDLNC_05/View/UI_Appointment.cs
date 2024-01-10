@@ -86,6 +86,7 @@ namespace CSDLNC_05.View
         {
             Popup_CreateAppointment popup = new Popup_CreateAppointment();
             popup.ShowDialog();
+            this.update_Appointment();
         }
 
         private void btn_update_Click(object sender, EventArgs e)
@@ -237,7 +238,7 @@ namespace CSDLNC_05.View
                     appointment.appointmentDate,
                     appointment.ordinal,
                     appointment.patientName,
-                    appointment.note == null ? "Không có" : appointment.note,
+                    appointment.note == null ? "" : appointment.note,
                     appointment.recordId,
                     appointment.clinicId,
                     appointment.dentistId,

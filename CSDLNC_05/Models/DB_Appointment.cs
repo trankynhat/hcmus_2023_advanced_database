@@ -149,5 +149,55 @@ namespace CSDLNC_05.Models
                 return 0;
             }
         }
+
+        public static int getNextOrdinal(DateTime appointmentDate)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("get_next_ordinal");
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@appointment_date", appointmentDate);
+                SqlDataReader res = sqlCmd.ExecuteReader();
+                int result = 1;
+                while (res.Read())
+                {
+                    result = res.GetInt32(0);
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return 1;
+            }
+        }
+
+        public static int addAppointment(Appointment appointment)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("add_new_appontment");
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@appointment_date", appointment.appointmentDate);
+                sqlCmd.Parameters.AddWithValue("@ordinal", appointment.ordinal);
+                sqlCmd.Parameters.AddWithValue("@patient_name", appointment.patientName);
+                sqlCmd.Parameters.AddWithValue("@note", appointment.note);
+                sqlCmd.Parameters.AddWithValue("@record_id", appointment.recordId);
+                sqlCmd.Parameters.AddWithValue("@clinic_id", appointment.clinicId);
+                sqlCmd.Parameters.AddWithValue("@dentist_id", appointment.dentistId);
+                sqlCmd.Parameters.AddWithValue("@medical_assistant_id", appointment.medicalAssistantId);
+                sqlCmd.Parameters.AddWithValue("@treatment_id", appointment.treatmentID);
+
+                int row_affected = sqlCmd.ExecuteNonQuery();
+                return row_affected;
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return 0;
+            }
+        }
     }
 }
