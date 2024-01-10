@@ -181,9 +181,9 @@
             lb_treatmentID.AutoSize = true;
             lb_treatmentID.Location = new Point(362, 311);
             lb_treatmentID.Name = "lb_treatmentID";
-            lb_treatmentID.Size = new Size(64, 15);
+            lb_treatmentID.Size = new Size(96, 15);
             lb_treatmentID.TabIndex = 68;
-            lb_treatmentID.Text = "Mã điều trị";
+            lb_treatmentID.Text = "Kế hoạch điều trị";
             // 
             // btn_addAppointment
             // 

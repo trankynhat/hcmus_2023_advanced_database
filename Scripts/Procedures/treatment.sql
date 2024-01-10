@@ -225,3 +225,16 @@ END
 GO
 EXEC get_list_planning_treatment_plan @patient_id = '12323'
 GO
+
+
+-- get_treatment_planning_name
+CREATE OR ALTER PROC get_treatment_plan_type_name (@treatment_plan_id INT) 
+AS
+BEGIN
+	SELECT TT.name
+	FROM treatment_plan TP INNER JOIN treatment_type TT ON TP.treatment_type_id = TT.id
+	WHERE TP.id = @treatment_plan_id
+END
+GO
+EXEC get_treatment_plan_type_name @treatment_plan_id = null
+GO

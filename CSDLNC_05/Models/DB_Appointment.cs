@@ -199,5 +199,68 @@ namespace CSDLNC_05.Models
                 return 0;
             }
         }
+
+        public static int editAppoitment (DateTime appointmentDate, int ordinal,
+                                          string note, int clinicID, int dentistID,
+                                          int medicalAssistantID)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("edit_appointment");
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Parameters.AddWithValue("@appointment_date", appointmentDate);
+                sqlCmd.Parameters.AddWithValue("@ordinal", ordinal);
+                sqlCmd.Parameters.AddWithValue("@note", note);
+                sqlCmd.Parameters.AddWithValue("@clinic_id", clinicID);
+                sqlCmd.Parameters.AddWithValue("@dentist_id", dentistID);
+                sqlCmd.Parameters.AddWithValue("@medical_assistant_id", medicalAssistantID);
+
+                int row_affected = sqlCmd.ExecuteNonQuery();
+                return row_affected;
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return 0;
+            }
+        }
+
+        public static Appointment? getInfoAppointment (DateTime date, int ordinal)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("get_info_appointment");
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.Parameters.AddWithValue("@appointment_date", date);
+                sqlCmd.Parameters.AddWithValue("@ordinal", ordinal);
+                SqlDataReader res = sqlCmd.ExecuteReader();
+
+
+                while (res.Read())
+                {
+                    Appointment appointment = new Appointment(
+                        date,
+                        ordinal,
+                        res.GetString(0),
+                        res.IsDBNull(1) ? null : res.GetString(1),
+                        res.GetString(2),
+                        res.GetInt32(3),
+                        res.GetInt32(4),
+                        res.IsDBNull(5) ? null : res.GetInt32(5),
+                        res.IsDBNull(6) ? null : res.GetInt32(6)
+                    );
+
+                    return appointment;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                Debug.Print(ex.ToString());
+                return null;
+            }
+        }
     }
 }

@@ -91,24 +91,26 @@ namespace CSDLNC_05.View
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            //var selectedRow = this.dgw_Drug.SelectedRows;
+            var selectedRow = this.dgv_appointments.SelectedRows;
 
-            //if (selectedRow.Count == 0)
-            //{
-            //    MessageBox.Show(
-            //        "Vui lòng chọn thuốc cần cập nhật!",
-            //        "Thông báo!",
-            //        MessageBoxButtons.OK,
-            //        MessageBoxIcon.Warning
-            //    );
-            //    return;
-            //}
+            if (selectedRow.Count == 0)
+            {
+                MessageBox.Show(
+                    "Vui lòng chọn cuộc hẹn cần chỉnh sửa!",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
 
-            //int idx = this.dgw_Drug.SelectedRows[0].Index;
-            //String drugCode = this.dgw_Drug.Rows[idx].Cells[0].Value.ToString();
+            int idx = this.dgv_appointments.SelectedRows[0].Index;
+            DateTime appointmentDate = Convert.ToDateTime(this.dgv_appointments.Rows[idx].Cells[0].Value);
+            int ordinal = Convert.ToInt32(this.dgv_appointments.Rows[idx].Cells[1].Value);
 
-            //Popup_UpdateDrug popup = new Popup_UpdateDrug(drugCode);
-            //popup.ShowDialog();
+            Popup_EditAppointment popup = new Popup_EditAppointment(appointmentDate, ordinal);
+            popup.ShowDialog();
+            this.update_Appointment();
         }
 
         private void btn_delete_Click(object sender, EventArgs e)

@@ -35,6 +35,19 @@ namespace CSDLNC_05.Controllers
 
         }
 
+        public Appointment(Appointment a)
+        {
+            this.appointmentDate = a.appointmentDate;
+            this.ordinal = a.ordinal;
+            this.patientName = a.patientName;
+            this.note = a.note;
+            this.recordId = a.recordId;
+            this.clinicId = a.clinicId;
+            this.dentistId = a.dentistId;
+            this.medicalAssistantId = a.medicalAssistantId;
+            this.treatmentID = a.treatmentID;
+        }
+
         public static List<Appointment>? getAppointmentsByDentistId(int dentistId, DateTime startDate, DateTime endDate)
         {
             return DB_Appointment.getAppointmentsByDentistId(dentistId, startDate, endDate);
@@ -62,6 +75,18 @@ namespace CSDLNC_05.Controllers
         public static int getNextOrdinal(DateTime appointmentDate)
         {
             return DB_Appointment.getNextOrdinal(appointmentDate);
+        }
+
+        public static bool editAppoitment(DateTime appointmentDate, int ordinal,
+                                          string note, int clinicID, int dentistID,
+                                          int medicalAssistantID)
+        {
+            return DB_Appointment.editAppoitment(appointmentDate, ordinal, note, clinicID, dentistID, medicalAssistantID) == 1;
+        }
+
+        public static Appointment? getInfoAppointment(DateTime date, int ordinal)
+        {
+            return DB_Appointment.getInfoAppointment(date, ordinal);
         }
     }
 }

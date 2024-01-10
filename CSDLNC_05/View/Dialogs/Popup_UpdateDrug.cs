@@ -52,7 +52,7 @@ namespace CSDLNC_05.View.Dialogs
                 String desc = this.txtbox_drugDesc.Text;
                 String priceUnit = this.txtbox_drugPriceUnit.Text;
                 Double pricePerUnit = Convert.ToDouble(this.txtbox_drugPricePerUnit.Text);
-            
+
                 if (Drug.updateDrug(this._drugCode, name, desc, priceUnit, pricePerUnit))
                 {
                     MessageBox.Show(
@@ -73,7 +73,7 @@ namespace CSDLNC_05.View.Dialogs
                     );
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.Print(ex.ToString());
                 MessageBox.Show(
@@ -84,6 +84,11 @@ namespace CSDLNC_05.View.Dialogs
                 );
                 return;
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
