@@ -149,7 +149,7 @@ namespace CSDLNC_05.View.Dialogs
             if (result)
             {
                 MessageBox.Show(
-                    "Thêm cuộc hẹn thành công!",
+                    "Sửa cuộc hẹn thành công!",
                     "Thành công!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
@@ -159,7 +159,7 @@ namespace CSDLNC_05.View.Dialogs
             else
             {
                 MessageBox.Show(
-                    "Thêm cuộc hẹn không thành công!",
+                    "Sửa cuộc hẹn không thành công!",
                     "Thất bại!",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error

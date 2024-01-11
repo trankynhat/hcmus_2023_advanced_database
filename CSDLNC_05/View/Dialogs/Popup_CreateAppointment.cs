@@ -271,5 +271,10 @@ namespace CSDLNC_05.View.Dialogs
                 return;
             }
         }
+
+        private void cb_patient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
