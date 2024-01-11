@@ -10,5 +10,3 @@ BEGIN
 	WHERE U.id = @dentist_id
 END
 GO
-EXEC get_dentist_name @dentist_id = 24
-GO

@@ -9,10 +9,10 @@ CREATE INDEX idx_user__username ON [user] (username)
 -- Column: citizen_id, full_name, phone_number, email
 -- Purpose: Increase search speed
 -- Procs/Funcs: xem_danh_sach_benh_nhan, them_benh_nhan
-CREATE NONCLUSTERED INDEX idx_patient_record__email ON patient_record (email)
-CREATE NONCLUSTERED INDEX idx_patient_record__full_name ON patient_record (full_name)
-CREATE NONCLUSTERED INDEX idx_patient_record__phone_number ON patient_record (phone_number)
-CREATE NONCLUSTERED INDEX idx_patient_record__is_deleted ON patient_record (is_deleted)
+CREATE INDEX idx_patient_record__email ON patient_record (email)
+CREATE INDEX idx_patient_record__full_name ON patient_record (full_name)
+CREATE INDEX idx_patient_record__phone_number ON patient_record (phone_number)
+CREATE INDEX idx_patient_record__is_deleted ON patient_record (is_deleted)
 
 -- Table: drug_contraindication_info
 -- Column: is_deleted

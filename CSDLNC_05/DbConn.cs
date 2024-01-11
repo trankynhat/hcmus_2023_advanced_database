@@ -9,7 +9,7 @@ namespace CSDLNC_05
 {
     class DbConn
     {
-        static private string hostname = Environment.MachineName + "\\SQLSERVER";
+        static private string hostname = Environment.MachineName;
         // Thuan: @"Data Source=REVISION-PC;Initial Catalog=CQ_CSDLNC_05;Integrated Security=True"
         private string strConn = @"Data Source=" + hostname + ";Initial Catalog=CQ_CSDLNC_05;Integrated Security=True";
         public SqlConnection conn { get; } = null;

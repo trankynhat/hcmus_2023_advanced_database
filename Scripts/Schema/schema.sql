@@ -80,6 +80,9 @@ GO
 CREATE TABLE prescription(
 	treatment_id INT NOT NULL,
 	drug_code VARCHAR(20),
+    is_deleted BIT DEFAULT 0,
+    quantity INT NOT NULL,
+    note NVARCHAR(1000) NULL
 
 	CONSTRAINT PK_prescription PRIMARY KEY(treatment_id, drug_code)
 )
