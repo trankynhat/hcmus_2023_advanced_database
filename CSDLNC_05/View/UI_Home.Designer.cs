@@ -103,6 +103,7 @@
             Controls.Add(button1);
             Name = "UI_Home";
             Text = "Trang chủ";
+            Load += UI_Home_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -20,5 +20,7 @@ namespace CSDLNC_05.Controllers
         {
             return DB_User.listDentistInfos(branchId);
         }    
+        
+       
     }
 }

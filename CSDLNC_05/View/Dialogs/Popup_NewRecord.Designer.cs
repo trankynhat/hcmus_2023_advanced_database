@@ -219,6 +219,7 @@
             tb_recordID.Size = new Size(421, 27);
             tb_recordID.TabIndex = 34;
             tb_recordID.TextAlign = HorizontalAlignment.Center;
+            tb_recordID.TextChanged += tb_recordID_TextChanged;
             // 
             // label1
             // 

@@ -76,6 +76,7 @@
             dbg_records.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dbg_records.Size = new Size(812, 339);
             dbg_records.TabIndex = 3;
+            dbg_records.CellContentClick += dbg_records_CellContentClick;
             // 
             // Column1
             // 
@@ -139,6 +140,7 @@
             tb_search.Name = "tb_search";
             tb_search.Size = new Size(552, 27);
             tb_search.TabIndex = 4;
+            tb_search.TextChanged += tb_search_TextChanged;
             // 
             // btn_search
             // 

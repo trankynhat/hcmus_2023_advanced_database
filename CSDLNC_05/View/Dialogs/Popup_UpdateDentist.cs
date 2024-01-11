@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace CSDLNC_05.View.Dialogs
 {
-    public partial class Popup_AddSchedule : Form
+    public partial class Popup_UpdateDentist : Form
     {
-        public Popup_AddSchedule()
+        public Popup_UpdateDentist()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

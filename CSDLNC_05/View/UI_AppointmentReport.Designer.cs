@@ -58,6 +58,7 @@
             dgv_treatments.RowTemplate.Height = 29;
             dgv_treatments.Size = new Size(812, 374);
             dgv_treatments.TabIndex = 10;
+            dgv_treatments.CellContentClick += dgv_treatments_CellContentClick;
             // 
             // Column1
             // 

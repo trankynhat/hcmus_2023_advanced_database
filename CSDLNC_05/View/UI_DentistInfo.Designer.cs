@@ -35,6 +35,7 @@
             textBox1 = new TextBox();
             button4 = new Button();
             label1 = new Label();
+            button5 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -68,6 +69,7 @@
             button2.TabIndex = 2;
             button2.Text = "Delete";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button3
             // 
@@ -77,6 +79,7 @@
             button3.TabIndex = 3;
             button3.Text = "Update";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // textBox1
             // 
@@ -84,6 +87,7 @@
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(416, 27);
             textBox1.TabIndex = 4;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button4
             // 
@@ -96,6 +100,7 @@
             button4.TabIndex = 5;
             button4.Text = "Search";
             button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // label1
             // 
@@ -106,12 +111,23 @@
             label1.TabIndex = 6;
             label1.Text = "Nha sĩ";
             // 
+            // button5
+            // 
+            button5.Location = new Point(0, 1);
+            button5.Name = "button5";
+            button5.Size = new Size(75, 29);
+            button5.TabIndex = 7;
+            button5.Text = "Quay lại";
+            button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
+            // 
             // UI_DentistInfo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
             ClientSize = new Size(811, 450);
+            Controls.Add(button5);
             Controls.Add(label1);
             Controls.Add(button4);
             Controls.Add(textBox1);
@@ -136,5 +152,6 @@
         private TextBox textBox1;
         private Button button4;
         private Label label1;
+        private Button button5;
     }
 }

@@ -102,5 +102,10 @@ namespace CSDLNC_05.View
         {
 
         }
+
+        private void dgv_treatments_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

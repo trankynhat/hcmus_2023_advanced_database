@@ -11,7 +11,7 @@ namespace CSDLNC_05
     {
         // Thuan: @"Data Source=REVISION-PC;Initial Catalog=CQ_CSDLNC_05;Integrated Security=True"
         //  Nhat : @"Data Source=DESKTOP-C9KCKLM;Initial Catalog=CQ_CSDLNC_05;Integrated Security=True"
-        private string strConn = @"Data Source=DESKTOP-C9KCKLM;Initial Catalog=CQ_CSDLNC_05;Integrated Security=True";
+        public string strConn = @"Data Source=DESKTOP-C9KCKLM;Initial Catalog=CQ_CSDLNC_05;Integrated Security=True";
         public SqlConnection conn { get; } = null;
 
         public DbConn()
