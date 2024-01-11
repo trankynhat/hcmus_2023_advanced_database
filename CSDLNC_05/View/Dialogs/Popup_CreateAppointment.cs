@@ -63,7 +63,7 @@ namespace CSDLNC_05.View.Dialogs
             List<PatientRecord> patientInfo = PatientRecord.listPatientRecordBySearchText();
             DataTable patient_dt = new DataTable();
             patient_dt.Columns.Add("full_name", typeof(string));
-            patient_dt.Columns.Add("id", typeof(int));
+            patient_dt.Columns.Add("id", typeof(String));
             foreach (PatientRecord patient in patientInfo)
             {
                 DataRow row = patient_dt.NewRow();
