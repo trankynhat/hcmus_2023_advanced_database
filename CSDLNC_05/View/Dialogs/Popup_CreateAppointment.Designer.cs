@@ -203,6 +203,7 @@
             cb_patient.Name = "cb_patient";
             cb_patient.Size = new Size(244, 23);
             cb_patient.TabIndex = 71;
+            cb_patient.SelectedIndexChanged += cb_patient_SelectedIndexChanged;
             // 
             // cb_clinicNumber
             // 

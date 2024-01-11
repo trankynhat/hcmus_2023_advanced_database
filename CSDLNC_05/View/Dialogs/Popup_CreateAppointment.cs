@@ -63,7 +63,7 @@ namespace CSDLNC_05.View.Dialogs
             List<PatientRecord> patientInfo = PatientRecord.listPatientRecordBySearchText();
             DataTable patient_dt = new DataTable();
             patient_dt.Columns.Add("full_name", typeof(string));
-            patient_dt.Columns.Add("id", typeof(int));
+            patient_dt.Columns.Add("id", typeof(string));
             foreach (PatientRecord patient in patientInfo)
             {
                 DataRow row = patient_dt.NewRow();
@@ -270,6 +270,11 @@ namespace CSDLNC_05.View.Dialogs
                 );
                 return;
             }
+        }
+
+        private void cb_patient_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

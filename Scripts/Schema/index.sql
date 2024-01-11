@@ -2,6 +2,7 @@
 -- Column: username
 -- Purpose: Increase login speed when querying by username
 -- Procs/Funcs: get_user_info
+USE CQ_CSDLNC_05
 CREATE INDEX idx_user__username ON [user] (username)
 
 -- Table: patient_record
