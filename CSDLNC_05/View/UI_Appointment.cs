@@ -34,7 +34,7 @@ namespace CSDLNC_05.View
             List<PatientRecord> patientInfo = PatientRecord.listPatientRecordBySearchText();
             DataTable patient_dt = new DataTable();
             patient_dt.Columns.Add("full_name", typeof(string));
-            patient_dt.Columns.Add("id", typeof(string));
+            patient_dt.Columns.Add("id", typeof(String));
             firstRow = patient_dt.NewRow();
             firstRow["full_name"] = "Chọn bệnh nhân";
             firstRow["id"] = -1;
