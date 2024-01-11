@@ -10,5 +10,3 @@ BEGIN
 	WHERE c.branch_id = @branch_id
 END
 GO
-EXEC list_clinic_of_branch @branch_id = 1
-GO

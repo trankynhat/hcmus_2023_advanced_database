@@ -33,5 +33,3 @@ BEGIN
     ORDER BY date_of_payment
 END
 GO
-
-exec list_payment_by_record_id @record_id=N'000012323'
