@@ -34,8 +34,6 @@ CREATE PARTITION SCHEME pf_single_treatment__treatment_id__scheme
 AS PARTITION pf_single_treatment__treatment_id
 TO ([PRIMARY], CQ_CSDLNC_05_FG1, CQ_CSDLNC_05_FG2, CQ_CSDLNC_05_FG3)
 
-
-
 CREATE PARTITION FUNCTION pf_treatment_phase__treatment_id (INT)
 AS
 RANGE RIGHT
