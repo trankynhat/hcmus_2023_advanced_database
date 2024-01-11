@@ -1,8 +1,44 @@
 CREATE DATABASE CQ_CSDLNC_05
+ON 
+    PRIMARY (
+        NAME = 'CQ_CSDLNC_05',
+        FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\CQ_CSDLNC_05.mdf',
+        SIZE = 2,
+        MAXSIZE = 200,
+        FILEGROWTH = 1
+    ),
+    FILEGROUP CQ_CSDLNC_05_FG1 (
+        NAME = 'CQ_CSDLNC_05_FG1',
+        FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\CQ_CSDLNC_05_FG1.ndf',
+        SIZE = 2,
+        MAXSIZE = 200,
+        FILEGROWTH = 1
+    ),
+    FILEGROUP CQ_CSDLNC_05_FG2 (
+        NAME = 'CQ_CSDLNC_05_FG2',
+        FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\CQ_CSDLNC_05_FG2.ndf',
+        SIZE = 2,
+        MAXSIZE = 200,
+        FILEGROWTH = 1
+    ),
+    FILEGROUP CQ_CSDLNC_05_FG3 (
+        NAME = 'CQ_CSDLNC_05_FG3',
+        FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\CQ_CSDLNC_05_FG3.ndf',
+        SIZE = 2,
+        MAXSIZE = 200,
+        FILEGROWTH = 1
+    )
 GO
 
 USE CQ_CSDLNC_05
 GO
+
+CREATE PARTITION FUNCTION pf_payment__date_of_payment (datetime)
+AS
+RANGE RIGHT
+FOR VALUES ( '2009-01-01', '2010-01-01')
+GO
+
 CREATE TABLE drug (
     code VARCHAR(20),
     name NVARCHAR(150),

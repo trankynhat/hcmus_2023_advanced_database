@@ -1,0 +1,5 @@
+payment -> date_of_payment
+treatment -> treatment_date
+single_treatment -> treatment_id
+treatment_phase -> treatment_id
+appointment_schedule -> appointment_date
