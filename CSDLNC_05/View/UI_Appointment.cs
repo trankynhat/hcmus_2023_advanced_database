@@ -84,6 +84,17 @@ namespace CSDLNC_05.View
 
         private void btn_create_Click(object sender, EventArgs e)
         {
+            string user_role = Program.currentUserRole;
+            if (user_role != "ADMIN" && user_role != "STAFF")
+            {
+                MessageBox.Show(
+                    "Không có quyền thêm cuộc hẹn",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
             Popup_CreateAppointment popup = new Popup_CreateAppointment();
             popup.ShowDialog();
             this.update_Appointment();
@@ -91,6 +102,17 @@ namespace CSDLNC_05.View
 
         private void btn_update_Click(object sender, EventArgs e)
         {
+            string user_role = Program.currentUserRole;
+            if (user_role != "ADMIN" && user_role != "STAFF")
+            {
+                MessageBox.Show(
+                    "Không có quyền sửa cuộc hẹn",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
             var selectedRow = this.dgv_appointments.SelectedRows;
 
             if (selectedRow.Count == 0)
@@ -115,6 +137,17 @@ namespace CSDLNC_05.View
 
         private void btn_delete_Click(object sender, EventArgs e)
         {
+            string user_role = Program.currentUserRole;
+            if (user_role != "ADMIN" && user_role != "STAFF")
+            {
+                MessageBox.Show(
+                    "Không có quyền xoá cuộc hẹn",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
             var selectedRow = this.dgv_appointments.SelectedRows;
 
             if (selectedRow.Count == 0)
@@ -182,6 +215,8 @@ namespace CSDLNC_05.View
             this.dgv_appointments.Rows.Clear();
             foreach (Appointment appointment in appointments)
             {
+                string dentist_name = User.getDetistName(appointment.dentistId);
+                string medical_assistant_name = User.getDetistName(appointment.medicalAssistantId);
                 this.dgv_appointments.Rows.Add(
                     appointment.appointmentDate,
                     appointment.ordinal,
@@ -189,8 +224,8 @@ namespace CSDLNC_05.View
                     appointment.note == null ? "Không có" : appointment.note,
                     appointment.recordId,
                     appointment.clinicId,
-                    appointment.dentistId,
-                    appointment.medicalAssistantId == null ? "Không có" : appointment.medicalAssistantId,
+                    dentist_name,
+                    medical_assistant_name == null ? "Không có" : medical_assistant_name,
                     appointment.treatmentID == null ? "Cuộc hẹn mới" : "Tái khám"
                 );
             }
@@ -236,6 +271,8 @@ namespace CSDLNC_05.View
             this.dgv_appointments.Rows.Clear();
             foreach (Appointment appointment in appointments)
             {
+                string dentist_name = User.getDetistName(appointment.dentistId);
+                string medical_assistant_name = User.getDetistName(appointment.medicalAssistantId);
                 this.dgv_appointments.Rows.Add(
                     appointment.appointmentDate,
                     appointment.ordinal,
@@ -243,8 +280,8 @@ namespace CSDLNC_05.View
                     appointment.note == null ? "" : appointment.note,
                     appointment.recordId,
                     appointment.clinicId,
-                    appointment.dentistId,
-                    appointment.medicalAssistantId == null ? "Không có" : appointment.medicalAssistantId,
+                    dentist_name,
+                    medical_assistant_name == null ? "Không có" : medical_assistant_name,
                     appointment.treatmentID == null ? "Cuộc hẹn mới" : "Tái khám"
                 );
             }

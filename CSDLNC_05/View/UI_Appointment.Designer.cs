@@ -34,7 +34,6 @@
             btn_delete = new Button();
             dtp_viewDate = new DateTimePicker();
             btn_view = new Button();
-            btn_request = new Button();
             cb_dentistInfo = new ComboBox();
             cb_patientInfo = new ComboBox();
             cb_clinicInfo = new ComboBox();
@@ -67,7 +66,7 @@
             // btn_create
             // 
             btn_create.BackColor = SystemColors.ControlLightLight;
-            btn_create.Location = new Point(111, 12);
+            btn_create.Location = new Point(133, 12);
             btn_create.Margin = new Padding(3, 2, 3, 2);
             btn_create.Name = "btn_create";
             btn_create.Size = new Size(82, 22);
@@ -79,7 +78,7 @@
             // btn_update
             // 
             btn_update.BackColor = SystemColors.ControlLightLight;
-            btn_update.Location = new Point(211, 12);
+            btn_update.Location = new Point(257, 11);
             btn_update.Margin = new Padding(3, 2, 3, 2);
             btn_update.Name = "btn_update";
             btn_update.Size = new Size(82, 22);
@@ -91,7 +90,7 @@
             // btn_delete
             // 
             btn_delete.BackColor = SystemColors.ControlLightLight;
-            btn_delete.Location = new Point(311, 12);
+            btn_delete.Location = new Point(378, 12);
             btn_delete.Margin = new Padding(3, 2, 3, 2);
             btn_delete.Name = "btn_delete";
             btn_delete.Size = new Size(82, 22);
@@ -104,10 +103,10 @@
             // 
             dtp_viewDate.CustomFormat = "dd-MM-yyyy";
             dtp_viewDate.Format = DateTimePickerFormat.Custom;
-            dtp_viewDate.Location = new Point(408, 12);
+            dtp_viewDate.Location = new Point(496, 9);
             dtp_viewDate.Margin = new Padding(3, 2, 3, 2);
             dtp_viewDate.Name = "dtp_viewDate";
-            dtp_viewDate.Size = new Size(113, 23);
+            dtp_viewDate.Size = new Size(144, 23);
             dtp_viewDate.TabIndex = 12;
             dtp_viewDate.Value = new DateTime(2024, 1, 7, 0, 0, 0, 0);
             dtp_viewDate.ValueChanged += dtp_viewDate_ValueChanged;
@@ -115,7 +114,7 @@
             // btn_view
             // 
             btn_view.BackColor = SystemColors.ControlLightLight;
-            btn_view.Location = new Point(570, 12);
+            btn_view.Location = new Point(672, 11);
             btn_view.Margin = new Padding(3, 2, 3, 2);
             btn_view.Name = "btn_view";
             btn_view.Size = new Size(82, 22);
@@ -123,17 +122,6 @@
             btn_view.Text = "Xem";
             btn_view.UseVisualStyleBackColor = false;
             btn_view.Click += btn_view_Click;
-            // 
-            // btn_request
-            // 
-            btn_request.BackColor = SystemColors.ControlLightLight;
-            btn_request.Location = new Point(672, 12);
-            btn_request.Margin = new Padding(3, 2, 3, 2);
-            btn_request.Name = "btn_request";
-            btn_request.Size = new Size(82, 22);
-            btn_request.TabIndex = 14;
-            btn_request.Text = "Yêu cầu hẹn";
-            btn_request.UseVisualStyleBackColor = false;
             // 
             // cb_dentistInfo
             // 
@@ -251,14 +239,14 @@
             // 
             // Column7
             // 
-            Column7.HeaderText = "Mã bác sỹ";
+            Column7.HeaderText = "Tên bác sỹ";
             Column7.MinimumWidth = 6;
             Column7.Name = "Column7";
             Column7.ReadOnly = true;
             // 
             // Column8
             // 
-            Column8.HeaderText = "Mã trợ khám";
+            Column8.HeaderText = "Tên trợ khám";
             Column8.MinimumWidth = 6;
             Column8.Name = "Column8";
             Column8.ReadOnly = true;
@@ -280,7 +268,6 @@
             Controls.Add(cb_clinicInfo);
             Controls.Add(cb_patientInfo);
             Controls.Add(cb_dentistInfo);
-            Controls.Add(btn_request);
             Controls.Add(btn_view);
             Controls.Add(dtp_viewDate);
             Controls.Add(btn_delete);
@@ -302,7 +289,6 @@
         private Button btn_delete;
         private DateTimePicker dtp_viewDate;
         private Button btn_view;
-        private Button btn_request;
         private ComboBox cb_dentistInfo;
         private ComboBox cb_patientInfo;
         private ComboBox cb_clinicInfo;

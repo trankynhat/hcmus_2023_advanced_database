@@ -1,3 +1,5 @@
+USE CQ_CSDLNC_05
+
 CREATE FUNCTION get_user_role(@user_id INT)
 RETURNS VARCHAR(20)
 AS
@@ -16,3 +18,8 @@ BEGIN
     RETURN @userRole
 END;
 GO
+
+exec get_user_role @user_id = 2
+SELECT U.full_name, U.password
+FROM [USER] U
+WHERE U.id = 69465
