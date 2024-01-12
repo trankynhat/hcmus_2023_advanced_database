@@ -179,6 +179,7 @@ namespace CSDLNC_05.View
             Program.previousForm.Add(this);
             this.Hide();
             ui.Show();
+
         }
 
         private void dbg_records_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -186,9 +187,5 @@ namespace CSDLNC_05.View
 
         }
 
-        private void tb_search_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

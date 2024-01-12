@@ -74,5 +74,10 @@ namespace CSDLNC_05.Controllers
                 return true;
             }
         }
+
+        public static string getDetistName(int? dentistID)
+        {
+            return DB_User.getDetistName(dentistID);
+        }
     }
 }

@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,9 +61,13 @@ namespace CSDLNC_05.View
             Program.previousForm.Add(this);
         }
 
-        private void UI_Home_Load(object sender, EventArgs e)
+        private void btn_appointmentManagement_Click(object sender, EventArgs e)
         {
-
+            UI_Appointment ui = new UI_Appointment();
+            ui.Show();
+            this.Hide();
+            Program.previousForm.Add(this);
         }
     }
 }
+
