@@ -519,9 +519,8 @@ ALTER TABLE work_timetable
 ADD CONSTRAINT FK_work_timetable__dentist_id__detist__user_id
 FOREIGN KEY (dentist_id) REFERENCES dentist(user_id)
 
-ALTER TABLE work_timetable
-ADD CONSTRAINT FK_work_timetable__branch_id__branch__id
-=======
+
+
 CREATE TABLE drug (
     code VARCHAR(20),
     name NVARCHAR(150),
@@ -566,7 +565,7 @@ CREATE TABLE payment_method (
 GO
 
 CREATE TABLE prescription(
-    id INT IDENTITY(0, 1)
+    id INT IDENTITY(0, 1),
 	treatment_id INT NOT NULL,
 	drug_code VARCHAR(20) NOT NULL,
     quantity INT,

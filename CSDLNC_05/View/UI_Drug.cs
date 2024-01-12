@@ -134,7 +134,7 @@ namespace CSDLNC_05.View
             this.lb_pageNum.Text = nextPage.ToString();
             List<Drug> drugs;
 
-            if(this.searchKw == null)
+            if (this.searchKw == null)
             {
                 drugs = Drug.listDrugs(nextPage);
             }
@@ -169,8 +169,8 @@ namespace CSDLNC_05.View
             this.lb_pageNum.Text = prePage.ToString();
 
             List<Drug> drugs;
-            
-            if(this.searchKw == null)
+
+            if (this.searchKw == null)
             {
                 drugs = Drug.listDrugs(prePage);
             }
@@ -213,6 +213,11 @@ namespace CSDLNC_05.View
                     drug.price_per_unit
                 );
             }
+        }
+
+        private void tb_input_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

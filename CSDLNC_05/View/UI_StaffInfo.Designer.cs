@@ -41,11 +41,11 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(91, 14);
+            label2.Location = new Point(66, 14);
             label2.Name = "label2";
-            label2.Size = new Size(50, 20);
+            label2.Size = new Size(75, 20);
             label2.TabIndex = 13;
-            label2.Text = "Nha sĩ";
+            label2.Text = "Nhân viên";
             // 
             // button4
             // 
@@ -103,6 +103,7 @@
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(811, 346);
             dataGridView1.TabIndex = 7;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // UI_StaffInfo
             // 

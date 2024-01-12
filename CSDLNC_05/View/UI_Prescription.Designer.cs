@@ -66,6 +66,7 @@
             dgv_prescription.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_prescription.Size = new Size(812, 374);
             dgv_prescription.TabIndex = 4;
+            dgv_prescription.CellContentClick += dgv_prescription_CellContentClick;
             // 
             // Column1
             // 
