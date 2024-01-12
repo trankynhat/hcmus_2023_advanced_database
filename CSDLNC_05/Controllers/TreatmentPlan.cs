@@ -42,5 +42,15 @@ namespace CSDLNC_05.Controllers
         {
             return DB_TreatmentPlan.createTreatmentPlan(treatmentPlan) == 1;
         }
+
+        public static List<KeyValuePair<int, string>> getListPlanningTreatmentPlan(string recordId)
+        {
+            return DB_TreatmentPlan.getListPlanningTreatmentPlan(recordId);
+        }
+
+        public static string get_treatment_plan_type_name(int? treatmentPlanID)
+        {
+            return DB_TreatmentPlan.get_treatment_plan_type_name(treatmentPlanID);
+        }
     }
 }

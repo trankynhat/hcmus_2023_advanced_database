@@ -207,3 +207,30 @@ BEGIN
     WHERE id = @phase_id
 END
 GO
+
+
+-- get_list_planning_treatment_plan
+CREATE OR ALTER PROC get_list_planning_treatment_plan (@patient_id VARCHAR(50))
+AS
+BEGIN
+	DECLARE @treatment_plan_status_id INT
+	SET @treatment_plan_status_id = (SELECT TPS.id
+					FROM treatment_plan_status TPS
+					WHERE TPS.symbolic_color = '#0010D0')
+
+	SELECT TP.id, TT.name
+	FROM treatment_plan TP INNER JOIN treatment_type TT ON TP.treatment_type_id = TT.id 
+	WHERE TP.treatment_plan_status_id = @treatment_plan_status_id AND TP.record_id = @patient_id
+END
+GO
+
+
+-- get_treatment_planning_name
+CREATE OR ALTER PROC get_treatment_plan_type_name (@treatment_plan_id INT) 
+AS
+BEGIN
+	SELECT TT.name
+	FROM treatment_plan TP INNER JOIN treatment_type TT ON TP.treatment_type_id = TT.id
+	WHERE TP.id = @treatment_plan_id
+END
+GO

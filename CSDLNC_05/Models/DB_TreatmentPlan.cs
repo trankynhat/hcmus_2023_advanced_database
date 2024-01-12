@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using CSDLNC_05.Controllers;
@@ -56,6 +57,59 @@ namespace CSDLNC_05.Models
             cmd.Parameters.AddWithValue("@record_id", treatmentPlan.recordId);
 
             return cmd.ExecuteNonQuery();
+        }
+
+        public static List<KeyValuePair<int, string>> getListPlanningTreatmentPlan (string recordId)
+        {
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("get_list_planning_treatment_plan");
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.Parameters.AddWithValue("@patient_id", recordId);
+                SqlDataReader res = sqlCmd.ExecuteReader();
+
+                List<KeyValuePair<int, string>> treatmentPlanAndType = new List<KeyValuePair<int, string>>();
+
+
+                while (res.Read())
+                {
+              
+                    treatmentPlanAndType.Add(new KeyValuePair<int, string>(res.GetInt32(0), res.GetString(1)));
+                }
+                return treatmentPlanAndType;
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return null;
+            }
+        }
+
+        public static string get_treatment_plan_type_name(int? treatmentPlanID)
+        {
+            try
+            {
+                if (treatmentPlanID is null) return null;
+                SqlCommand sqlCmd = new SqlCommand("get_treatment_plan_type_name");
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.Parameters.AddWithValue("@treatment_plan_id", treatmentPlanID);
+                SqlDataReader res = sqlCmd.ExecuteReader();
+
+                string treatment_type_name = "";
+
+                while (res.Read())
+                {
+                    treatment_type_name = res.GetString(0);
+                }
+                return treatment_type_name;
+            }
+            catch (Exception ex)
+            {
+                Debug.Print($"Error: {ex.ToString()}");
+                return null;
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace CSDLNC_05.Models
 {
@@ -92,6 +93,32 @@ namespace CSDLNC_05.Models
                     dentistInfos.Add(dentist);
                 }
                 return dentistInfos;
+            }
+            catch (Exception ex)
+            {
+                Debug.Print(ex.ToString());
+                return null;
+            }
+        }
+
+        public static string getDetistName (int? dentistID)
+        {
+            if (dentistID is null) return null;
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("get_dentist_name");
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Connection = new DbConn().conn;
+                sqlCmd.Parameters.AddWithValue("@dentist_id", dentistID);
+                SqlDataReader res = sqlCmd.ExecuteReader();
+
+                string dentistName = "";
+
+                while (res.Read())
+                {
+                    dentistName = res.GetString(0);
+                }
+                return dentistName;
             }
             catch (Exception ex)
             {
