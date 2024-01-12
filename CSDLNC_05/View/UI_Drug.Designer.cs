@@ -54,9 +54,11 @@
             dgw_Drug.Columns.AddRange(new DataGridViewColumn[] { col_drugCode, col_drugNam, col_desc, col_priceUnit, col_pricePerUnit });
             dgw_Drug.GridColor = SystemColors.ActiveCaptionText;
             dgw_Drug.Location = new Point(11, 47);
+            dgw_Drug.MultiSelect = false;
             dgw_Drug.Name = "dgw_Drug";
             dgw_Drug.RowHeadersWidth = 51;
             dgw_Drug.RowTemplate.Height = 29;
+            dgw_Drug.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgw_Drug.Size = new Size(813, 374);
             dgw_Drug.TabIndex = 0;
             dgw_Drug.CellContentClick += dataGridView1_CellContentClick;

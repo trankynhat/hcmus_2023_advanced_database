@@ -136,11 +136,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(160, 36);
+            label1.Location = new Point(170, 36);
             label1.Name = "label1";
-            label1.Size = new Size(97, 20);
+            label1.Size = new Size(81, 20);
             label1.TabIndex = 51;
-            label1.Text = "Mã giai đoạn";
+            label1.Text = "Mã điều trị";
             // 
             // txtbox_paymentDate
             // 

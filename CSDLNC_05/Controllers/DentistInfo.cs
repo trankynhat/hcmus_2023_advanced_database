@@ -19,6 +19,6 @@ namespace CSDLNC_05.Controllers
         public static List<DentistInfo> listDentistInfos(int branchId)
         {
             return DB_User.listDentistInfos(branchId);
-        }
+        }    
     }
 }
