@@ -28,97 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            label2 = new Label();
             button4 = new Button();
             textBox1 = new TextBox();
-            label1 = new Label();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
+            dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // label2
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(-2, 153);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(804, 292);
-            dataGridView1.TabIndex = 0;
+            label2.AutoSize = true;
+            label2.Location = new Point(66, 14);
+            label2.Name = "label2";
+            label2.Size = new Size(75, 20);
+            label2.TabIndex = 13;
+            label2.Text = "Nhân viên";
             // 
-            // button1
+            // button4
             // 
-            button1.Location = new Point(112, 103);
-            button1.Name = "button1";
-            button1.RightToLeft = RightToLeft.Yes;
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 1;
-            button1.Text = "Chỉnh sửa";
-            button1.UseVisualStyleBackColor = true;
+            button4.BackColor = SystemColors.ActiveCaption;
+            button4.FlatStyle = FlatStyle.Popup;
+            button4.ForeColor = SystemColors.Desktop;
+            button4.Location = new Point(569, 7);
+            button4.Name = "button4";
+            button4.Size = new Size(78, 27);
+            button4.TabIndex = 12;
+            button4.Text = "Search";
+            button4.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(147, 7);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(416, 27);
+            textBox1.TabIndex = 11;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(91, 62);
+            button3.Name = "button3";
+            button3.Size = new Size(72, 29);
+            button3.TabIndex = 10;
+            button3.Text = "Update";
+            button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
             button2.ForeColor = Color.IndianRed;
-            button2.Location = new Point(684, 103);
+            button2.Location = new Point(722, 62);
             button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 2;
-            button2.Text = "Xóa";
+            button2.Size = new Size(72, 29);
+            button2.TabIndex = 9;
+            button2.Text = "Delete";
             button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // button1
             // 
-            button3.BackColor = SystemColors.ActiveCaption;
-            button3.FlatStyle = FlatStyle.Popup;
-            button3.Location = new Point(531, 12);
-            button3.Name = "button3";
-            button3.Size = new Size(94, 29);
-            button3.TabIndex = 3;
-            button3.Text = "Tìm kiếm";
-            button3.UseVisualStyleBackColor = false;
+            button1.Location = new Point(7, 62);
+            button1.Name = "button1";
+            button1.Size = new Size(72, 29);
+            button1.TabIndex = 8;
+            button1.Text = "Add";
+            button1.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // dataGridView1
             // 
-            button4.Location = new Point(12, 103);
-            button4.Name = "button4";
-            button4.Size = new Size(94, 29);
-            button4.TabIndex = 4;
-            button4.Text = "Thêm ";
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(242, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(283, 27);
-            textBox1.TabIndex = 5;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(146, 19);
-            label1.Name = "label1";
-            label1.Size = new Size(75, 20);
-            label1.TabIndex = 6;
-            label1.Text = "Nhân viên";
-            label1.Click += label1_Click;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(-5, 97);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 29;
+            dataGridView1.Size = new Size(811, 346);
+            dataGridView1.TabIndex = 7;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // UI_StaffInfo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label1);
-            Controls.Add(textBox1);
+            Controls.Add(label2);
             Controls.Add(button4);
+            Controls.Add(textBox1);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Name = "UI_StaffInfo";
-            Text = "UI_StaffInfo";
+            Text = "  ";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -126,12 +126,12 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Label label2;
         private Button button4;
         private TextBox textBox1;
-        private Label label1;
+        private Button button3;
+        private Button button2;
+        private Button button1;
+        private DataGridView dataGridView1;
     }
 }

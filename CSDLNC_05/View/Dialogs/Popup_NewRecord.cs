@@ -55,5 +55,10 @@ namespace CSDLNC_05.View.Dialogs
                 return;
             }
         }
+
+        private void tb_recordID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

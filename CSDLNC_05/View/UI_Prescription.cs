@@ -73,7 +73,7 @@ namespace CSDLNC_05.View
             int idx = this.dgv_prescription.SelectedRows[0].Index;
             String drugCode = this.dgv_prescription.Rows[idx].Cells[1].Value.ToString();
 
-            if(Prescription.deleteDrugInPrescription(this.phaseId, drugCode))
+            if (Prescription.deleteDrugInPrescription(this.phaseId, drugCode))
             {
                 MessageBox.Show(
                     "Xóa đơn thuốc thành công!",
@@ -91,6 +91,11 @@ namespace CSDLNC_05.View
                     MessageBoxIcon.Error
                 );
             }
+        }
+
+        private void dgv_prescription_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

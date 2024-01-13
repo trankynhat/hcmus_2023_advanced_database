@@ -1,3 +1,4 @@
+
 insert into clinic(clinic_id, branch_id, clinic_number) values(1, 1, 1)
 insert into clinic(clinic_id, branch_id, clinic_number) values(2, 1, 2)
 insert into clinic(clinic_id, branch_id, clinic_number) values(3, 1, 3)
