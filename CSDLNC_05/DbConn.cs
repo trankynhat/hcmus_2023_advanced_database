@@ -11,7 +11,7 @@ namespace CSDLNC_05
     {
         static private string hostname = Environment.MachineName;
         // Thuan: @"Data Source=REVISION-PC;Initial Catalog=CQ_CSDLNC_05;Integrated Security=True"
-        private string strConn = @"Data Source=" + hostname + ";Initial Catalog=CQ_CSDLNC_05;Integrated Security=True";
+        private string strConn = @"Data Source=" + hostname + "\\SQLSERVER;Initial Catalog=CQ_CSDLNC_05;Integrated Security=True";
         public SqlConnection conn { get; } = null;
 
         public DbConn()

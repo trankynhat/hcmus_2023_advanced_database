@@ -10,16 +10,16 @@ namespace CSDLNC_05.Controllers
 {
     class User
     {
-        private int id;
-        private String username;
-        private String password;
-        private String full_name;
-        private DateTime date_of_birth;
-        private String phone_number;
-        private String email;
-        private String permanent_address;
-        private Boolean gender;
-        private int working_branch_id;
+        public int id { get; set; }
+        public String username { get; set; }
+        public String password { get; set; }
+        public String full_name { get; set; }
+        public DateTime date_of_birth { get; set; }
+        public String phone_number { get; set; }
+        public String email { get; set; }
+        public String permanent_address { get; set; }
+        public Boolean gender { get; set; }
+        public int working_branch_id { get; set; }
 
         public User(int id, string username, string password, string full_name, DateTime date_of_birth, string phone_number, string email, string permanent_address, bool gender, int working_branch_id)
         {
