@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CSDLNC_05.View
+namespace CSDLNC_05.View.Dialogs
 {
-    public partial class UI_StaffInfo : Form
+    public partial class Popup_AddSchedule : Form
     {
-        public UI_StaffInfo()
+        public Popup_AddSchedule()
         {
             InitializeComponent();
         }
@@ -22,7 +22,7 @@ namespace CSDLNC_05.View
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void label8_Click(object sender, EventArgs e)
         {
 
         }

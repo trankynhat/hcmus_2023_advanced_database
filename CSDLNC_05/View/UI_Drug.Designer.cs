@@ -179,6 +179,7 @@
             tb_input.Name = "tb_input";
             tb_input.Size = new Size(246, 27);
             tb_input.TabIndex = 8;
+            tb_input.TextChanged += tb_input_TextChanged;
             // 
             // btn_search
             // 

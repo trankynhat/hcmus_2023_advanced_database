@@ -47,6 +47,7 @@
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(800, 351);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // textBox1
             // 
@@ -101,6 +102,7 @@
             button3.TabIndex = 7;
             button3.Text = "Thêm";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // UI_Schedule
             // 

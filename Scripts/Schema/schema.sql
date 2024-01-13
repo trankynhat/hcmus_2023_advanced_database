@@ -1,3 +1,4 @@
+
 ﻿CREATE DATABASE CQ_CSDLNC_05
 ON 
     PRIMARY (
@@ -562,4 +563,5 @@ FOREIGN KEY (dentist_id) REFERENCES dentist(user_id)
 ALTER TABLE work_timetable
 ADD CONSTRAINT FK_work_timetable__branch_id__branch__id
 FOREIGN KEY (branch_id) REFERENCES branch(id)
+
 

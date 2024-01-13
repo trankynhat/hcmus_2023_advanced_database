@@ -179,11 +179,13 @@ namespace CSDLNC_05.View
             Program.previousForm.Add(this);
             this.Hide();
             ui.Show();
+
         }
 
         private void dbg_records_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
     }
 }
