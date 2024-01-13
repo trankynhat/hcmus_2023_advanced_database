@@ -129,6 +129,7 @@
             dgv_dentist.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgv_dentist.Size = new Size(871, 373);
             dgv_dentist.TabIndex = 20;
+            dgv_dentist.CellContentClick += dgv_dentist_CellContentClick;
             // 
             // Column1
             // 

@@ -87,7 +87,7 @@ GO
 
 
 -- filter_appointment
-CREATE OR ALTER PROC filter_appointment (@branch_id INT, @date DATE, @patient_id VARCHAR(50), 
+CREATE OR ALTER PROC filter_appointment (@branch_id INT, @date DATE, @patient_id INT, 
 										@clinic_id INT, @dentist_id INT)
 AS
 BEGIN
@@ -98,7 +98,7 @@ BEGIN
 	SET @filter_clinic = 1
 	--SET @dentist_name = (SELECT U.full_name FROM [user] U WHERE @dentist_id = U.id)
 
-	IF @patient_id = '-1' SET @filter_patient = 0
+	IF @patient_id = -1 SET @filter_patient = 0
 	IF @dentist_id = -1 SET @filter_dentist = 0
 	IF @clinic_id = -1 SET @filter_clinic = 0
 
@@ -114,7 +114,7 @@ BEGIN
 
 END
 GO
-EXEC filter_appointment @branch_id = 1, @date = '2024-01-09', @patient_id = 'a23vbas1', @dentist_id = -1, @clinic_id = -1
+
 
 -- get_next_ordinal
 CREATE OR ALTER PROC get_next_ordinal (@appointment_date DATE)

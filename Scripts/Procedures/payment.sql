@@ -1,5 +1,5 @@
 USE CQ_CSDLNC_05
-GO
+go
 -- list_payment_methods
 CREATE PROC list_payment_methods
 AS

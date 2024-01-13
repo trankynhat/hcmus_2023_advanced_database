@@ -89,9 +89,9 @@ namespace CSDLNC_05.Controllers
         {
             return DB_User.getListUserInfoRoleStaff(branchID);
         }
-        public static bool AddDentist(User user, string cert)
+        public static bool AddDentist(User user)
         {
-            return DB_User.AddDentist(user, cert)==1;
+            return DB_User.AddDentist(user)==1;
         }
         public static bool AddStaff(User user)
         {
@@ -112,5 +112,10 @@ namespace CSDLNC_05.Controllers
         public static User getUserInfoRoleStaff(int userID) { 
             return DB_User.getUserInfoRoleStaff(userID);
         }
+        public static List<int> getBranchId()
+        {
+            return DB_User.getBranchId();
+        }
     }
+
 }

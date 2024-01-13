@@ -22,7 +22,7 @@ namespace CSDLNC_05.View
         }
         private void update_Dentist()
         {
-            List<User> dentists = User.getListUserInfoRoleDentist( Program.workingBranchId);
+            List<User> dentists = User.getListUserInfoRoleDentist(Program.workingBranchId);
             if (dentists == null || dentists.Count == 0)
             {
                 MessageBox.Show(
@@ -39,11 +39,11 @@ namespace CSDLNC_05.View
             this.dgv_dentist.Rows.Clear();
             foreach (User dentist in dentists)
             {
-               
+
                 this.dgv_dentist.Rows.Add(
                     dentist.id,
                     dentist.full_name,
-                    (dentist.gender==true?"Nữ":"Nam"),
+                    (dentist.gender == true ? "Nữ" : "Nam"),
                     dentist.date_of_birth,
                     dentist.email,
                     dentist.phone_number,
@@ -56,14 +56,27 @@ namespace CSDLNC_05.View
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string user_role = Program.currentUserRole;
+            if (user_role != "ADMIN")
+            {
+                MessageBox.Show(
+                    "Chỉ admin mới có quyền sửa",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
             Popup_AddDentist popup_add_dentist = new Popup_AddDentist();
             popup_add_dentist.ShowDialog();
+
+            update_Dentist();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -77,7 +90,7 @@ namespace CSDLNC_05.View
 
         private void button4_Click(object sender, EventArgs e)
         {
-           
+
 
         }
 
@@ -89,16 +102,45 @@ namespace CSDLNC_05.View
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Popup_UpdateDentist popup_update_dentist = new Popup_UpdateDentist();
+            string user_role = Program.currentUserRole;
+            if (user_role != "ADMIN")
+            {
+                MessageBox.Show(
+                    "Chỉ admin mới có quyền sửa",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+            var selectedRow = this.dgv_dentist.SelectedRows;
+
+            if (selectedRow.Count == 0)
+            {
+                MessageBox.Show(
+                    "Vui lòng chọn nha sĩ cần chỉnh sửa!",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            int idx = this.dgv_dentist.SelectedRows[0].Index;
+            int dentist_id = Convert.ToInt32(this.dgv_dentist.Rows[idx].Cells[0].Value);
+
+            Popup_UpdateDentist popup_update_dentist = new Popup_UpdateDentist(dentist_id);
             popup_update_dentist.ShowDialog();
-            this.Hide();
+            update_Dentist();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Popup_Delete_Dentist popup_delete_dentist = new Popup_Delete_Dentist();     
-            popup_delete_dentist.ShowDialog();  
-            this.Hide();
+        }
+
+        private void dgv_dentist_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

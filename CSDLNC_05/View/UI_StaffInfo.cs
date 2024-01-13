@@ -74,15 +74,56 @@ namespace CSDLNC_05.View
 
         private void btn_Update_Click(object sender, EventArgs e)
         {
-            Popup_UpdateStaff ui = new Popup_UpdateStaff();
-            ui.Show();
+            string user_role = Program.currentUserRole;
+            if (user_role != "ADMIN")
+            {
+                MessageBox.Show(
+                    "Chỉ admin mới có quyền sửa",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+            var selectedRow = this.dgv_staff.SelectedRows;
 
+            if (selectedRow.Count == 0)
+            {
+                MessageBox.Show(
+                    "Vui lòng chọn nhân viên cần chỉnh sửa!",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            int idx = this.dgv_staff.SelectedRows[0].Index;
+            int staff_id = Convert.ToInt32(this.dgv_staff.Rows[idx].Cells[0].Value);
+
+            Popup_UpdateStaff popup_update_staff = new Popup_UpdateStaff(staff_id);
+            popup_update_staff.ShowDialog();
+            update_Staff();
         }
 
         private void btn_Add_Click(object sender, EventArgs e)
         {
+            string user_role = Program.currentUserRole;
+            if (user_role != "ADMIN")
+            {
+                MessageBox.Show(
+                    "Chỉ admin mới có quyền sửa",
+                    "Thông báo!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
             Popup_AddStaff ui = new Popup_AddStaff();
-            ui.Show();
+            ui.ShowDialog();
+
+            update_Staff();
         }
 
         private void dgv_staff_CellContentClick(object sender, DataGridViewCellEventArgs e)

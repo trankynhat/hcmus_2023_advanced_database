@@ -1,35 +1,5 @@
+﻿--CREATE DATABASE CQ_CSDLNC_05
 
-﻿CREATE DATABASE CQ_CSDLNC_05
-ON 
-    PRIMARY (
-        NAME = 'CQ_CSDLNC_05',
-        FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLSERVER\MSSQL\DATA\CQ_CSDLNC_05.mdf',
-        SIZE = 2,
-        MAXSIZE = 200,
-        FILEGROWTH = 1
-    ),
-    FILEGROUP CQ_CSDLNC_05_FG1 (
-        NAME = 'CQ_CSDLNC_05_FG1',
-        FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLSERVER\MSSQL\DATA\CQ_CSDLNC_05_FG1.ndf',
-        SIZE = 2,
-        MAXSIZE = 200,
-        FILEGROWTH = 1
-    ),
-    FILEGROUP CQ_CSDLNC_05_FG2 (
-        NAME = 'CQ_CSDLNC_05_FG2',
-        FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLSERVER\MSSQL\DATA\CQ_CSDLNC_05_FG2.ndf',
-        SIZE = 2,
-        MAXSIZE = 200,
-        FILEGROWTH = 1
-    ),
-    FILEGROUP CQ_CSDLNC_05_FG3 (
-        NAME = 'CQ_CSDLNC_05_FG3',
-        FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL16.SQLSERVER\MSSQL\DATA\CQ_CSDLNC_05_FG3.ndf',
-        SIZE = 2,
-        MAXSIZE = 200,
-        FILEGROWTH = 1
-    )
-GO
 
 USE CQ_CSDLNC_05
 GO
@@ -563,5 +533,4 @@ FOREIGN KEY (dentist_id) REFERENCES dentist(user_id)
 ALTER TABLE work_timetable
 ADD CONSTRAINT FK_work_timetable__branch_id__branch__id
 FOREIGN KEY (branch_id) REFERENCES branch(id)
-
 

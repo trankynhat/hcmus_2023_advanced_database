@@ -21,5 +21,4 @@ with open(file_path, 'w') as file:
             username = "_".join(name.lower().split(" "))
             usernames.append(username)
 
-        file.write(f"insert into [user] ( username, password, full_name, date_of_birth, phone_number, email, permanent_address, gender, working_branch_id) values ( '{username}', 'password', '{name}', '{
-                   fake.date_between(start_date=datetime(1950, 1, 1).date(), end_date='+60y')}', '{fake.phone_number()}', '{username}@gmail.com', '{fake.address()}', {random.randint(0, 1)}, {math.ceil((i+1)/150)})\n")
+        file.write(f"insert into [user] (id, username, password, full_name, date_of_birth, phone_number, email, permanent_address, gender, working_branch_id) values ({i+1}, '{username}', 'password', '{name}', '{fake.date_between(start_date=datetime(1950, 1, 1).date(), end_date='+60y')}', '{fake.phone_number()}', '{username}@gmail.com', '{fake.address()}', {random.randint(0, 1)}, {math.ceil((i+1)/150)})\n")
