@@ -30,9 +30,9 @@
         {
             dataGridView1 = new DataGridView();
             textBox1 = new TextBox();
-            button1 = new Button();
+            btn_Search = new Button();
             label1 = new Label();
-            button2 = new Button();
+            btn_Back = new Button();
             button4 = new Button();
             button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -56,14 +56,15 @@
             textBox1.Size = new Size(203, 27);
             textBox1.TabIndex = 1;
             // 
-            // button1
+            // btn_Search
             // 
-            button1.Location = new Point(460, 53);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 2;
-            button1.Text = "Tìm kiếm";
-            button1.UseVisualStyleBackColor = true;
+            btn_Search.Location = new Point(460, 53);
+            btn_Search.Name = "btn_Search";
+            btn_Search.Size = new Size(94, 29);
+            btn_Search.TabIndex = 2;
+            btn_Search.Text = "Tìm kiếm";
+            btn_Search.UseVisualStyleBackColor = true;
+            btn_Search.Click += button1_Click;
             // 
             // label1
             // 
@@ -74,15 +75,15 @@
             label1.TabIndex = 3;
             label1.Text = "Dentist's Schedule";
             // 
-            // button2
+            // btn_Back
             // 
-            button2.Location = new Point(0, 9);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 4;
-            button2.Text = "<-- Trở lại";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btn_Back.Location = new Point(0, 9);
+            btn_Back.Name = "btn_Back";
+            btn_Back.Size = new Size(94, 29);
+            btn_Back.TabIndex = 4;
+            btn_Back.Text = "Quay lại";
+            btn_Back.UseVisualStyleBackColor = true;
+            btn_Back.Click += button2_Click;
             // 
             // button4
             // 
@@ -111,9 +112,9 @@
             ClientSize = new Size(800, 450);
             Controls.Add(button3);
             Controls.Add(button4);
-            Controls.Add(button2);
+            Controls.Add(btn_Back);
             Controls.Add(label1);
-            Controls.Add(button1);
+            Controls.Add(btn_Search);
             Controls.Add(textBox1);
             Controls.Add(dataGridView1);
             Name = "UI_Schedule";
@@ -127,9 +128,9 @@
 
         private DataGridView dataGridView1;
         private TextBox textBox1;
-        private Button button1;
+        private Button btn_Search;
         private Label label1;
-        private Button button2;
+        private Button btn_Back;
         private Button button4;
         private Button button3;
     }

@@ -10,16 +10,16 @@ namespace CSDLNC_05.Controllers
 {
     class User
     {
-        private int id;
-        private String username;
-        private String password;
-        private String full_name;
-        private DateTime date_of_birth;
-        private String phone_number;
-        private String email;
-        private String permanent_address;
-        private Boolean gender;
-        private int working_branch_id;
+        public int id { get; set; }
+        public String username { get; set; }
+        public String password { get; set; }
+        public String full_name { get; set; }
+        public DateTime date_of_birth { get; set; }
+        public String phone_number { get; set; }
+        public String email { get; set; }
+        public String permanent_address { get; set; }
+        public Boolean gender { get; set; }
+        public int working_branch_id { get; set; }
 
         public User(int id, string username, string password, string full_name, DateTime date_of_birth, string phone_number, string email, string permanent_address, bool gender, int working_branch_id)
         {
@@ -78,6 +78,39 @@ namespace CSDLNC_05.Controllers
         public static string getDetistName(int? dentistID)
         {
             return DB_User.getDetistName(dentistID);
+        }
+
+        public static List<User> getListUserInfoRoleDentist(int branchID)
+        {
+            return DB_User.getListUserInfoRoleDentist(branchID);
+        }
+
+        public static List<User> getListUserInfoRoleStaff(int branchID)
+        {
+            return DB_User.getListUserInfoRoleStaff(branchID);
+        }
+        public static bool AddDentist(User user, string cert)
+        {
+            return DB_User.AddDentist(user, cert)==1;
+        }
+        public static bool AddStaff(User user)
+        {
+           return DB_User.AddStaff(user)==1;
+        }
+        public static bool updateDentist(User user)
+        {
+            return DB_User.updateDentist(user)==1;
+        }
+
+        public static bool updateStaff(User user) { 
+            return DB_User.updateStaff(user)==1;
+        }
+        public static User getUserInfoRoleDentist(int userID)
+        {
+            return DB_User.getUserInfoRoleDentist(userID);
+        }
+        public static User getUserInfoRoleStaff(int userID) { 
+            return DB_User.getUserInfoRoleStaff(userID);
         }
     }
 }

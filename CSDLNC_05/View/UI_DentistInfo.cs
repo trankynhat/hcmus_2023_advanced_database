@@ -17,14 +17,46 @@ namespace CSDLNC_05.View
         public UI_DentistInfo()
         {
             InitializeComponent();
+            update_Dentist();
+
+        }
+        private void update_Dentist()
+        {
+            List<User> dentists = User.getListUserInfoRoleDentist( Program.workingBranchId);
+            if (dentists == null || dentists.Count == 0)
+            {
+                MessageBox.Show(
+                    "Không có dữ liệu!",
+                    "Không có dữ liệu!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                this.dgv_dentist = null;
+                this.dgv_dentist.Rows.Clear();
+                return;
+            }
+            this.dgv_dentist.DataSource = null;
+            this.dgv_dentist.Rows.Clear();
+            foreach (User dentist in dentists)
+            {
+               
+                this.dgv_dentist.Rows.Add(
+                    dentist.id,
+                    dentist.full_name,
+                    (dentist.gender==true?"Nữ":"Nam"),
+                    dentist.date_of_birth,
+                    dentist.email,
+                    dentist.phone_number,
+                    dentist.permanent_address,
+                    dentist.working_branch_id
+
+                );
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            List<Dentist> dentists = new List<Dentist>();
-            dentists = Dentist.listDentistInfos();
-            dataGridView1.DataSource = dentists;
-            dataGridView1.Refresh();
+            
 
         }
 
@@ -45,16 +77,14 @@ namespace CSDLNC_05.View
 
         private void button4_Click(object sender, EventArgs e)
         {
-            List<Dentist> answer = Dentist.searh_dentist(Dentist.listDentistInfos(), searchContent);
-            dataGridView1.DataSource = answer;
-            dataGridView1.Refresh();
+           
 
         }
 
         private string searchContent = "";
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            searchContent = textBox1.Text;
+            searchContent = txt_Search.Text;
         }
 
         private void button3_Click(object sender, EventArgs e)

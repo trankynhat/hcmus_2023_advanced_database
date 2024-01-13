@@ -186,7 +186,7 @@ namespace CSDLNC_05.View
                 );
                 return;
             }
-            
+
         }
 
 
@@ -250,7 +250,7 @@ namespace CSDLNC_05.View
         private void btn_filter_Click(object sender, EventArgs e)
         {
             List<Appointment> appointments = Appointment.filterAppointment(
-                this.dtp_viewDate.Value, 
+                this.dtp_viewDate.Value,
                 Program.workingBranchId,
                 (this.cb_dentistInfo.SelectedValue.ToString() == "-1" ? -1 : int.Parse(this.cb_dentistInfo.SelectedValue.ToString())),
                 (this.cb_patientInfo.SelectedValue.ToString() == "-1" ? -1 : int.Parse(this.cb_patientInfo.SelectedValue.ToString())),

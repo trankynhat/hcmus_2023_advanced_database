@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CSDLNC_05.Controllers;
+using CSDLNC_05.View.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace CSDLNC_05.View
 {
     public partial class UI_StaffInfo : Form
@@ -15,14 +18,74 @@ namespace CSDLNC_05.View
         public UI_StaffInfo()
         {
             InitializeComponent();
+            update_Staff();
         }
+        private void update_Staff()
+        {
+            List<User> staffs = User.getListUserInfoRoleStaff(Program.workingBranchId);
+            if (staffs == null || staffs.Count == 0)
+            {
+                MessageBox.Show(
+                    "Không có dữ liệu!",
+                    "Không có dữ liệu!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+                this.dgv_staff = null;
+                this.dgv_staff.Rows.Clear();
+                return;
+            }
+            this.dgv_staff.DataSource = null;
+            this.dgv_staff.Rows.Clear();
+            foreach (User staff in staffs)
+            {
 
+                this.dgv_staff.Rows.Add(
+                    staff.id,
+                    staff.full_name,
+                    (staff.gender == true ? "Nữ" : "Nam"),
+                    staff.date_of_birth,
+                    staff.email,
+                    staff.phone_number,
+                    staff.permanent_address,
+                    staff.working_branch_id
+
+                );
+            }
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            int idx = Program.previousForm.Count - 1;
+            Form prvForm = Program.previousForm[idx];
+            Program.previousForm.RemoveAt(idx);
+            prvForm.Show();
+            this.Hide();
+        }
+
+        private void btn_Update_Click(object sender, EventArgs e)
+        {
+            Popup_UpdateStaff ui = new Popup_UpdateStaff();
+            ui.Show();
+
+        }
+
+        private void btn_Add_Click(object sender, EventArgs e)
+        {
+            Popup_AddStaff ui = new Popup_AddStaff();
+            ui.Show();
+        }
+
+        private void dgv_staff_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
