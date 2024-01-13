@@ -32,6 +32,7 @@
             button2 = new Button();
             button3 = new Button();
             label1 = new Label();
+            btn_Back = new Button();
             SuspendLayout();
             // 
             // button1
@@ -77,11 +78,22 @@
             label1.Text = "QUẢN LÝ NHÂN SỰ";
             label1.Click += label1_Click_1;
             // 
+            // btn_Back
+            // 
+            btn_Back.Location = new Point(12, 12);
+            btn_Back.Name = "btn_Back";
+            btn_Back.Size = new Size(94, 29);
+            btn_Back.TabIndex = 4;
+            btn_Back.Text = "Quay lại";
+            btn_Back.UseVisualStyleBackColor = true;
+            btn_Back.Click += btn_Back_Click;
+            // 
             // UI_Staff_Management
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(535, 393);
+            Controls.Add(btn_Back);
             Controls.Add(label1);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -98,5 +110,6 @@
         private Button button2;
         private Button button3;
         private Label label1;
+        private Button btn_Back;
     }
 }

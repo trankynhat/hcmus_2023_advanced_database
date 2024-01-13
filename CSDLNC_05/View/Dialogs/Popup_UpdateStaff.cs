@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace CSDLNC_05.View.Dialogs
 {
-    public partial class Popup_Delete_Dentist : Form
+    public partial class Popup_UpdateStaff : Form
     {
-        public Popup_Delete_Dentist()
+        public Popup_UpdateStaff()
         {
             InitializeComponent();
-        }
-
-        private void Popup_Delete_Dentist_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_OK_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

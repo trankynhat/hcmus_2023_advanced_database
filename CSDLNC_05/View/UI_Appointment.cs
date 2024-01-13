@@ -128,7 +128,7 @@ namespace CSDLNC_05.View
                 );
                 return;
             }
-            
+
         }
 
         private void btn_view_Click(object sender, EventArgs e)

@@ -28,79 +28,64 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            textBox1 = new TextBox();
-            button4 = new Button();
+            btn_Add = new Button();
+            btn_update = new Button();
+            txt_Search = new TextBox();
+            btn_Search = new Button();
             label1 = new Label();
-            button5 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            btn_Back = new Button();
+            dgv_dentist = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column8 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
+            Column7 = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dgv_dentist).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // btn_Add
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(0, 102);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(811, 346);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            btn_Add.Location = new Point(12, 67);
+            btn_Add.Name = "btn_Add";
+            btn_Add.Size = new Size(72, 29);
+            btn_Add.TabIndex = 1;
+            btn_Add.Text = "Add";
+            btn_Add.UseVisualStyleBackColor = true;
+            btn_Add.Click += button1_Click;
             // 
-            // button1
+            // btn_update
             // 
-            button1.Location = new Point(12, 67);
-            button1.Name = "button1";
-            button1.Size = new Size(72, 29);
-            button1.TabIndex = 1;
-            button1.Text = "Add";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btn_update.Location = new Point(96, 67);
+            btn_update.Name = "btn_update";
+            btn_update.Size = new Size(72, 29);
+            btn_update.TabIndex = 3;
+            btn_update.Text = "Update";
+            btn_update.UseVisualStyleBackColor = true;
+            btn_update.Click += button3_Click;
             // 
-            // button2
+            // txt_Search
             // 
-            button2.ForeColor = Color.IndianRed;
-            button2.Location = new Point(727, 67);
-            button2.Name = "button2";
-            button2.Size = new Size(72, 29);
-            button2.TabIndex = 2;
-            button2.Text = "Delete";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            txt_Search.Location = new Point(152, 12);
+            txt_Search.Name = "txt_Search";
+            txt_Search.Size = new Size(416, 27);
+            txt_Search.TabIndex = 4;
+            txt_Search.TextChanged += textBox1_TextChanged;
             // 
-            // button3
+            // btn_Search
             // 
-            button3.Location = new Point(96, 67);
-            button3.Name = "button3";
-            button3.Size = new Size(72, 29);
-            button3.TabIndex = 3;
-            button3.Text = "Update";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(152, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(416, 27);
-            textBox1.TabIndex = 4;
-            textBox1.TextChanged += textBox1_TextChanged;
-            // 
-            // button4
-            // 
-            button4.BackColor = SystemColors.ActiveCaption;
-            button4.FlatStyle = FlatStyle.Popup;
-            button4.ForeColor = SystemColors.Desktop;
-            button4.Location = new Point(574, 12);
-            button4.Name = "button4";
-            button4.Size = new Size(78, 27);
-            button4.TabIndex = 5;
-            button4.Text = "Search";
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
+            btn_Search.BackColor = SystemColors.ActiveCaption;
+            btn_Search.FlatStyle = FlatStyle.Popup;
+            btn_Search.ForeColor = SystemColors.Desktop;
+            btn_Search.Location = new Point(574, 12);
+            btn_Search.Name = "btn_Search";
+            btn_Search.Size = new Size(78, 27);
+            btn_Search.TabIndex = 5;
+            btn_Search.Text = "Search";
+            btn_Search.UseVisualStyleBackColor = false;
+            btn_Search.Click += button4_Click;
             // 
             // label1
             // 
@@ -111,47 +96,132 @@
             label1.TabIndex = 6;
             label1.Text = "Nha sĩ";
             // 
-            // button5
+            // btn_Back
             // 
-            button5.Location = new Point(0, 1);
-            button5.Name = "button5";
-            button5.Size = new Size(75, 29);
-            button5.TabIndex = 7;
-            button5.Text = "Quay lại";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            btn_Back.Location = new Point(0, 1);
+            btn_Back.Name = "btn_Back";
+            btn_Back.Size = new Size(75, 29);
+            btn_Back.TabIndex = 7;
+            btn_Back.Text = "Quay lại";
+            btn_Back.UseVisualStyleBackColor = true;
+            btn_Back.Click += button5_Click;
+            // 
+            // dgv_dentist
+            // 
+            dgv_dentist.AllowUserToAddRows = false;
+            dgv_dentist.AllowUserToDeleteRows = false;
+            dgv_dentist.AllowUserToResizeColumns = false;
+            dgv_dentist.AllowUserToResizeRows = false;
+            dgv_dentist.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgv_dentist.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            dgv_dentist.BackgroundColor = SystemColors.ControlLightLight;
+            dgv_dentist.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
+            dgv_dentist.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_dentist.Columns.AddRange(new DataGridViewColumn[] { Column1, Column3, Column8, Column2, Column4, Column5, Column6, Column7 });
+            dgv_dentist.Location = new Point(0, 102);
+            dgv_dentist.MultiSelect = false;
+            dgv_dentist.Name = "dgv_dentist";
+            dgv_dentist.ReadOnly = true;
+            dgv_dentist.RowHeadersVisible = false;
+            dgv_dentist.RowHeadersWidth = 51;
+            dgv_dentist.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgv_dentist.RowTemplate.Height = 29;
+            dgv_dentist.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgv_dentist.Size = new Size(871, 373);
+            dgv_dentist.TabIndex = 20;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "ID";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "Fullname";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            Column8.HeaderText = "Gender";
+            Column8.MinimumWidth = 6;
+            Column8.Name = "Column8";
+            Column8.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Date of Birth";
+            Column2.MinimumWidth = 3;
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            Column4.HeaderText = "Email";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            Column5.HeaderText = "Phone Number";
+            Column5.MinimumWidth = 6;
+            Column5.Name = "Column5";
+            Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "Address";
+            Column6.MinimumWidth = 6;
+            Column6.Name = "Column6";
+            Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            Column7.HeaderText = "working branch";
+            Column7.MinimumWidth = 6;
+            Column7.Name = "Column7";
+            Column7.ReadOnly = true;
             // 
             // UI_DentistInfo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLight;
-            ClientSize = new Size(811, 450);
-            Controls.Add(button5);
+            ClientSize = new Size(875, 472);
+            Controls.Add(dgv_dentist);
+            Controls.Add(btn_Back);
             Controls.Add(label1);
-            Controls.Add(button4);
-            Controls.Add(textBox1);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(dataGridView1);
+            Controls.Add(btn_Search);
+            Controls.Add(txt_Search);
+            Controls.Add(btn_update);
+            Controls.Add(btn_Add);
             ForeColor = SystemColors.Desktop;
             Name = "UI_DentistInfo";
             Text = "UI_DentistInfo";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_dentist).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private DataGridView dataGridView1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private TextBox textBox1;
-        private Button button4;
+        private Button btn_Add;
+        private Button btn_update;
+        private TextBox txt_Search;
+        private Button btn_Search;
         private Label label1;
-        private Button button5;
+        private Button btn_Back;
+        private DataGridView dgv_dentist;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column8;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column7;
     }
 }

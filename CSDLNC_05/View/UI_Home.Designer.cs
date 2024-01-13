@@ -35,15 +35,15 @@
             btn_report = new Button();
             btn_patientManagement = new Button();
             btn_appointmentManagement = new Button();
+            btn_systemManagement = new Button();
             SuspendLayout();
             // 
             // button1
             // 
             button1.BackColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(639, 294);
-            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Location = new Point(730, 392);
             button1.Name = "button1";
-            button1.Size = new Size(82, 22);
+            button1.Size = new Size(94, 29);
             button1.TabIndex = 0;
             button1.Text = "Đăng xuất";
             button1.UseVisualStyleBackColor = false;
@@ -52,10 +52,9 @@
             // button2
             // 
             button2.BackColor = SystemColors.ControlLightLight;
-            button2.Location = new Point(279, 49);
-            button2.Margin = new Padding(3, 2, 3, 2);
+            button2.Location = new Point(319, 65);
             button2.Name = "button2";
-            button2.Size = new Size(192, 34);
+            button2.Size = new Size(219, 45);
             button2.TabIndex = 1;
             button2.Text = "Quản lý  thuốc";
             button2.UseVisualStyleBackColor = false;
@@ -65,9 +64,9 @@
             // 
             label_hello.AutoSize = true;
             label_hello.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label_hello.Location = new Point(10, 7);
+            label_hello.Location = new Point(11, 9);
             label_hello.Name = "label_hello";
-            label_hello.Size = new Size(52, 21);
+            label_hello.Size = new Size(65, 28);
             label_hello.TabIndex = 2;
             label_hello.Text = "label1";
             label_hello.Click += label1_Click;
@@ -75,10 +74,9 @@
             // btn_report
             // 
             btn_report.BackColor = SystemColors.ControlLightLight;
-            btn_report.Location = new Point(279, 87);
-            btn_report.Margin = new Padding(3, 2, 3, 2);
+            btn_report.Location = new Point(319, 116);
             btn_report.Name = "btn_report";
-            btn_report.Size = new Size(192, 34);
+            btn_report.Size = new Size(219, 45);
             btn_report.TabIndex = 3;
             btn_report.Text = "Báo cáo";
             btn_report.UseVisualStyleBackColor = false;
@@ -87,10 +85,9 @@
             // btn_patientManagement
             // 
             btn_patientManagement.BackColor = SystemColors.ControlLightLight;
-            btn_patientManagement.Location = new Point(279, 125);
-            btn_patientManagement.Margin = new Padding(3, 2, 3, 2);
+            btn_patientManagement.Location = new Point(319, 167);
             btn_patientManagement.Name = "btn_patientManagement";
-            btn_patientManagement.Size = new Size(192, 34);
+            btn_patientManagement.Size = new Size(219, 45);
             btn_patientManagement.TabIndex = 4;
             btn_patientManagement.Text = "Quản lý bệnh nhân";
             btn_patientManagement.UseVisualStyleBackColor = false;
@@ -99,28 +96,38 @@
             // btn_appointmentManagement
             // 
             btn_appointmentManagement.BackColor = SystemColors.ControlLightLight;
-            btn_appointmentManagement.Location = new Point(279, 163);
-            btn_appointmentManagement.Margin = new Padding(3, 2, 3, 2);
+            btn_appointmentManagement.Location = new Point(319, 217);
             btn_appointmentManagement.Name = "btn_appointmentManagement";
-            btn_appointmentManagement.Size = new Size(192, 34);
+            btn_appointmentManagement.Size = new Size(219, 45);
             btn_appointmentManagement.TabIndex = 5;
             btn_appointmentManagement.Text = "Quản lý cuộc hẹn";
             btn_appointmentManagement.UseVisualStyleBackColor = false;
             btn_appointmentManagement.Click += btn_appointmentManagement_Click;
             // 
+            // btn_systemManagement
+            // 
+            btn_systemManagement.BackColor = SystemColors.ControlLightLight;
+            btn_systemManagement.Location = new Point(319, 268);
+            btn_systemManagement.Name = "btn_systemManagement";
+            btn_systemManagement.Size = new Size(219, 45);
+            btn_systemManagement.TabIndex = 6;
+            btn_systemManagement.Text = "Quản lý hệ thống";
+            btn_systemManagement.UseVisualStyleBackColor = false;
+            btn_systemManagement.Click += btn_systemManagement_Click;
+            // 
             // UI_Home
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(732, 325);
+            ClientSize = new Size(837, 433);
+            Controls.Add(btn_systemManagement);
             Controls.Add(btn_appointmentManagement);
             Controls.Add(btn_patientManagement);
             Controls.Add(btn_report);
             Controls.Add(label_hello);
             Controls.Add(button2);
             Controls.Add(button1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "UI_Home";
             Text = "Trang chủ";
             ResumeLayout(false);
@@ -136,5 +143,6 @@
         private Button btn_report;
         private Button btn_patientManagement;
         private Button btn_appointmentManagement;
+        private Button btn_systemManagement;
     }
 }

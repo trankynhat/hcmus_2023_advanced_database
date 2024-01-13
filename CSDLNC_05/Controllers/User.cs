@@ -79,5 +79,38 @@ namespace CSDLNC_05.Controllers
         {
             return DB_User.getDetistName(dentistID);
         }
+
+        public static List<User> getListUserInfoRoleDentist(int branchID)
+        {
+            return DB_User.getListUserInfoRoleDentist(branchID);
+        }
+
+        public static List<User> getListUserInfoRoleStaff(int branchID)
+        {
+            return DB_User.getListUserInfoRoleStaff(branchID);
+        }
+        public static bool AddDentist(User user, string cert)
+        {
+            return DB_User.AddDentist(user, cert)==1;
+        }
+        public static bool AddStaff(User user)
+        {
+           return DB_User.AddStaff(user)==1;
+        }
+        public static bool updateDentist(User user)
+        {
+            return DB_User.updateDentist(user)==1;
+        }
+
+        public static bool updateStaff(User user) { 
+            return DB_User.updateStaff(user)==1;
+        }
+        public static User getUserInfoRoleDentist(int userID)
+        {
+            return DB_User.getUserInfoRoleDentist(userID);
+        }
+        public static User getUserInfoRoleStaff(int userID) { 
+            return DB_User.getUserInfoRoleStaff(userID);
+        }
     }
 }
