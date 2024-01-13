@@ -1,5 +1,5 @@
 USE CQ_CSDLNC_05
-
+go
 CREATE FUNCTION get_user_role(@user_id INT)
 RETURNS VARCHAR(20)
 AS

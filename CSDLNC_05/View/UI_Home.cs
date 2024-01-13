@@ -1,4 +1,5 @@
 
+
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +19,7 @@ namespace CSDLNC_05.View
         {
             InitializeComponent();
 
-            this.label_hello.Text = @$"Xin chào {Program.currentUserName}!";
+            this.label_hello.Text = @$"Xin chào {Program.currentUserRole} {Program.currentUserName}!";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -68,14 +69,7 @@ namespace CSDLNC_05.View
             this.Hide();
             Program.previousForm.Add(this);
         }
-
-        private void btn_systemManagement_Click(object sender, EventArgs e)
-        {
-            UI_Staff_Management ui = new UI_Staff_Management();
-            ui.Show();
-            this.Hide();
-            Program.previousForm.Add(this); 
-        }
     }
 }
+
 

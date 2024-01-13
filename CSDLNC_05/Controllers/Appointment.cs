@@ -57,7 +57,7 @@ namespace CSDLNC_05.Controllers
             return DB_Appointment.getAppointmentsByDate(date, branchID);
         }
 
-        public static List<Appointment>? filterAppointment(DateTime date, int branch_ID, int dentist, int patient, int clinic)
+        public static List<Appointment>? filterAppointment(DateTime date, int branch_ID, int dentist, string patient, int clinic)
         {
             return DB_Appointment.filterAppointment(date, branch_ID, dentist, patient, clinic);
         }
