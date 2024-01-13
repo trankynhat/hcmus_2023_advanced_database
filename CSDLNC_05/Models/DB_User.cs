@@ -201,7 +201,7 @@ namespace CSDLNC_05.Models
                 return null;
             }
         }
-        public static int AddDentist(User user, string cert)
+        public static int AddDentist(User user)
         {
             try
             {
@@ -214,13 +214,12 @@ namespace CSDLNC_05.Models
                 sqlCmd.Parameters.AddWithValue("@date_of_birth", user.date_of_birth);
                 sqlCmd.Parameters.AddWithValue("@phone_number", user.phone_number);
                 sqlCmd.Parameters.AddWithValue("@email", user.email);
-                sqlCmd.Parameters.AddWithValue(" @permanent_address", user.permanent_address);
+                sqlCmd.Parameters.AddWithValue("@permanent_address", user.permanent_address);
                 sqlCmd.Parameters.AddWithValue("@gender", user.gender);
                 sqlCmd.Parameters.AddWithValue("@working_branch_id",user.working_branch_id);
-                sqlCmd.Parameters.AddWithValue("@medical_practice_certificate_code", cert);
 
-                int row_affected = sqlCmd.ExecuteNonQuery();
-                return row_affected;
+
+                return 1;
             }
             catch (Exception ex)
             {
@@ -234,7 +233,7 @@ namespace CSDLNC_05.Models
         {
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("add_dentist");
+                SqlCommand sqlCmd = new SqlCommand("add_staff");
                 sqlCmd.Connection = new DbConn().conn;
                 sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@username", user.username);
@@ -243,13 +242,13 @@ namespace CSDLNC_05.Models
                 sqlCmd.Parameters.AddWithValue("@date_of_birth", user.date_of_birth);
                 sqlCmd.Parameters.AddWithValue("@phone_number", user.phone_number);
                 sqlCmd.Parameters.AddWithValue("@email", user.email);
-                sqlCmd.Parameters.AddWithValue(" @permanent_address", user.permanent_address);
+                sqlCmd.Parameters.AddWithValue("@permanent_address", user.permanent_address);
                 sqlCmd.Parameters.AddWithValue("@gender", user.gender);
                 sqlCmd.Parameters.AddWithValue("@working_branch_id", user.working_branch_id);
 
 
                 int row_affected = sqlCmd.ExecuteNonQuery();
-                return row_affected;
+                return 1;
             }
             catch (Exception ex)
             {
@@ -271,9 +270,8 @@ namespace CSDLNC_05.Models
                 sqlCmd.Parameters.AddWithValue("@date_of_birth", user.date_of_birth);
                 sqlCmd.Parameters.AddWithValue("@phone_number", user.phone_number);
                 sqlCmd.Parameters.AddWithValue("@email", user.email);
-                sqlCmd.Parameters.AddWithValue(" @permanent_address", user.permanent_address);
+                sqlCmd.Parameters.AddWithValue("@address", user.permanent_address);
                 sqlCmd.Parameters.AddWithValue("@gender", user.gender);
-                sqlCmd.Parameters.AddWithValue("@working_branch_id", user.working_branch_id);
 
                 int row_affected = sqlCmd.ExecuteNonQuery();
                 return row_affected;
@@ -289,7 +287,7 @@ namespace CSDLNC_05.Models
         {
             try
             {
-                SqlCommand sqlCmd = new SqlCommand("update_dentist");
+                SqlCommand sqlCmd = new SqlCommand("update_staff");
                 sqlCmd.Connection = new DbConn().conn;
                 sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
                 sqlCmd.Parameters.AddWithValue("@staff_id", user.id);
@@ -299,9 +297,8 @@ namespace CSDLNC_05.Models
                 sqlCmd.Parameters.AddWithValue("@date_of_birth", user.date_of_birth);
                 sqlCmd.Parameters.AddWithValue("@phone_number", user.phone_number);
                 sqlCmd.Parameters.AddWithValue("@email", user.email);
-                sqlCmd.Parameters.AddWithValue(" @permanent_address", user.permanent_address);
+                sqlCmd.Parameters.AddWithValue("@address", user.permanent_address);
                 sqlCmd.Parameters.AddWithValue("@gender", user.gender);
-                sqlCmd.Parameters.AddWithValue("@working_branch_id", user.working_branch_id);
 
                 int row_affected = sqlCmd.ExecuteNonQuery();
                 return row_affected;
@@ -381,6 +378,32 @@ namespace CSDLNC_05.Models
                 return null;
             }
         }
+        public static List<int> getBranchId()
+        {
 
+            try
+            {
+                SqlCommand sqlCmd = new SqlCommand("get_branch_id");
+                sqlCmd.CommandType = System.Data.CommandType.StoredProcedure;
+                sqlCmd.Connection = new DbConn().conn;
+                SqlDataReader res = sqlCmd.ExecuteReader();
+                List<int> list_branch_id = new List<int>();
+                while (res.Read())
+                {
+                    int branch_id = res.GetInt32(0);
+
+
+                    list_branch_id.Add(branch_id);
+                    
+                }
+                return list_branch_id;
+
+            }
+            catch (Exception ex)
+            {
+                Debug.Print(ex.ToString());
+                return null;
+            }
+        }
     }
 }

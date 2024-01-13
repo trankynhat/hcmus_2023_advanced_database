@@ -11,20 +11,6 @@ BEGIN
 END
 GO
 
--- get_user_info_role_dentist
-GO
-CREATE OR ALTER PROC get_user_info_role_dentist (@user_id INT)
-AS
-BEGIN
-	SELECT U.*
-	FROM [user] U
-	WHERE U.id = @user_id
-END
-GO
-EXEC get_user_info_role_dentist @user_id = 150001
-GO
-
-
 --get_list_user_role_dentist
 GO
 CREATE OR ALTER PROC get_list_user_role_dentist (@branch_id INT)
@@ -48,7 +34,6 @@ CREATE OR ALTER PROC update_dentist (
     @email VARCHAR(50),
     @phone_number VARCHAR(40),
 	@address VARCHAR(200), 
-	@working_branch int ,
 	@gender int
 )
 AS
@@ -61,7 +46,6 @@ BEGIN
         date_of_birth = @date_of_birth,
         email = @email,
         phone_number = @phone_number,
-		working_branch_id = @working_branch,
 		permanent_address = @address,
 		gender =  @gender
     WHERE id = @dentist_id;
@@ -75,7 +59,6 @@ EXEC update_dentist @dentist_id = 150001,
     @email = 'dentist1@gmail.com',
     @phone_number = '(419)570-9217x045',
 	@address = '1917 Kevin Lock Apt. 297 North Michaelton, HI 90283', 
-	@working_branch = 1,
 	@gender = 0
 GO
 
@@ -89,8 +72,7 @@ CREATE OR ALTER PROC add_dentist
     @email VARCHAR(50),
     @permanent_address NVARCHAR(200),
     @gender BIT,
-    @working_branch_id INT,
-    @medical_practice_certificate_code VARCHAR(50)
+    @working_branch_id INT
 AS
 BEGIN
 
@@ -104,11 +86,14 @@ BEGIN
     SET @dentist_user_id = SCOPE_IDENTITY();
 
     -- Chèn thông tin nha sĩ vào bảng dentist
-    INSERT INTO dentist (user_id, medical_practice_certificate_code)
-    VALUES (@dentist_user_id, @medical_practice_certificate_code);
+    INSERT INTO dentist (user_id, medical_practice_certificate_code )
+    VALUES (@dentist_user_id, @phone_number);
 
 END;
+
 GO
+
+
 EXEC add_dentist @username = 'dentist1',
     @password = 'password',
     @full_name = 'Nguyen Van C',
@@ -117,7 +102,21 @@ EXEC add_dentist @username = 'dentist1',
     @email = 'dentist1@example.com',
     @permanent_address  = '456 Main Street',
     @gender = 1,
-    @working_branch_id  = 1,
-    @medical_practice_certificate_code = 'ABC789'
+    @working_branch_id  = 1
 
 
+
+
+
+	-- get_user_info_role_dentist
+GO
+CREATE OR ALTER PROC get_user_info_role_dentist (@user_id INT)
+AS
+BEGIN
+	SELECT U.*
+	FROM [user] U
+	WHERE U.id = @user_id
+END
+GO
+EXEC get_user_info_role_dentist @user_id = 150001
+GO

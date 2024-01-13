@@ -69,6 +69,13 @@ namespace CSDLNC_05.View
             this.Hide();
             Program.previousForm.Add(this);
         }
+        private void btn_systemManagement_Click(object sender, EventArgs e)
+        {
+            UI_Staff_Management ui = new UI_Staff_Management(); 
+            ui.Show();  
+            this.Hide();    
+            Program.previousForm.Add(this); 
+        }
     }
 }
 

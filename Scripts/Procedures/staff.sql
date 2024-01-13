@@ -11,19 +11,6 @@ BEGIN
 END
 GO
 
--- get_user_info_role_dentist
-GO
-CREATE OR ALTER PROC get_user_info_role_staff (@user_id INT)
-AS
-BEGIN
-	SELECT U.*
-	FROM [user] U
-	WHERE U.id = @user_id
-END
-GO
-EXEC get_user_info_role_staff @user_id = 150003
-GO
-
 --get_list_user_role_staff
 GO
 CREATE OR ALTER PROC get_list_user_role_staff (@branch_id INT)
@@ -47,7 +34,6 @@ CREATE OR ALTER PROC update_staff (
     @email VARCHAR(50),
     @phone_number VARCHAR(40),
 	@address VARCHAR(200), 
-	@working_branch int ,
 	@gender int
 )
 AS
@@ -59,7 +45,6 @@ BEGIN
         date_of_birth = @date_of_birth,
         email = @email,
         phone_number = @phone_number,
-		working_branch_id = @working_branch,
 		permanent_address = @address,
 		gender =  @gender
     WHERE id = @staff_id;
@@ -74,7 +59,6 @@ EXEC update_staff @staff_id = 150003,
     @email = 'staff2@example.com',
     @phone_number = '0920471822',
 	@address = '45683 Main Street', 
-	@working_branch = 1,
 	@gender = 1
 GO
 
@@ -118,3 +102,17 @@ EXEC add_staff @username = 'staff1',
     @working_branch_id  = 1
 
 
+
+
+	-- get_user_info_role_dentist
+GO
+CREATE OR ALTER PROC get_user_info_role_staff (@user_id INT)
+AS
+BEGIN
+	SELECT U.*
+	FROM [user] U
+	WHERE U.id = @user_id
+END
+GO
+EXEC get_user_info_role_staff @user_id = 150003
+GO

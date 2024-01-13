@@ -1,4 +1,4 @@
--- insert_new_drug 
+-- insert_new_drug
 CREATE PROCEDURE insert_new_drug(
     @code VARCHAR(20), 
     @name NVARCHAR(150),

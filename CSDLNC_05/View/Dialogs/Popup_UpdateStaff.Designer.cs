@@ -30,8 +30,8 @@
         {
             label9 = new Label();
             txt_Addres = new TextBox();
-            cb_Gender2 = new CheckBox();
-            cb_Gender1 = new CheckBox();
+            cb_GenderFemale = new CheckBox();
+            cb_GenderMale = new CheckBox();
             label8 = new Label();
             label7 = new Label();
             txt_password = new TextBox();
@@ -39,15 +39,13 @@
             dt_dob = new DateTimePicker();
             btn_update = new Button();
             label6 = new Label();
-            label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            textBox7 = new TextBox();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
+            txt_fullname = new TextBox();
+            txt_phonenum = new TextBox();
+            txt_email = new TextBox();
             SuspendLayout();
             // 
             // label9
@@ -65,26 +63,27 @@
             txt_Addres.Name = "txt_Addres";
             txt_Addres.Size = new Size(282, 27);
             txt_Addres.TabIndex = 41;
+            txt_Addres.TextChanged += txt_Addres_TextChanged;
             // 
-            // cb_Gender2
+            // cb_GenderFemale
             // 
-            cb_Gender2.AutoSize = true;
-            cb_Gender2.Location = new Point(316, 191);
-            cb_Gender2.Name = "cb_Gender2";
-            cb_Gender2.Size = new Size(51, 24);
-            cb_Gender2.TabIndex = 40;
-            cb_Gender2.Text = "Nữ";
-            cb_Gender2.UseVisualStyleBackColor = true;
+            cb_GenderFemale.AutoSize = true;
+            cb_GenderFemale.Location = new Point(316, 191);
+            cb_GenderFemale.Name = "cb_GenderFemale";
+            cb_GenderFemale.Size = new Size(51, 24);
+            cb_GenderFemale.TabIndex = 40;
+            cb_GenderFemale.Text = "Nữ";
+            cb_GenderFemale.UseVisualStyleBackColor = true;
             // 
-            // cb_Gender1
+            // cb_GenderMale
             // 
-            cb_Gender1.AutoSize = true;
-            cb_Gender1.Location = new Point(178, 192);
-            cb_Gender1.Name = "cb_Gender1";
-            cb_Gender1.Size = new Size(63, 24);
-            cb_Gender1.TabIndex = 39;
-            cb_Gender1.Text = "Nam";
-            cb_Gender1.UseVisualStyleBackColor = true;
+            cb_GenderMale.AutoSize = true;
+            cb_GenderMale.Location = new Point(178, 192);
+            cb_GenderMale.Name = "cb_GenderMale";
+            cb_GenderMale.Size = new Size(63, 24);
+            cb_GenderMale.TabIndex = 39;
+            cb_GenderMale.Text = "Nam";
+            cb_GenderMale.UseVisualStyleBackColor = true;
             // 
             // label8
             // 
@@ -127,12 +126,13 @@
             // 
             // btn_update
             // 
-            btn_update.Location = new Point(236, 490);
+            btn_update.Location = new Point(236, 456);
             btn_update.Name = "btn_update";
             btn_update.Size = new Size(94, 29);
             btn_update.TabIndex = 33;
             btn_update.Text = "Cập nhật";
             btn_update.UseVisualStyleBackColor = true;
+            btn_update.Click += btn_update_Click;
             // 
             // label6
             // 
@@ -143,15 +143,6 @@
             label6.Size = new Size(65, 20);
             label6.TabIndex = 32;
             label6.Text = "Giới tính";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(69, 444);
-            label5.Name = "label5";
-            label5.Size = new Size(78, 20);
-            label5.TabIndex = 31;
-            label5.Text = "Chi nhánh ";
             // 
             // label4
             // 
@@ -189,43 +180,36 @@
             label1.TabIndex = 27;
             label1.Text = "Họ và tên";
             // 
-            // textBox7
+            // txt_fullname
             // 
-            textBox7.Location = new Point(179, 35);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(282, 27);
-            textBox7.TabIndex = 26;
+            txt_fullname.Location = new Point(179, 35);
+            txt_fullname.Name = "txt_fullname";
+            txt_fullname.Size = new Size(282, 27);
+            txt_fullname.TabIndex = 26;
             // 
-            // textBox4
+            // txt_phonenum
             // 
-            textBox4.Location = new Point(179, 437);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(282, 27);
-            textBox4.TabIndex = 25;
+            txt_phonenum.Location = new Point(179, 390);
+            txt_phonenum.Name = "txt_phonenum";
+            txt_phonenum.Size = new Size(282, 27);
+            txt_phonenum.TabIndex = 24;
             // 
-            // textBox3
+            // txt_email
             // 
-            textBox3.Location = new Point(179, 390);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(282, 27);
-            textBox3.TabIndex = 24;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(179, 287);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(282, 27);
-            textBox2.TabIndex = 23;
+            txt_email.Location = new Point(179, 287);
+            txt_email.Name = "txt_email";
+            txt_email.Size = new Size(282, 27);
+            txt_email.TabIndex = 23;
             // 
             // Popup_UpdateStaff
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(545, 556);
+            ClientSize = new Size(545, 513);
             Controls.Add(label9);
             Controls.Add(txt_Addres);
-            Controls.Add(cb_Gender2);
-            Controls.Add(cb_Gender1);
+            Controls.Add(cb_GenderFemale);
+            Controls.Add(cb_GenderMale);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(txt_password);
@@ -233,15 +217,13 @@
             Controls.Add(dt_dob);
             Controls.Add(btn_update);
             Controls.Add(label6);
-            Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox7);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
+            Controls.Add(txt_fullname);
+            Controls.Add(txt_phonenum);
+            Controls.Add(txt_email);
             Name = "Popup_UpdateStaff";
             Text = "Popup_UpdateStaff";
             ResumeLayout(false);
@@ -261,14 +243,17 @@
         private DateTimePicker dt_dob;
         private Button btn_update;
         private Label label6;
-        private Label label5;
         private Label label4;
         private Label label3;
         private Label label2;
         private Label label1;
         private TextBox textBox7;
-        private TextBox textBox4;
         private TextBox textBox3;
         private TextBox textBox2;
+        private CheckBox cb_GenderFemale;
+        private CheckBox cb_GenderMale;
+        private TextBox txt_fullname;
+        private TextBox txt_email;
+        private TextBox txt_phonenum;
     }
 }
