@@ -42,3 +42,4 @@ BEGIN
     ) AND appointment_date >= @start_date AND @start_date <= @end_date
 END
 GO
+

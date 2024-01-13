@@ -18,7 +18,7 @@ namespace CSDLNC_05.View
         {
             InitializeComponent();
 
-            this.label_hello.Text = @$"Xin chào {Program.currentUserName}!";
+            this.label_hello.Text = @$"Xin chào {Program.currentUserRole} {Program.currentUserName}!";
         }
 
         private void button1_Click(object sender, EventArgs e)

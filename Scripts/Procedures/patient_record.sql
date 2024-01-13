@@ -292,22 +292,22 @@ GO
 -- ngày thực hiện thanh toán.
 
 
-CREATE PROC  danh_sach_cac_thanh_toan_cua_benh_nhan
-    (@citizen_id NVARCHAR(36))
-AS
-BEGIN
-    SELECT d1.full_name, p.total_treatment_fee, p.date_of_payment
-    FROM payment AS p
-        LEFT JOIN treatment AS t ON p.id = t.payment_id
-        LEFT JOIN (
-        SELECT d.user_id, u.full_name
-        FROM dentist AS d
-            LEFT JOIN [user] AS u ON d.user_id = u.id
-    ) AS d1 ON d1.user_id = t.dentist_id
-    WHERE t.citizen_id = @citizen_id;
+--CREATE PROC  danh_sach_cac_thanh_toan_cua_benh_nhan
+--    (@citizen_id NVARCHAR(36))
+--AS
+--BEGIN
+--    SELECT d1.full_name, p.total_treatment_fee, p.date_of_payment
+--    FROM payment AS p
+--        LEFT JOIN treatment AS t ON p.id = t.payment_id
+--        LEFT JOIN (
+--        SELECT d.user_id, u.full_name
+--        FROM dentist AS d
+--            LEFT JOIN [user] AS u ON d.user_id = u.id
+--    ) AS d1 ON d1.user_id = t.dentist_id
+--    WHERE  = @citizen_id;
 
-END
-GO
+--END
+--GO
 
 -- Thông tin chi tiết của mỗi thanh toán gồm 
 -- ngày giao dịch, 
@@ -318,104 +318,104 @@ GO
 -- loại thanh toán (tiền mặt hoặc thanh toán online), 
 -- ghi chú và 
 
-CREATE PROC  thong_tin_chi_tiet_thanh_toan_cua_benh_nhan
-    (@payment_id VARCHAR(36))
-AS
-BEGIN
-    IF NOT EXISTS (SELECT user_id
-    FROM dentist
-    WHERE user_id = @dentist_id)
-        BEGIN
-        PRINT 'KHONG TIM THAY NHA SI'
-        RETURN
-    END
+--CREATE PROC  thong_tin_chi_tiet_thanh_toan_cua_benh_nhan
+--    (@payment_id VARCHAR(36))
+--AS
+--BEGIN
+--    IF NOT EXISTS (SELECT user_id
+--    FROM dentist
+--    WHERE user_id = @dentist_id)
+--        BEGIN
+--        PRINT 'KHONG TIM THAY NHA SI'
+--        RETURN
+--    END
 
-END
-GO
+--END
+--GO
 
 -- Thêm/Cập nhật/Xóa đơn thuốc của bệnh nhân: Đối tượng
 -- người dùng cho phép: quản trị viên, nhân viên, nha sĩ
 
 -- Thêm đơn thuốc của bệnh nhân
-CREATE PROC them_don_thuoc_cua_benh_nhan(
-    @treatment_id VARCHAR(36),
-    @drug_code VARCHAR(20)
-)
-AS
-BEGIN
-    IF NOT EXISTS (
-        SELECT id
-        FROM treatment
-        WHERE id = @treatment_id
-    )
-        BEGIN
-            RAISERROR('KHONG TIM THAY THONG TIN DIEU TRI CUA BENH NHAN', 16, 1)
-            RETURN
-        END
+--CREATE PROC them_don_thuoc_cua_benh_nhan(
+--    @treatment_id VARCHAR(36),
+--    @drug_code VARCHAR(20)
+--)
+--AS
+--BEGIN
+--    IF NOT EXISTS (
+--        SELECT id
+--        FROM treatment
+--        WHERE id = @treatment_id
+--    )
+--        BEGIN
+--            RAISERROR('KHONG TIM THAY THONG TIN DIEU TRI CUA BENH NHAN', 16, 1)
+--            RETURN
+--        END
 
-    IF NOT EXISTS (
-        SELECT code
-        FROM drug
-        WHERE code = @drug_code
-    )
-        BEGIN
-            RAISERROR('KHONG TIM THAY THONG TIN THUOC', 16, 1)
-            RETURN
-        END
+--    IF NOT EXISTS (
+--        SELECT code
+--        FROM drug
+--        WHERE code = @drug_code
+--    )
+--        BEGIN
+--            RAISERROR('KHONG TIM THAY THONG TIN THUOC', 16, 1)
+--            RETURN
+--        END
 
-    INSERT INTO prescription
-    VALUES(@treatment_id, @drug_code)
-END
-GO
+--    INSERT INTO prescription
+--    VALUES(@treatment_id, @drug_code)
+--END
+--GO
 
--- Cập nhật đơn thuốc của bệnh nhân
-CREATE PROC cap_nhat_don_thuoc_cua_benh_nhan
-    (@treatment_id VARCHAR(36),
-    @drug_code VARCHAR(20),
-    @new_drug_code VARCHAR(20))
-AS
-BEGIN
-    IF NOT EXISTS (
-            SELECT treatment_id, drug_code
-    FROM prescription
-    WHERE treatment_id = @treatment_id AND drug_code = @drug_code)
-        BEGIN
-        PRINT 'KHONG TIM THAY THONG TIN DON THUOC CUA BENH NHAN'
-        RETURN
-    END
+---- Cập nhật đơn thuốc của bệnh nhân
+--CREATE PROC cap_nhat_don_thuoc_cua_benh_nhan
+--    (@treatment_id VARCHAR(36),
+--    @drug_code VARCHAR(20),
+--    @new_drug_code VARCHAR(20))
+--AS
+--BEGIN
+--    IF NOT EXISTS (
+--            SELECT treatment_id, drug_code
+--    FROM prescription
+--    WHERE treatment_id = @treatment_id AND drug_code = @drug_code)
+--        BEGIN
+--        PRINT 'KHONG TIM THAY THONG TIN DON THUOC CUA BENH NHAN'
+--        RETURN
+--    END
 
-    IF NOT EXISTS (SELECT code
-    FROM drug
-    WHERE code = @new_drug_code)
-        BEGIN
-        PRINT 'KHONG TIM THAY THONG TIN THUOC'
-        RETURN
-    END
+--    IF NOT EXISTS (SELECT code
+--    FROM drug
+--    WHERE code = @new_drug_code)
+--        BEGIN
+--        PRINT 'KHONG TIM THAY THONG TIN THUOC'
+--        RETURN
+--    END
 
-    UPDATE prescription
-        SET drug_code = @new_drug_code
-        WHERE treatment_id = @treatment_id AND @drug_code = @new_drug_code
+--    UPDATE prescription
+--        SET drug_code = @new_drug_code
+--        WHERE treatment_id = @treatment_id AND @drug_code = @new_drug_code
 
-END
-GO
+--END
+--GO
 
--- Xoá đơn thuốc của bệnh nhân
-CREATE PROC xoa_don_thuoc_cua_benh_nhan
-    (@treatment_id VARCHAR(36),
-    @drug_code VARCHAR(20))
-AS
-BEGIN
-    IF NOT EXISTS (
-            SELECT treatment_id, drug_code
-    FROM prescription
-    WHERE treatment_id = @treatment_id AND drug_code = @drug_code)
-        BEGIN
-        PRINT 'KHONG TIM THAY THONG TIN DON THUOC CUA BENH NHAN'
-        RETURN
-    END
+---- Xoá đơn thuốc của bệnh nhân
+--CREATE PROC xoa_don_thuoc_cua_benh_nhan
+--    (@treatment_id VARCHAR(36),
+--    @drug_code VARCHAR(20))
+--AS
+--BEGIN
+--    IF NOT EXISTS (
+--            SELECT treatment_id, drug_code
+--    FROM prescription
+--    WHERE treatment_id = @treatment_id AND drug_code = @drug_code)
+--        BEGIN
+--        PRINT 'KHONG TIM THAY THONG TIN DON THUOC CUA BENH NHAN'
+--        RETURN
+--    END
 
-    DELETE FROM prescription
-        WHERE treatment_id = @treatment_id AND @drug_code = @new_drug_code
+--    DELETE FROM prescription
+--        WHERE treatment_id = @treatment_id AND @drug_code = @new_drug_code
 
-END
-GO
+--END
+--GO

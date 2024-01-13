@@ -89,7 +89,7 @@ namespace CSDLNC_05.Models
             }
         }
     
-        public static List<Appointment>? filterAppointment (DateTime date, int branch_ID, int dentist, int patient, int clinic)
+        public static List<Appointment>? filterAppointment (DateTime date, int branch_ID, int dentist, string patient, int clinic)
         {
             try
             {
